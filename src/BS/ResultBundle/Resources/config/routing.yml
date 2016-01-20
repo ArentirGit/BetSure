@@ -1,0 +1,4 @@
+bs_result_get:
+    path:    /Result/Get
+    defaults:
+        _controller:    BSResultBundle:Result:get

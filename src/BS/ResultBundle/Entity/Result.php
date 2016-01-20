@@ -1,0 +1,172 @@
+<?php
+
+namespace BS\ResultBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Result
+ *
+ * @ORM\Table(name="result")
+ * @ORM\Entity(repositoryClass="BS\ResultBundle\Repository\ResultRepository")
+ */
+class Result
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="end", type="string", length=255)
+     */
+    private $end;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="eventLabel", type="string", length=255)
+     */
+    private $eventLabel;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="competition", type="string", length=255)
+     */
+    private $competition;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="competitionID", type="string", length=255)
+     */
+    private $competitionID;
+
+
+    /**
+     * Get id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set end
+     *
+     * @param string $end
+     *
+     * @return Result
+     */
+    public function setEnd($end)
+    {
+        $this->end = $end;
+
+        return $this;
+    }
+
+    /**
+     * Get end
+     *
+     * @return string
+     */
+    public function getEnd()
+    {
+        return $this->end;
+    }
+
+    /**
+     * Set eventLabel
+     *
+     * @param string $eventLabel
+     *
+     * @return Result
+     */
+    public function setEventLabel($eventLabel)
+    {
+        $this->eventLabel = $eventLabel;
+
+        return $this;
+    }
+
+    /**
+     * Get eventLabel
+     *
+     * @return string
+     */
+    public function getEventLabel()
+    {
+        return $this->eventLabel;
+    }
+
+    /**
+     * Set competition
+     *
+     * @param string $competition
+     *
+     * @return Result
+     */
+    public function setCompetition($competition)
+    {
+        $this->competition = $competition;
+
+        return $this;
+    }
+
+    /**
+     * Get competition
+     *
+     * @return string
+     */
+    public function getCompetition()
+    {
+        return $this->competition;
+    }
+
+    /**
+     * Set competitionID
+     *
+     * @param string $competitionID
+     *
+     * @return Result
+     */
+    public function setCompetitionID($competitionID)
+    {
+        $this->competitionID = $competitionID;
+
+        return $this;
+    }
+
+    /**
+     * Get competitionID
+     *
+     * @return string
+     */
+    public function getCompetitionID()
+    {
+        return $this->competitionID;
+    }
+
+    /**
+     * Set id
+     *
+     * @param int $id
+     *
+     * @return Result
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+
+        return $this;
+    }
+}
+
