@@ -1,0 +1,306 @@
+<?php
+
+namespace BS\OfferBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Offer
+ *
+ * @ORM\Table(name="offer")
+ * @ORM\Entity(repositoryClass="BS\OfferBundle\Repository\OfferRepository")
+ */
+class Offer
+{
+
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="eventId", type="string", length=255)
+     */
+    private $eventId;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="marketId", type="string", length=255)
+     */
+    private $marketId;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="sportId", type="string", length=255)
+     */
+    private $sportId;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="indexOffer", type="string", length=255)
+     */
+    private $indexOffer;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="marketType", type="string", length=255)
+     */
+    private $marketType;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="end", type="string", length=255)
+     */
+    private $end;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="labelOffer", type="string", length=255)
+     */
+    private $labelOffer;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="competition", type="string", length=255)
+     */
+    private $competition;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="competitionId", type="string", length=255)
+     */
+    private $competitionId;
+
+
+    /**
+     * Get id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set marketId
+     *
+     * @param string $marketId
+     *
+     * @return Offer
+     */
+    public function setMarketId($marketId)
+    {
+        $this->marketId = $marketId;
+
+        return $this;
+    }
+
+    /**
+     * Get marketId
+     *
+     * @return string
+     */
+    public function getMarketId()
+    {
+        return $this->marketId;
+    }
+
+    /**
+     * Set sportId
+     *
+     * @param string $sportId
+     *
+     * @return Offer
+     */
+    public function setSportId($sportId)
+    {
+        $this->sportId = $sportId;
+
+        return $this;
+    }
+
+    /**
+     * Get sportId
+     *
+     * @return string
+     */
+    public function getSportId()
+    {
+        return $this->sportId;
+    }
+
+    /**
+     * Set indexOffer
+     *
+     * @param string $indexOffer
+     *
+     * @return Offer
+     */
+    public function setIndexOffer($indexOffer)
+    {
+        $this->indexOffer = $indexOffer;
+
+        return $this;
+    }
+
+    /**
+     * Get indexOffer
+     *
+     * @return string
+     */
+    public function getIndexOffer()
+    {
+        return $this->indexOffer;
+    }
+
+    /**
+     * Set marketType
+     *
+     * @param string $marketType
+     *
+     * @return Offer
+     */
+    public function setMarketType($marketType)
+    {
+        $this->marketType = $marketType;
+
+        return $this;
+    }
+
+    /**
+     * Get marketType
+     *
+     * @return string
+     */
+    public function getMarketType()
+    {
+        return $this->marketType;
+    }
+
+    /**
+     * Set end
+     *
+     * @param string $end
+     *
+     * @return Offer
+     */
+    public function setEnd($end)
+    {
+        $this->end = $end;
+
+        return $this;
+    }
+
+    /**
+     * Get end
+     *
+     * @return string
+     */
+    public function getEnd()
+    {
+        return $this->end;
+    }
+
+    /**
+     * Set labelOffer
+     *
+     * @param string $labelOffer
+     *
+     * @return Offer
+     */
+    public function setLabelOffer($labelOffer)
+    {
+        $this->labelOffer = $labelOffer;
+
+        return $this;
+    }
+
+    /**
+     * Get labelOffer
+     *
+     * @return string
+     */
+    public function getLabelOffer()
+    {
+        return $this->labelOffer;
+    }
+
+    /**
+     * Set competition
+     *
+     * @param string $competition
+     *
+     * @return Offer
+     */
+    public function setCompetition($competition)
+    {
+        $this->competition = $competition;
+
+        return $this;
+    }
+
+    /**
+     * Get competition
+     *
+     * @return string
+     */
+    public function getCompetition()
+    {
+        return $this->competition;
+    }
+
+    /**
+     * Set competitionId
+     *
+     * @param string $competitionId
+     *
+     * @return Offer
+     */
+    public function setCompetitionId($competitionId)
+    {
+        $this->competitionId = $competitionId;
+
+        return $this;
+    }
+
+    /**
+     * Get competitionId
+     *
+     * @return string
+     */
+    public function getCompetitionId()
+    {
+        return $this->competitionId;
+    }
+
+    /**
+     * Set id
+     *
+     * @param int $id
+     *
+     * @return Offer
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+
+        return $this;
+    }
+}
+

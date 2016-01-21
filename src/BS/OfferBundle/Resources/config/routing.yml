@@ -1,0 +1,4 @@
+bd_offer_get:
+    path:    /Offer/Get
+    defaults:
+        _controller:    BSOfferBundle:Offer:get
