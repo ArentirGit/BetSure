@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Offer
  *
  * @ORM\Table(name="offer")
- * @ORM\Entity(repositoryClass="BS\OfferBundle\Repository\OfferRepository")
+ * @ORM\Entity(repositoryClass="BS\OfferBundle\Entity\OfferRepository")
  */
 class Offer
 {
@@ -326,4 +326,6 @@ class Offer
     {
         return $this->eventId;
     }
+
+
 }

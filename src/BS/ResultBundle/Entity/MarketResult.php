@@ -13,6 +13,15 @@ use Doctrine\ORM\Mapping as ORM;
 class MarketResult
 {
     /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
      * @ORM\ManyToOne(targetEntity="BS\ResultBundle\Entity\Result", cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
      */
@@ -21,10 +30,9 @@ class MarketResult
     /**
      * @var int
      *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
+     * @ORM\Column(name="indexMarketResult", type="integer")
      */
-    private $id;
+    private $indexMarketResult;
 
     /**
      * @var string
@@ -135,5 +143,29 @@ class MarketResult
     public function getResult()
     {
         return $this->result;
+    }
+
+    /**
+     * Set indexMarketResult
+     *
+     * @param integer $indexMarketResult
+     *
+     * @return MarkatResult
+     */
+    public function setIndexMarketResult($indexMarketResult)
+    {
+        $this->indexMarketResult = $indexMarketResult;
+
+        return $this;
+    }
+
+    /**
+     * Get indexMarketResult
+     *
+     * @return integer
+     */
+    public function getIndexMarketResult()
+    {
+        return $this->indexMerketResult;
     }
 }

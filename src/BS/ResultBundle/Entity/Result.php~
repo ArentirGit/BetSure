@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Result
  *
  * @ORM\Table(name="result")
- * @ORM\Entity(repositoryClass="BS\ResultBundle\Entity\ResultRepository")
+ * @ORM\Entity(repositoryClass="BS\ResultBundle\Repository\ResultRepository")
  */
 class Result
 {
@@ -17,30 +17,36 @@ class Result
      *
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="eventId", type="string", length=255)
-     */
-    private $eventId;
     
     /**
      * @var string
      *
-     * @ORM\Column(name="marketId", type="string", length=255, nullable=true)
+     * @ORM\Column(name="marketId", type="string", length=255)
      */
     private $marketId;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="sportId", type="string", length=255, nullable=true)
+     * @ORM\Column(name="sportId", type="string", length=255)
      */
     private $sportId;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="indexOffer", type="string", length=255)
+     */
+    private $indexOffer;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="marketType", type="string", length=255)
+     */
+    private $marketType;
 
     /**
      * @var string
@@ -69,6 +75,7 @@ class Result
      * @ORM\Column(name="competitionID", type="string", length=255)
      */
     private $competitionID;
+
 
     /**
      * Get id
@@ -189,76 +196,5 @@ class Result
 
         return $this;
     }
-
-    /**
-     * Set marketId
-     *
-     * @param string $marketId
-     *
-     * @return Result
-     */
-    public function setMarketId($marketId)
-    {
-        $this->marketId = $marketId;
-
-        return $this;
-    }
-
-    /**
-     * Get marketId
-     *
-     * @return string
-     */
-    public function getMarketId()
-    {
-        return $this->marketId;
-    }
-
-    /**
-     * Set sportId
-     *
-     * @param string $sportId
-     *
-     * @return Result
-     */
-    public function setSportId($sportId)
-    {
-        $this->sportId = $sportId;
-
-        return $this;
-    }
-
-    /**
-     * Get sportId
-     *
-     * @return string
-     */
-    public function getSportId()
-    {
-        return $this->sportId;
-    }
-
-    /**
-     * Set eventId
-     *
-     * @param string $eventId
-     *
-     * @return Result
-     */
-    public function setEventId($eventId)
-    {
-        $this->eventId = $eventId;
-
-        return $this;
-    }
-
-    /**
-     * Get eventId
-     *
-     * @return string
-     */
-    public function getEventId()
-    {
-        return $this->eventId;
-    }
 }
+

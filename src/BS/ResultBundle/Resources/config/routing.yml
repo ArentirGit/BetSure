@@ -2,3 +2,8 @@ bs_result_get:
     path:    /Result/Get
     defaults:
         _controller:    BSResultBundle:Result:get
+
+bs_result_offer_to_result:
+    path:    /Offer/To/Result
+    defaults:
+        _controller:    BSResultBundle:Result:offerToResult
