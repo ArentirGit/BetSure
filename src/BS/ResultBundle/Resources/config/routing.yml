@@ -7,3 +7,8 @@ bs_result_offer_to_result:
     path:    /Offer/To/Result
     defaults:
         _controller:    BSResultBundle:Result:offerToResult
+
+bs_result_delete_duplicate_result:
+    path:    /Result/Delete/Duplicate
+    defaults:
+        _controller:    BSResultBundle:Result:deleteDuplicateEntry

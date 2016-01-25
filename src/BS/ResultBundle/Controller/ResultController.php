@@ -9,6 +9,20 @@ use BS\ResultBundle\Entity\MarketResult;
 
 class ResultController extends Controller
 {
+    public function deleteDuplicateEntryAction()
+    {
+        $resultRepository = $this->getDoctrine()->getManager()->getRepository("BSResultBundle:Result");
+        $duplicateResultList = $resultRepository->getDuplicateEntry();
+        $em = $this->getDoctrine()->getManager();
+        foreach($duplicateResultList as $duplicateResult)
+        {
+            $em->remove($duplicateResult);
+            $em->flush();
+        }
+
+        return new Response("Hello World");
+    }
+
     public function getAction()
     {
         $apiContent = file_get_contents("https://www.parionssport.fr/api/1n2/resultats?date=".strftime("%Y%m%d", mktime(0, 0, 0, date('m'), date('d')-1, date('y'))));
