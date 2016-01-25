@@ -13,11 +13,21 @@ class ResultController extends Controller
     {
         $resultRepository = $this->getDoctrine()->getManager()->getRepository("BSResultBundle:Result");
         $duplicateResultList = $resultRepository->getDuplicateEntry();
+
+        $marketRepository = $this->getDoctrine()->getManager()->getRepository("BSResultBundle:MarketResult");
+
         $em = $this->getDoctrine()->getManager();
         foreach($duplicateResultList as $duplicateResult)
         {
-            $em->remove($duplicateResult);
-            $em->flush();
+            echo "prout";
+            $marketResultList = $marketRepository->getMarketResultToDelete($duplicateResult->getId());
+            foreach($marketResultList as $marketResult)
+            {
+                echo "rpout";
+                var_dump($marketResult);
+            }
+            //$em->remove($duplicateResult);
+            //$em->flush();
         }
 
         return new Response("Hello World");
@@ -57,6 +67,8 @@ class ResultController extends Controller
         $repositoryOffer = $this->getDoctrine()->getManager()->getRepository('BSOfferBundle:Offer');
         $offerParameterList = $repositoryOffer->getEventId();
 
+        $repositoryOutcome = $this->getDoctrine()->getManager()->getRepository('BSOfferBundle:Outcome');
+
         $repositoryResult = $this->getDoctrine()->getManager()->getRepository('BSResultBundle:Result');
         $em = $this->getDoctrine()->getManager();
         $tmp = $offerParameterList[0]['eventId'];
@@ -73,6 +85,12 @@ class ResultController extends Controller
                 $Offer = $repositoryOffer->getOfferByEventId(/*$offerParameter['eventId']*/$tmp);
                 foreach( $Offer as $of)
                 {
+                    $outcomeList = $repositoryOutcome->getOutcomeToDelete($of->getId());
+                    foreach($outcomeList as $outcome)
+                    {
+                        //$em->remove($outcome);
+                        //$em->flush();
+                    }
                     $em->remove($of);
                     $em->flush();
                 }

@@ -19,4 +19,11 @@ class MarketResultRepository extends EntityRepository
 
         return $query->getResult();
     }
+
+    public function getMarketResultToDelete($resultId)
+    {
+        $query = $this->_em->createQuery('SELECT m FROM BSResultBundle:MarketResult m WHERE m.result = :resultId');
+        $query->setParameter('resultId',$resultId);
+        return $query->getResult();
+    }
 }

@@ -23,7 +23,7 @@ class OutcomeRepository extends EntityRepository
 
     public function getOutcomeToDelete($offerId)
     {
-        $query = $this->_em->createQuery('SELECT o FROM BSOfferBundle:Outcome o WHERE o.offerId = :offerId');
+        $query = $this->_em->createQuery('SELECT o FROM BSOfferBundle:Outcome o WHERE o.offer = :offerId');
         $query->setParameter('offerId',$offerId);
         return $query->getResult();
     }

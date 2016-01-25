@@ -8,13 +8,13 @@ use Doctrine\ORM\Mapping as ORM;
  * Outcome
  *
  * @ORM\Table(name="outcome")
- * @ORM\Entity(repositoryClass="BS\OfferBundle\Repository\OutcomeRepository")
+ * @ORM\Entity(repositoryClass="BS\OfferBundle\Entity\OutcomeRepository")
  */
 class Outcome
 {
 
     /**
-     * @ORM\ManyToOne(targetEntity="BS\OfferBundle\Entity\Offer", cascade={"persist", "remove"})
+     * @ORM\ManyToOne(targetEntity="BS\OfferBundle\Entity\Offer", cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $offer;
