@@ -19,15 +19,14 @@ class ResultController extends Controller
         $em = $this->getDoctrine()->getManager();
         foreach($duplicateResultList as $duplicateResult)
         {
-            echo "prout";
             $marketResultList = $marketRepository->getMarketResultToDelete($duplicateResult->getId());
             foreach($marketResultList as $marketResult)
             {
-                echo "rpout";
-                var_dump($marketResult);
+                $em->remove($marketResult);
+                $em->flush();
             }
-            //$em->remove($duplicateResult);
-            //$em->flush();
+            $em->remove($duplicateResult);
+            $em->flush();
         }
 
         return new Response("Hello World");

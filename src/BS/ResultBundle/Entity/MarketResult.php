@@ -22,7 +22,7 @@ class MarketResult
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="BS\ResultBundle\Entity\Result", cascade={"persist", "remove"})
+     * @ORM\ManyToOne(targetEntity="BS\ResultBundle\Entity\Result", cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $result;
