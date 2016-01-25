@@ -45,7 +45,8 @@ class ResultController extends Controller
 
         $repositoryResult = $this->getDoctrine()->getManager()->getRepository('BSResultBundle:Result');
         $em = $this->getDoctrine()->getManager();
-
+        $tmp = $offerParameterList[0]['eventId'];
+        $offerParameterList[0]['eventId'] = 283757;
         foreach($offerParameterList as $offerParameter)
         {
             $Result = $repositoryResult->getResultByEventId($offerParameter['eventId']);
@@ -55,6 +56,13 @@ class ResultController extends Controller
                 $Result[0]->setSportId($offerParameter['sportId']);
                 $em->persist($Result[0]);
                 $em->flush();
+                $Offer = $repositoryOffer->getOfferByEventId(/*$offerParameter['eventId']*/$tmp);
+                foreach( $Offer as $of)
+                {
+                    $em->remove($of);
+                    $em->flush();
+                }
+
             }
         }
         return new Response(' ');

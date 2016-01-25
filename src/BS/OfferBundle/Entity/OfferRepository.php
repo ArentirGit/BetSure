@@ -19,4 +19,12 @@ class OfferRepository extends EntityRepository
         $query = $this->_em->createQuery('SELECT o.eventId, o.marketId, o.sportId FROM BSOfferBundle:Offer o');
         return $query->getResult();
     }
+
+    public function getOfferByEventId($eventId)
+    {
+        $query = $this->_em->createQuery('SELECT o FROM BSOfferBundle:Offer o WHERE o.eventId = :eventId');
+        $query->setParameter('eventId',$eventId);
+
+        return $query->getResult();
+    }
 }

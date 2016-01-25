@@ -14,7 +14,7 @@ class Outcome
 {
 
     /**
-     * @ORM\ManyToOne(targetEntity="BS\OfferBundle\Entity\Offer", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="BS\OfferBundle\Entity\Offer", cascade={"persist", "remove"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $offer;
