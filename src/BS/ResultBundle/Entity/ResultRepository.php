@@ -20,4 +20,11 @@ class ResultRepository extends EntityRepository
 
         return $query->getResult();
     }
+
+    public function getDuplicateEntry()
+    {
+        $query = $this->_em->createQuery('SELECT r1 FROM BSResultBundle:Result r1, BSResultBundle:Result r2 WHERE r1.id > r2.id AND r1.eventId = r2.eventId');
+
+        return $query->getResult();
+    }
 }
