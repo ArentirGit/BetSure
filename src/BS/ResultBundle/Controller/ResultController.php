@@ -11,7 +11,7 @@ class ResultController extends Controller
 {
     public function getAction()
     {
-        $apiContent = file_get_contents("https://www.parionssport.fr/api/1n2/resultats?date=20160122");
+        $apiContent = file_get_contents("https://www.parionssport.fr/api/1n2/resultats?date=".strftime("%Y%m%d", mktime(0, 0, 0, date('m'), date('d')-1, date('y'))));
         $resultInformations = json_decode($apiContent);
         foreach($resultInformations as $result)
         {
