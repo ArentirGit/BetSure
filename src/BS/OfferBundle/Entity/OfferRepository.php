@@ -22,8 +22,15 @@ class OfferRepository extends EntityRepository
 
     public function getOfferByEventId($eventId)
     {
-        $query = $this->_em->createQuery('SELECT o FROM BSOfferBundle:Offer o WHERE o.eventId = :eventId');
+        $query = $this->_em->createQuery('SELECT o1 FROM BSOfferBundle:Offer o1, BSOfferBundle:Offer o2 WHERE o1.id > o2.id AND o1.indexOffer = o2.indexOffer AND o1.eventId = o2.eventId AND o1.eventId = :eventId');
         $query->setParameter('eventId',$eventId);
+
+        return $query->getResult();
+    }
+
+    public function getDuplicateEntry()
+    {
+        $query = $this->_em->createQuery('SELECT o1 FROM BSOfferBundle:Offer o1, BSOfferBundle:Offer o2 WHERE o1.id > o2.id AND o1.eventId = o2.eventId AND o1.indexOffer = o2.indexOffer');
 
         return $query->getResult();
     }

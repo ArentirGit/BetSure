@@ -11,6 +11,32 @@ use BS\OfferBundle\Entity\Outcome;
 
 class OfferController extends Controller
 {
+
+    public function deleteDuplicateEntryAction()
+    {
+        ini_set('max_execution_time', 600); //300 seconds = 5 minutes
+
+        $offerRepository = $this->getDoctrine()->getManager()->getRepository("BSOfferBundle:Offer");
+        $duplicateOfferList = $offerRepository->getDuplicateEntry();
+
+        $outcomeRepository = $this->getDoctrine()->getManager()->getRepository("BSOfferBundle:Outcome");
+
+        $em = $this->getDoctrine()->getManager();
+        foreach($duplicateOfferList as $duplicateOffer)
+        {
+            $outcomeList = $outcomeRepository->getOutcomeToDelete($duplicateOffer->getId());
+            foreach($outcomeList as $outcome)
+            {
+                $em->remove($outcome);
+                $em->flush();
+            }
+            $em->remove($duplicateOffer);
+            $em->flush();
+        }
+
+        return new Response("Hello World");
+    }
+
     public function getAction()
     {
         ini_set('max_execution_time', 600); //300 seconds = 5 minutes
