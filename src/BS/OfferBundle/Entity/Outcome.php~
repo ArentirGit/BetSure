@@ -31,6 +31,20 @@ class Outcome
     /**
      * @var string
      *
+     * @ORM\Column(name="eventId", type="string", length=255)
+     */
+    private $eventId;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="indexOffer", type="string", length=255)
+     */
+    private $indexOffer;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="labelOutcome", type="string", length=255)
      */
     private $labelOutcome;
@@ -100,5 +114,52 @@ class Outcome
     {
         return $this->cote;
     }
-}
 
+    /**
+     * Set offer
+     *
+     * @param \BS\OfferBundle\Entity\Offer $offer
+     *
+     * @return Outcome
+     */
+    public function setOffer(\BS\OfferBundle\Entity\Offer $offer)
+    {
+        $this->offer = $offer;
+
+        return $this;
+    }
+
+    /**
+     * Get offer
+     *
+     * @return \BS\OfferBundle\Entity\Offer
+     */
+    public function getOffer()
+    {
+        return $this->offer;
+    }
+
+    /**
+     * Set eventId
+     *
+     * @param string $eventId
+     *
+     * @return Outcome
+     */
+    public function setEventId($eventId)
+    {
+        $this->eventId = $eventId;
+
+        return $this;
+    }
+
+    /**
+     * Get eventId
+     *
+     * @return string
+     */
+    public function getEventId()
+    {
+        return $this->eventId;
+    }
+}

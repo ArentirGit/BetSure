@@ -12,7 +12,7 @@ use BS\OfferBundle\Entity\Outcome;
 class OfferController extends Controller
 {
 
-    public function deleteDuplicateEntryAction()
+    /*public function deleteDuplicateEntryAction()
     {
         ini_set('max_execution_time', 600); //300 seconds = 5 minutes
 
@@ -35,8 +35,12 @@ class OfferController extends Controller
         }
 
         return new Response("Hello World");
-    }
+    }*/
 
+    /*
+     * Génère les offres du jour
+     * Ne permet pas la présence de doublon
+     */
     public function getAction()
     {
         ini_set('max_execution_time', 600); //300 seconds = 5 minutes
@@ -66,6 +70,9 @@ class OfferController extends Controller
         array_push($offerInformationsArray, $offerHockeyInformations);
         array_push($offerInformationsArray, $offerUSFootballInformations);
 
+        $repositoryOffer = $this->getDoctrine()->getManager()->getRepository('BSOfferBundle:Offer');
+        $repositoryOutcome = $this->getDoctrine()->getManager()->getRepository('BSOfferBundle:Outcome');
+
         foreach($offerInformationsArray as $offerInformations)
         {
             if($offerInformations != null)
@@ -87,9 +94,16 @@ class OfferController extends Controller
                         $localOutcome->setOffer($localOffer);
                         $localOutcome->setLabelOutcome($outcomes->label);
                         $localOutcome->setCote($outcomes->cote);
-                        $em = $this->getDoctrine()->getManager();
-                        $em->persist($localOutcome);
-                        $em->flush();
+                        $localOutcome->setEventId($offer->eventId);
+                        $localOutcome->setIndexOffer($offer->index);
+                        $duplicateOutcome = $repositoryOutcome->verifyDuplicate($outcomes, $offer);
+                        if(empty($duplicateOutcome))
+                        {
+                            $em = $this->getDoctrine()->getManager();
+                            $em->persist($localOutcome);
+                            $em->flush();
+                            echo('a');
+                        }
                     }
                     foreach ($offer->formules as $formule) {
                         $localOfferFormule = new Offer();
@@ -107,17 +121,37 @@ class OfferController extends Controller
                             $localOutcome->setOffer($localOfferFormule);
                             $localOutcome->setLabelOutcome($outcomes->label);
                             $localOutcome->setCote($outcomes->cote);
-                            $em = $this->getDoctrine()->getManager();
-                            $em->persist($localOutcome);
-                            $em->flush();
+                            $localOutcome->setEventId($formule->eventId);
+                            $localOutcome->setIndexOffer($formule->index);
+
+                            $duplicateOutcome = $repositoryOutcome->verifyDuplicate($outcomes, $formule);
+                            if(empty($duplicateOutcome))
+                            {
+                                $em = $this->getDoctrine()->getManager();
+                                $em->persist($localOutcome);
+                                $em->flush();
+                                echo('b');
+
+                            }
                         }
-                        $em = $this->getDoctrine()->getManager();
-                        $em->persist($localOfferFormule);
-                        $em->flush();
+
+                        $duplicateFormule = $repositoryOffer->verifyDuplicate($formule);
+                        if(empty($duplicateFormule)) {
+                            $em = $this->getDoctrine()->getManager();
+                            $em->persist($localOfferFormule);
+                            $em->flush();
+                            echo('c');
+
+                        }
                     }
-                    $em = $this->getDoctrine()->getManager();
-                    $em->persist($localOffer);
-                    $em->flush();
+                    $duplicateOffer = $repositoryOffer->verifyDuplicate($offer);
+                    if(empty($duplicateOffer)) {
+                        $em = $this->getDoctrine()->getManager();
+                        $em->persist($localOffer);
+                        $em->flush();
+                        echo('d');
+
+                    }
                 }
             }
         }

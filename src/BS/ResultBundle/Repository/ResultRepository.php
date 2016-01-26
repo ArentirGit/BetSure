@@ -10,4 +10,19 @@ namespace BS\ResultBundle\Repository;
  */
 class ResultRepository extends \Doctrine\ORM\EntityRepository
 {
+    /*public function getResultByEventId($eventId)
+    {
+        $query = $this->_em->createQuery('SELECT r FROM BSResultBundle:Result r WHERE r.eventId = :eventId');
+        $query->setParameter('eventId',$eventId);
+
+        return $query->getResult();
+    }*/
+
+    public function verifyDuplicate($result)
+    {
+        $query = $this->_em->createQuery('SELECT r FROM BSResultBundle:Result r WHERE r.eventId = :eventId');
+        $query->setParameter('eventId', $result->eventId);
+
+        return $query->getResult();
+    }
 }

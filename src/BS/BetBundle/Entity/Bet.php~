@@ -1,0 +1,47 @@
+<?php
+
+namespace BS\BetBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Bet
+ *
+ * @ORM\Table(name="bet")
+ * @ORM\Entity(repositoryClass="BS\BetBundle\Entity\BetRepository")
+ */
+class Bet
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="BS\OfferBundle\Entity\Outcome")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $outcome;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="BS\ResultBundle\Entity\MarketResult")
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $marketResult;
+
+
+    /**
+     * Get id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+}
+

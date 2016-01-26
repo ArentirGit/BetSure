@@ -1,0 +1,4 @@
+services:
+#    bs_bet.example:
+#        class: BS\BetBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]

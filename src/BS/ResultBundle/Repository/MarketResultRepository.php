@@ -10,4 +10,11 @@ namespace BS\ResultBundle\Repository;
  */
 class MarketResultRepository extends \Doctrine\ORM\EntityRepository
 {
+
+    public function verifyDuplicate($marketResult, $result)
+    {
+        $query = $this->_em->createQuery('SELECT m FROM BSResultBundle:MarketResult m WHERE m.indexMarketResult = :indexMarketResult AND m.eventId = :eventId');
+        $query->setParameters(array('eventId' => $result->eventId, 'indexMarketResult' => $marketResult->index));
+        return $query->getResult();
+    }
 }

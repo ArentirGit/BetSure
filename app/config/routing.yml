@@ -1,3 +1,7 @@
+bs_bet:
+    resource: "@BSBetBundle/Resources/config/routing.yml"
+    prefix:   /
+
 bs_offer:
     resource: "@BSOfferBundle/Resources/config/routing.yml"
     prefix:   /

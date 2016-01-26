@@ -1,0 +1,4 @@
+bs_home_bet:
+    path:    /Bet/Home
+    defaults:
+        _controller:    BSBetBundle:Bet:home

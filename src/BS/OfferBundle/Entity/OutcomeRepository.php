@@ -27,4 +27,11 @@ class OutcomeRepository extends EntityRepository
         $query->setParameter('offerId',$offerId);
         return $query->getResult();
     }
+
+    public function getOutcomeByLabel($labelOutcome)
+    {
+        $query = $this->_em->createQuery('SELECT o FROM BSOfferBundle:Outcome o WHERE o.labelOutcome = :labelOutcome');
+        $query->setParameter('labelOutcome', $labelOutcome);
+        return $query->getResult();
+    }
 }

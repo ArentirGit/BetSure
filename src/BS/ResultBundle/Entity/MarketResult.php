@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * MarketResult
  *
  * @ORM\Table(name="market_result")
- * @ORM\Entity(repositoryClass="BS\ResultBundle\Entity\MarketResultRepository")
+ * @ORM\Entity(repositoryClass="BS\ResultBundle\Repository\MarketResultRepository")
  */
 class MarketResult
 {
@@ -30,9 +30,16 @@ class MarketResult
     /**
      * @var int
      *
-     * @ORM\Column(name="indexMarketResult", type="integer")
+     * @ORM\Column(name="indexMarketResult", type="string", length=255)
      */
     private $indexMarketResult;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="eventId", type="string", length=255)
+     */
+    private $eventId;
 
     /**
      * @var string
@@ -166,6 +173,30 @@ class MarketResult
      */
     public function getIndexMarketResult()
     {
-        return $this->indexMerketResult;
+        return $this->indexMarketResult;
+    }
+
+    /**
+     * Set eventId
+     *
+     * @param string $eventId
+     *
+     * @return MarketResult
+     */
+    public function setEventId($eventId)
+    {
+        $this->eventId = $eventId;
+
+        return $this;
+    }
+
+    /**
+     * Get eventId
+     *
+     * @return string
+     */
+    public function getEventId()
+    {
+        return $this->eventId;
     }
 }

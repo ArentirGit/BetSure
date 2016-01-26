@@ -30,9 +30,16 @@ class MarketResult
     /**
      * @var int
      *
-     * @ORM\Column(name="indexMarketResult", type="integer")
+     * @ORM\Column(name="indexMarketResult", type="string", length=255)
      */
-    private $indexMerketResult;
+    private $indexMarketResult;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="eventId", type="string", length=255)
+     */
+    private $eventId;
 
     /**
      * @var string
@@ -143,5 +150,29 @@ class MarketResult
     public function getResult()
     {
         return $this->result;
+    }
+
+    /**
+     * Set indexMarketResult
+     *
+     * @param integer $indexMarketResult
+     *
+     * @return MarkatResult
+     */
+    public function setIndexMarketResult($indexMarketResult)
+    {
+        $this->indexMarketResult = $indexMarketResult;
+
+        return $this;
+    }
+
+    /**
+     * Get indexMarketResult
+     *
+     * @return integer
+     */
+    public function getIndexMarketResult()
+    {
+        return $this->indexMarketResult;
     }
 }
