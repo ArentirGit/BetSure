@@ -10,4 +10,11 @@ namespace BS\BetBundle\Repository;
  */
 class BetRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function verifyDuplicate($outcome) //indexOffer et eventId
+    {
+        $query = $this->_em->createQuery('SELECT b FROM BSBetBundle:Bet b WHERE b.outcome = :outcome');
+        $query->setParameter('outcome', $outcome);
+
+        return $query->getResult();
+    }
 }

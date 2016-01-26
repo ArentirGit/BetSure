@@ -14,13 +14,18 @@ class BetController extends Controller
     {
         $outcomeRepository = $this->getDoctrine()->getManager()->getRepository('BSOfferBundle:Outcome');
         $homeOutcomeList = $outcomeRepository->getOutcomeByLabel('1');
-        $em = $this->getDoctrine()->getManager();
+        $repositoryBet = $this->getDoctrine()->getManager()->getRepository('BSBetBundle:Bet');
         foreach($homeOutcomeList as $homeOutcome)
         {
             $bet = new Bet();
             $bet->setOutcome($homeOutcome);
-            $em->persist($bet);
-            $em->flush();
+            $duplicateBet = $repositoryBet->verifyDuplicate($homeOutcome);
+            if(empty($duplicateBet))
+            {
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($bet);
+                $em->flush();
+            }
         }
 
         return new Response("Hello World");

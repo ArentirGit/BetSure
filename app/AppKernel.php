@@ -18,6 +18,7 @@ class AppKernel extends Kernel
             new BS\ResultBundle\BSResultBundle(),
             new BS\OfferBundle\BSOfferBundle(),
             new BS\BetBundle\BSBetBundle(),
+            new BS\MainBundle\BSMainBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

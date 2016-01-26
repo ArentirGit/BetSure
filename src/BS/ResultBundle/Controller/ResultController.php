@@ -10,28 +10,6 @@ use BS\ResultBundle\Repository;
 
 class ResultController extends Controller
 {
-    /*public function deleteDuplicateEntryAction()
-    {
-        $resultRepository = $this->getDoctrine()->getManager()->getRepository("BSResultBundle:Result");
-        $duplicateResultList = $resultRepository->getDuplicateEntry();
-
-        $marketRepository = $this->getDoctrine()->getManager()->getRepository("BSResultBundle:MarketResult");
-
-        $em = $this->getDoctrine()->getManager();
-        foreach($duplicateResultList as $duplicateResult)
-        {
-            $marketResultList = $marketRepository->getMarketResultToDelete($duplicateResult->getId());
-            foreach($marketResultList as $marketResult)
-            {
-                $em->remove($marketResult);
-                $em->flush();
-            }
-            $em->remove($duplicateResult);
-            $em->flush();
-        }
-
-        return new Response("Hello World");
-    }*/
 
     /*
      * Récupération des résultats des paris s'étant fini la veille du jour courant
@@ -81,16 +59,17 @@ class ResultController extends Controller
     }
 
 
+    /*
+     * Permet de mettre a jour la table result lorsque l'offre est expiré et passe alors à la fois dans la table offre et result
+     * Cet evenement va permettre la mise à jour des bets, et entrainer les supression en cascade jusqu'a la supression de l'offre
+     */
     public function offerToResultAction()
     {
         $repositoryOffer = $this->getDoctrine()->getManager()->getRepository('BSOfferBundle:Offer');
         $offerParameterList = $repositoryOffer->getEventId();
 
-        //$repositoryOutcome = $this->getDoctrine()->getManager()->getRepository('BSOfferBundle:Outcome');
-
         $repositoryResult = $this->getDoctrine()->getManager()->getRepository('BSResultBundle:Result');
         $em = $this->getDoctrine()->getManager();
-       // $tmp = $offerParameterList[0]['eventId'];
         foreach($offerParameterList as $offerParameter)
         {
             $Result = $repositoryResult->getResultByEventId($offerParameter['eventId']);
@@ -100,19 +79,6 @@ class ResultController extends Controller
                 $Result[0]->setSportId($offerParameter['sportId']);
                 $em->persist($Result[0]);
                 $em->flush();
-                //$Offer = $repositoryOffer->getOfferByEventId($offerParameter['eventId']);
-                /*foreach( $Offer as $of)
-                {
-                    $outcomeList = $repositoryOutcome->getOutcomeToDelete($of->getId());
-                    foreach($outcomeList as $outcome)
-                    {
-                        $em->remove($outcome);
-                        $em->flush();
-                    }
-                    $em->remove($of);
-                    $em->flush();
-                }*/
-
             }
         }
         return new Response('Hello World');

@@ -27,14 +27,8 @@ class OfferRepository extends EntityRepository
 
         return $query->getResult();
     }
-    /*
-    public function getDuplicateEntry()
-    {
-        $query = $this->_em->createQuery('SELECT o1 FROM BSOfferBundle:Offer o1, BSOfferBundle:Offer o2 WHERE o1.id > o2.id AND o1.eventId = o2.eventId AND o1.indexOffer = o2.indexOffer');
 
-        return $query->getResult();
-    }*/
-    public function verifyDuplicate($offer) //indexOffer et eventId
+    public function verifyDuplicate($offer)
     {
         $query = $this->_em->createQuery('SELECT o FROM BSOfferBundle:Offer o WHERE o.eventId = :eventId AND o.indexOffer = :indexOffer');
         $query->setParameters(array('eventId' => $offer->eventId, 'indexOffer' => $offer->index));

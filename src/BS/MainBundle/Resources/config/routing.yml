@@ -1,0 +1,4 @@
+bs_main_main:
+    path:    /
+    defaults:
+        _controller:    BSMainBundle:Main:main

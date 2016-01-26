@@ -1,0 +1,4 @@
+services:
+#    bs_main.example:
+#        class: BS\MainBundle\Example
+#        arguments: ["@service_id", "plain_value", %parameter%]
