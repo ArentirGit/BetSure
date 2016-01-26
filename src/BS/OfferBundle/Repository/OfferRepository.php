@@ -14,7 +14,7 @@ use Doctrine\ORM\QueryBuilder;
 
 class OfferRepository extends EntityRepository
 {
-   /* public function getEventId()
+    public function getEventId()
     {
         $query = $this->_em->createQuery('SELECT o.eventId, o.marketId, o.sportId FROM BSOfferBundle:Offer o');
         return $query->getResult();
@@ -27,7 +27,7 @@ class OfferRepository extends EntityRepository
 
         return $query->getResult();
     }
-
+    /*
     public function getDuplicateEntry()
     {
         $query = $this->_em->createQuery('SELECT o1 FROM BSOfferBundle:Offer o1, BSOfferBundle:Offer o2 WHERE o1.id > o2.id AND o1.eventId = o2.eventId AND o1.indexOffer = o2.indexOffer');

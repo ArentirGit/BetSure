@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use BS\ResultBundle\Entity\Result;
 use BS\ResultBundle\Entity\MarketResult;
+use BS\ResultBundle\Repository;
 
 class ResultController extends Controller
 {
@@ -79,18 +80,17 @@ class ResultController extends Controller
         return new Response("Hello World");
     }
 
-    /*
+
     public function offerToResultAction()
     {
         $repositoryOffer = $this->getDoctrine()->getManager()->getRepository('BSOfferBundle:Offer');
         $offerParameterList = $repositoryOffer->getEventId();
 
-        $repositoryOutcome = $this->getDoctrine()->getManager()->getRepository('BSOfferBundle:Outcome');
+        //$repositoryOutcome = $this->getDoctrine()->getManager()->getRepository('BSOfferBundle:Outcome');
 
         $repositoryResult = $this->getDoctrine()->getManager()->getRepository('BSResultBundle:Result');
         $em = $this->getDoctrine()->getManager();
        // $tmp = $offerParameterList[0]['eventId'];
-       // $offerParameterList[0]['eventId'] = 283757;
         foreach($offerParameterList as $offerParameter)
         {
             $Result = $repositoryResult->getResultByEventId($offerParameter['eventId']);
@@ -99,8 +99,8 @@ class ResultController extends Controller
                 $Result[0]->setMarketId($offerParameter['marketId']);
                 $Result[0]->setSportId($offerParameter['sportId']);
                 $em->persist($Result[0]);
-                $em->flush();*/
-                //$Offer = $repositoryOffer->getOfferByEventId($offerParameter['eventId']/*$tmp*/);
+                $em->flush();
+                //$Offer = $repositoryOffer->getOfferByEventId($offerParameter['eventId']);
                 /*foreach( $Offer as $of)
                 {
                     $outcomeList = $repositoryOutcome->getOutcomeToDelete($of->getId());
@@ -112,9 +112,9 @@ class ResultController extends Controller
                     $em->remove($of);
                     $em->flush();
                 }*/
-/*
+
             }
         }
         return new Response('Hello World');
-    }*/
+    }
 }
