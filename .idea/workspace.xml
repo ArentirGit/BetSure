@@ -2,22 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cfc3217b-732f-428b-9e63-ba397cec448d" name="Default" comment="">
-      <change type="DELETED" beforePath="C:\wamp\www\BetSure\src\BS\BetBundle\Entity\BetRepository.php" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\BetSure\src\BS\OfferBundle\Entity\OfferRepository.php" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\BetSure\src\BS\OfferBundle\Entity\OutcomeRepository.php" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\BetSure\src\BS\ResultBundle\Entity\MarketResultRepository.php" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\BetSure\src\BS\ResultBundle\Entity\ResultRepository.php" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/AppKernel.php" afterPath="$PROJECT_DIR$/app/AppKernel.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/BS/BetBundle/Entity/Bet.php" afterPath="$PROJECT_DIR$/src/BS/BetBundle/Entity/Bet.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/BS/BetBundle/Controller/BetController.php" afterPath="$PROJECT_DIR$/src/BS/BetBundle/Controller/BetController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/BS/BetBundle/Repository/BetRepository.php" afterPath="$PROJECT_DIR$/src/BS/BetBundle/Repository/BetRepository.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/BetSure.iml" afterPath="$PROJECT_DIR$/.idea/BetSure.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/BS/OfferBundle/Controller/OfferController.php" afterPath="$PROJECT_DIR$/src/BS/OfferBundle/Controller/OfferController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/BS/OfferBundle/Repository/OfferRepository.php" afterPath="$PROJECT_DIR$/src/BS/OfferBundle/Repository/OfferRepository.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/BS/OfferBundle/Repository/OutcomeRepository.php" afterPath="$PROJECT_DIR$/src/BS/OfferBundle/Repository/OutcomeRepository.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/BS/ResultBundle/Controller/ResultController.php" afterPath="$PROJECT_DIR$/src/BS/ResultBundle/Controller/ResultController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/config/routing.yml" afterPath="$PROJECT_DIR$/app/config/routing.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/BS/MainBundle/Controller/MainController.php" afterPath="$PROJECT_DIR$/src/BS/MainBundle/Controller/MainController.php" />
     </list>
     <ignored path="BetSure.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -42,7 +27,7 @@
       <file leaf-file-name="ResultController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/BS/ResultBundle/Controller/ResultController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-7.9615383">
+            <state vertical-scroll-proportion="0.0">
               <caret line="63" column="130" selection-start-line="63" selection-start-column="130" selection-end-line="63" selection-end-column="130" />
               <folding>
                 <element signature="e#46#103#0#PHP" expanded="true" />
@@ -54,7 +39,7 @@
       <file leaf-file-name="OfferRepository.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/BS/OfferBundle/Repository/OfferRepository.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-14.615385">
+            <state vertical-scroll-proportion="0.0">
               <caret line="30" column="43" selection-start-line="30" selection-start-column="43" selection-end-line="30" selection-end-column="43" />
               <folding>
                 <marker date="1453818237151" expanded="true" signature="325:391" placeholder="SELECT o.eve..BSOfferBundle..." />
@@ -68,8 +53,8 @@
       <file leaf-file-name="MainController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/BS/MainBundle/Controller/MainController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.43589744">
-              <caret line="15" column="62" selection-start-line="15" selection-start-column="62" selection-end-line="15" selection-end-column="62" />
+            <state vertical-scroll-proportion="0.34871796">
+              <caret line="12" column="38" selection-start-line="12" selection-start-column="38" selection-end-line="12" selection-end-column="38" />
               <folding>
                 <element signature="e#44#101#0#PHP" expanded="true" />
               </folding>
@@ -90,8 +75,8 @@
       <file leaf-file-name="BetController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/BS/BetBundle/Controller/BetController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-16.346153">
-              <caret line="25" column="33" selection-start-line="25" selection-start-column="33" selection-end-line="25" selection-end-column="33" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="45" column="33" selection-start-line="45" selection-start-column="33" selection-end-line="45" selection-end-column="33" />
               <folding>
                 <element signature="e#43#100#0#PHP" expanded="true" />
               </folding>
@@ -102,7 +87,7 @@
       <file leaf-file-name="OutcomeRepository.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/BS/OfferBundle/Repository/OutcomeRepository.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-14.384615">
+            <state vertical-scroll-proportion="0.0">
               <caret line="28" column="7" selection-start-line="28" selection-start-column="7" selection-end-line="28" selection-end-column="7" />
               <folding>
                 <marker date="1453818787587" expanded="true" signature="930:1004" placeholder="SELECT o FRO..BSOfferBundle..." />
@@ -115,7 +100,7 @@
       <file leaf-file-name="BetRepository.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/BS/BetBundle/Repository/BetRepository.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-9.807693">
+            <state vertical-scroll-proportion="0.0">
               <caret line="15" column="48" selection-start-line="15" selection-start-column="48" selection-end-line="15" selection-end-column="48" />
               <folding>
                 <marker date="1453818468260" expanded="true" signature="348:406" placeholder="SELECT b FRO..BSBetBundle..." />
@@ -127,7 +112,7 @@
       <file leaf-file-name="Bet.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/BS/BetBundle/Entity/Bet.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-6.5384617">
+            <state vertical-scroll-proportion="0.0">
               <caret line="10" column="55" selection-start-line="10" selection-start-column="55" selection-end-line="10" selection-end-column="55" />
               <folding />
             </state>
@@ -137,7 +122,7 @@
       <file leaf-file-name="OfferController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/BS/OfferBundle/Controller/OfferController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-15.461538">
+            <state vertical-scroll-proportion="0.0">
               <caret line="73" column="35" selection-start-line="73" selection-start-column="0" selection-end-line="74" selection-end-column="0" />
               <folding />
             </state>
@@ -208,7 +193,7 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -513,7 +498,7 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -539,6 +524,12 @@
       <method />
     </configuration>
     <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <node-options />
+      <gulpfile />
+      <tasks />
+      <arguments />
+      <pass-parent-envs>true</pass-parent-envs>
+      <envs />
       <method />
     </configuration>
   </component>
@@ -557,7 +548,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24963397" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -598,6 +589,93 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/BS/ResultBundle/Controller/ResultController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="63" column="130" selection-start-line="63" selection-start-column="130" selection-end-line="63" selection-end-column="130" />
+          <folding>
+            <element signature="e#46#103#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/BS/OfferBundle/Repository/OfferRepository.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="30" column="43" selection-start-line="30" selection-start-column="43" selection-end-line="30" selection-end-column="43" />
+          <folding>
+            <marker date="1453818237151" expanded="true" signature="325:391" placeholder="SELECT o.eve..BSOfferBundle..." />
+            <marker date="1453818237151" expanded="true" signature="534:703" placeholder="SELECT o1 FR..BSOfferBundle..." />
+            <marker date="1453818237151" expanded="true" signature="893:986" placeholder="SELECT o FRO..BSOfferBundle..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/BS/MainBundle/Controller/MainController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#44#101#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/BS/BetBundle/Resources/config/routing.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/BS/BetBundle/Controller/BetController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="25" column="33" selection-start-line="25" selection-start-column="33" selection-end-line="25" selection-end-column="33" />
+          <folding>
+            <element signature="e#43#100#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/BS/OfferBundle/Repository/OutcomeRepository.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="28" column="7" selection-start-line="28" selection-start-column="7" selection-end-line="28" selection-end-column="7" />
+          <folding>
+            <marker date="1453818787587" expanded="true" signature="930:1004" placeholder="SELECT o FRO..BSOfferBundle..." />
+            <marker date="1453818787587" expanded="true" signature="1214:1344" placeholder="SELECT o FRO..BSOfferBundle..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/BS/BetBundle/Repository/BetRepository.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="15" column="48" selection-start-line="15" selection-start-column="48" selection-end-line="15" selection-end-column="48" />
+          <folding>
+            <marker date="1453818468260" expanded="true" signature="348:406" placeholder="SELECT b FRO..BSBetBundle..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/BS/BetBundle/Entity/Bet.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="10" column="55" selection-start-line="10" selection-start-column="55" selection-end-line="10" selection-end-column="55" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/BS/OfferBundle/Controller/OfferController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="73" column="35" selection-start-line="73" selection-start-column="0" selection-end-line="74" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/BS/OfferBundle/Entity/Outcome.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.6649573">
@@ -616,7 +694,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.22258593">
           <caret line="8" column="64" selection-start-line="8" selection-start-column="64" selection-end-line="8" selection-end-column="64" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -624,7 +701,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.30605564">
           <caret line="11" column="21" selection-start-line="11" selection-start-column="21" selection-end-line="11" selection-end-column="21" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -632,13 +708,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.08346972">
           <caret line="3" column="46" selection-start-line="3" selection-start-column="46" selection-end-line="3" selection-end-column="46" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/BS/BetBundle/Repository/BetRepository.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-9.807693">
+        <state vertical-scroll-proportion="0.0">
           <caret line="15" column="48" selection-start-line="15" selection-start-column="48" selection-end-line="15" selection-end-column="48" />
           <folding>
             <marker date="1453818468260" expanded="true" signature="348:406" placeholder="SELECT b FRO..BSBetBundle..." />
@@ -648,7 +723,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/BS/BetBundle/Entity/Bet.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.5384617">
+        <state vertical-scroll-proportion="0.0">
           <caret line="10" column="55" selection-start-line="10" selection-start-column="55" selection-end-line="10" selection-end-column="55" />
           <folding />
         </state>
@@ -656,7 +731,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/BS/OfferBundle/Repository/OfferRepository.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-14.615385">
+        <state vertical-scroll-proportion="0.0">
           <caret line="30" column="43" selection-start-line="30" selection-start-column="43" selection-end-line="30" selection-end-column="43" />
           <folding>
             <marker date="1453818237151" expanded="true" signature="325:391" placeholder="SELECT o.eve..BSOfferBundle..." />
@@ -668,7 +743,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/BS/OfferBundle/Controller/OfferController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-15.461538">
+        <state vertical-scroll-proportion="0.0">
           <caret line="73" column="35" selection-start-line="73" selection-start-column="0" selection-end-line="74" selection-end-column="0" />
           <folding />
         </state>
@@ -684,8 +759,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/BS/BetBundle/Controller/BetController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-16.346153">
-          <caret line="25" column="33" selection-start-line="25" selection-start-column="33" selection-end-line="25" selection-end-column="33" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="45" column="33" selection-start-line="45" selection-start-column="33" selection-end-line="45" selection-end-column="33" />
           <folding>
             <element signature="e#43#100#0#PHP" expanded="true" />
           </folding>
@@ -694,7 +769,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/BS/OfferBundle/Repository/OutcomeRepository.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-14.384615">
+        <state vertical-scroll-proportion="0.0">
           <caret line="28" column="7" selection-start-line="28" selection-start-column="7" selection-end-line="28" selection-end-column="7" />
           <folding>
             <marker date="1453818787587" expanded="true" signature="930:1004" placeholder="SELECT o FRO..BSOfferBundle..." />
@@ -705,7 +780,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/BS/ResultBundle/Controller/ResultController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.9615383">
+        <state vertical-scroll-proportion="0.0">
           <caret line="63" column="130" selection-start-line="63" selection-start-column="130" selection-end-line="63" selection-end-column="130" />
           <folding>
             <element signature="e#46#103#0#PHP" expanded="true" />
@@ -715,8 +790,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/BS/MainBundle/Controller/MainController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.43589744">
-          <caret line="15" column="62" selection-start-line="15" selection-start-column="62" selection-end-line="15" selection-end-column="62" />
+        <state vertical-scroll-proportion="0.34871796">
+          <caret line="12" column="38" selection-start-line="12" selection-start-column="38" selection-end-line="12" selection-end-column="38" />
           <folding>
             <element signature="e#44#101#0#PHP" expanded="true" />
           </folding>
