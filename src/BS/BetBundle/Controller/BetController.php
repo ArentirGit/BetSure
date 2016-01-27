@@ -13,7 +13,7 @@ class BetController extends Controller
     public function homeAction()
     {
         $outcomeRepository = $this->getDoctrine()->getManager()->getRepository('BSOfferBundle:Outcome');
-        $homeOutcomeList = $outcomeRepository->getOutcomeByLabel('1');
+        $homeOutcomeList = $outcomeRepository->getOutcomeByLabel('Domicile');
         $repositoryBet = $this->getDoctrine()->getManager()->getRepository('BSBetBundle:Bet');
         foreach($homeOutcomeList as $homeOutcome)
         {

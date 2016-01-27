@@ -11,6 +11,30 @@ use BS\OfferBundle\Entity\Outcome;
 
 class OfferController extends Controller
 {
+    public function updateLabelAction()
+    {
+        $outcomeRepository = $this->getDoctrine()->getManager()->getRepository('BSOfferBundle:Outcome');
+        $outcomeList = $outcomeRepository->findAll();
+        foreach($outcomeList as $outcome)
+        {
+            if($outcome->getLabelOutcome() == "1")
+            {
+                $outcome->setLabelOutcome("Domicile");
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($outcome);
+                $em->flush();
+            }
+            elseif($outcome->getLabelOutcome() == "2")
+            {
+                $outcome->setLabelOutcome("Exterieur");
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($outcome);
+                $em->flush();
+            }
+        }
+
+        return new Response("Hello World");
+    }
 
     /*
      * Génère les offres du jour

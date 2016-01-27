@@ -7,3 +7,8 @@ bs_offer_delete_duplicate_offer:
     path:    /Offer/Delete/Duplicate
     defaults:
         _controller:    BSOfferBundle:Offer:deleteDuplicateEntry
+
+bs_outcome_update_label:
+    path:    /Outcome/Update
+    defaults:
+        _controller:    BSOfferBundle:Offer:updateLabel

@@ -11,6 +11,31 @@ use BS\ResultBundle\Repository;
 class ResultController extends Controller
 {
 
+    public function updateResultAction()
+    {
+        $marketResultRepository = $this->getDoctrine()->getManager()->getRepository('BSResultBundle:MarketResult');
+        $marketResultList = $marketResultRepository->findAll();
+        foreach($marketResultList as $marketResult)
+        {
+            if($marketResult->getResultat() == "1")
+            {
+                $marketResult->setResultat("Domicile");
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($marketResult);
+                $em->flush();
+            }
+            elseif($marketResult->getResultat() == "3")
+            {
+                $marketResult->setResultat("Exterieur");
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($marketResult);
+                $em->flush();
+            }
+        }
+
+        return new Response("Hello World");
+    }
+
     /*
      * Récupération des résultats des paris s'étant fini la veille du jour courant
      * Impossibilité d'avoir de doublon

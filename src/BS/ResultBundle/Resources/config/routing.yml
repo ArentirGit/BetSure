@@ -12,3 +12,8 @@ bs_result_delete_duplicate_result:
     path:    /Result/Delete/Duplicate
     defaults:
         _controller:    BSResultBundle:Result:deleteDuplicateEntry
+
+bs_market_result_update_result:
+    path:    /MarketResult/Update
+    defaults:
+        _controller:    BSResultBundle:Result:updateResult
