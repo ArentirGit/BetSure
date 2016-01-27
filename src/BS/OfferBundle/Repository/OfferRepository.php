@@ -36,4 +36,11 @@ class OfferRepository extends EntityRepository
         return $query->getResult();
     }
 
+    public function getLabelOffer()
+    {
+        $query = $this->_em->createQuery('SELECT o.labelOffer FROM BSOfferBundle:Offer o');
+        return $query->getResult();
+    }
+
+
 }

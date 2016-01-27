@@ -17,3 +17,9 @@ bs_market_result_update_result:
     path:    /MarketResult/Update
     defaults:
         _controller:    BSResultBundle:Result:updateResult
+
+bs_result_add_team:
+    path:    /Result/Add/Team
+    defaults:
+        _controller:    BSResultBundle:Result:addTeam
+
