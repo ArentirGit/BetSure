@@ -2,6 +2,8 @@
 
 namespace BS\ResultBundle\Repository;
 
+//use BS\BetBundle\Entity\Bet;
+
 /**
  * MarketResultRepository
  *
@@ -15,6 +17,13 @@ class MarketResultRepository extends \Doctrine\ORM\EntityRepository
     {
         $query = $this->_em->createQuery('SELECT m FROM BSResultBundle:MarketResult m WHERE m.indexMarketResult = :indexMarketResult AND m.eventId = :eventId');
         $query->setParameters(array('eventId' => $result->eventId, 'indexMarketResult' => $marketResult->index));
+        return $query->getResult();
+    }
+
+    public function getMarketResultByEventId($bet)
+    {
+        $query = $this->_em->createQuery('SELECT m FROM BSResultBundle:MarketResult m WHERE m.eventId = :eventId AND m.indexMarketResult = :indexMarketResult');
+        $query->setParameters(array('eventId' => $bet->getOutcome()->getEventId(), 'indexMarketResult' => $bet->getOutcome()->getIndexOffer()));
         return $query->getResult();
     }
 }

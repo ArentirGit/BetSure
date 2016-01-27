@@ -1,9 +1,8 @@
 BetSure
 
 
-ATENTION !!
+Taches à faire prioritaire :
 
-NE RECHARGER LA BASE QU'UNE SEULE FOIS PAR JOUR UNE FOIS QUE TOUT SERA FONCTIONNEL SINON ON TROUVERA DES DOUBLONS !
-
-- Gérer le Delete de la table offer une fois la mise à jour du sportId et du marketId faites dans la base (Bjorn)
-- Mettre une sécurité pour éviter doublon (Damien)
+- Gérer dans Outcome le changement des labal : 1 -> 1, N -> 2 et 2 -> 3 pour mermettre cncordence pour calculdes stats
+- Trouver un moyen de récupérer nom équipe / joueur pour attribuer un Id sinon aucun stats possible sur les équipes / joueurs (pourquoi pas 2 noms possibles pour un id suivant ce que renvoie l'api), retourner voir si par hasard ceci n'est pas gérer par l'api autrement qu'avec les méthodes utilisés => openclassrooms
+- Commencer à réfléchir à la table de résultat de bet pour pouvoir commencer à l'alimenter et générer les ROI des matchs domiciles, exterieur et match nul.

@@ -1,4 +1,9 @@
-bs_home_bet:
+bs_bet_home:
     path:    /Bet/Home
     defaults:
         _controller:    BSBetBundle:Bet:home
+
+bs_bet_result_update:
+    path:    /Bet/Update
+    defaults:
+        _controller:    BSBetBundle:Bet:update

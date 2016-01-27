@@ -30,4 +30,24 @@ class BetController extends Controller
 
         return new Response("Hello World");
     }
+
+    public function updateAction()
+    {
+        $betRepository = $this->getDoctrine()->getManager()->getRepository('BSBetBundle:Bet');
+        $marketResultRepository = $this->getDoctrine()->getManager()->getRepository('BSResultBundle:MarketResult');
+        $betList = $betRepository->findAll();
+        foreach($betList as $bet)
+        {
+            $marketResultList = $marketResultRepository->getMarketResultByEventId($bet);
+            if(!empty($marketResultList))
+            {
+                $bet->setMarketResult($marketResultList[0]);
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($bet);
+                $em->flush();
+            }
+        }
+
+        return new Response("Hello World");
+    }
 }

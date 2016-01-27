@@ -14,6 +14,7 @@ class MainController extends Controller
         $this->forward('BSResultBundle:Result:get');
         $this->forward('BSBetBundle:Bet:home');
         $this->forward('BSResultBundle:Result:offerToResult');
+        $this->forward('BSRBetBundle:Bet:update');
 
         return new Response("Hello World");
     }
