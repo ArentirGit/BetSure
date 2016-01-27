@@ -12,3 +12,8 @@ bs_result_delete_duplicate_result:
     path:    /Result/Delete/Duplicate
     defaults:
         _controller:    BSResultBundle:Result:deleteDuplicateEntry
+
+bs_result_add_team:
+    path:    /Result/Add/Team
+    defaults:
+        _controller:    BSResultBundle:Result:addTeam

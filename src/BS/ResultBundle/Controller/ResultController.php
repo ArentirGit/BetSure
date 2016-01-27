@@ -12,8 +12,8 @@ class ResultController extends Controller
 {
 
     /*
-     * Récupération des résultats des paris s'étant fini la veille du jour courant
-     * Impossibilité d'avoir de doublon
+     * RÃ©cupÃ©ration des rÃ©sultats des paris s'Ã©tant fini la veille du jour courant
+     * ImpossibilitÃ© d'avoir de doublon
      */
     public function getAction()
     {
@@ -60,8 +60,8 @@ class ResultController extends Controller
 
 
     /*
-     * Permet de mettre a jour la table result lorsque l'offre est expiré et passe alors à la fois dans la table offre et result
-     * Cet evenement va permettre la mise à jour des bets, et entrainer les supression en cascade jusqu'a la supression de l'offre
+     * Permet de mettre a jour la table result lorsque l'offre est expirÃ© et passe alors Ã  la fois dans la table offre et result
+     * Cet evenement va permettre la mise Ã  jour des bets, et entrainer les supression en cascade jusqu'a la supression de l'offre
      */
     public function offerToResultAction()
     {
@@ -82,5 +82,16 @@ class ResultController extends Controller
             }
         }
         return new Response('Hello World');
+    }
+
+    public function addTeamAction(){
+        $repositoryOffer = $this->getDoctrine()->getManager()->getRepository('BSOfferBundle:Offer');
+        $labelOfferList = $repositoryOffer->getLabelOffer();
+        foreach($labelOfferList as $labelOffer)
+        {
+            List($dom, $ext) = explode("-",$labelOffer['labelOffer']);
+            echo $dom, "</br>", $ext, "</br>";
+        }
+        return new Response('It works');
     }
 }
