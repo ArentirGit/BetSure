@@ -12,6 +12,8 @@ class BetController extends Controller
 {
     public function homeAction()
     {
+        $strategyRepository = $this->getDoctrine()->getManager()->getRepository('BSResultBundle:Strategy');
+        $strategy = $strategyRepository->getByLabel('Home')[0];
         $outcomeRepository = $this->getDoctrine()->getManager()->getRepository('BSOfferBundle:Outcome');
         $homeOutcomeList = $outcomeRepository->getOutcomeByLabel('Domicile');
         $repositoryBet = $this->getDoctrine()->getManager()->getRepository('BSBetBundle:Bet');
@@ -19,7 +21,8 @@ class BetController extends Controller
         {
             $bet = new Bet();
             $bet->setOutcome($homeOutcome);
-            $duplicateBet = $repositoryBet->verifyDuplicate($homeOutcome);
+            $bet->setStrategy($strategy);
+            $duplicateBet = $repositoryBet->verifyDuplicate($homeOutcome, $strategy);
             if(empty($duplicateBet))
             {
                 $em = $this->getDoctrine()->getManager();

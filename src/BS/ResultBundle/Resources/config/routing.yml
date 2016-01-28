@@ -23,3 +23,13 @@ bs_result_add_team:
     defaults:
         _controller:    BSResultBundle:Result:addTeam
 
+bs_result_strategy_home:
+    path:    /Result/Strategy/Home
+    defaults:
+        _controller:    BSResultBundle:Result:resultStrategyHome
+
+bs_result_create_strategy:
+    path:    /Strategy/Create/{strategyLabel}
+    defaults:
+        _controller:    BSResultBundle:Result:createStrategy
+

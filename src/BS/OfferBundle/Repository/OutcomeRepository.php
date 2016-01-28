@@ -35,10 +35,10 @@ class OutcomeRepository extends EntityRepository
         return $query->getResult();
     }
 
-    public function verifyDuplicate($outcome, $offer)
+    public function verifyDuplicate($label, $offer)
     {
         $query = $this->_em->createQuery('SELECT o FROM BSOfferBundle:Outcome o WHERE o.indexOffer = :indexOffer AND o.eventId = :eventId AND o.labelOutcome = :labelOutcome');
-        $query->setParameters(array('eventId' => $offer->eventId, 'indexOffer' => $offer->index, 'labelOutcome' => $outcome->label));
+        $query->setParameters(array('eventId' => $offer->eventId, 'indexOffer' => $offer->index, 'labelOutcome' => $label));
         return $query->getResult();
     }
 }

@@ -22,6 +22,12 @@ class Bet
     private $id;
 
     /**
+     * @ORM\ManyToOne(targetEntity="BS\ResultBundle\Entity\Strategy")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $strategy;
+
+    /**
      * @ORM\ManyToOne(targetEntity="BS\OfferBundle\Entity\Outcome")
      * @ORM\JoinColumn(nullable=false)
      */
@@ -90,5 +96,29 @@ class Bet
     public function getMarketResult()
     {
         return $this->marketResult;
+    }
+
+    /**
+     * Set strategy
+     *
+     * @param \BS\ResultBundle\Entity\Strategy $strategy
+     *
+     * @return Bet
+     */
+    public function setStrategy(\BS\ResultBundle\Entity\Strategy $strategy)
+    {
+        $this->strategy = $strategy;
+
+        return $this;
+    }
+
+    /**
+     * Get strategy
+     *
+     * @return \BS\ResultBundle\Entity\Strategy
+     */
+    public function getStrategy()
+    {
+        return $this->strategy;
     }
 }

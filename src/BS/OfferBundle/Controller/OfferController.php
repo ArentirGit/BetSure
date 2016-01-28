@@ -11,7 +11,7 @@ use BS\OfferBundle\Entity\Outcome;
 
 class OfferController extends Controller
 {
-    public function updateLabelAction()
+    /*public function updateLabelAction()
     {
         $outcomeRepository = $this->getDoctrine()->getManager()->getRepository('BSOfferBundle:Outcome');
         $outcomeList = $outcomeRepository->findAll();
@@ -34,7 +34,7 @@ class OfferController extends Controller
         }
 
         return new Response("Hello World");
-    }
+    }*/
 
     /*
      * Génère les offres du jour
@@ -91,11 +91,25 @@ class OfferController extends Controller
                     foreach ($offer->outcomes as $outcomes) {
                         $localOutcome = new Outcome();
                         $localOutcome->setOffer($localOffer);
-                        $localOutcome->setLabelOutcome($outcomes->label);
+                        if($outcomes->label == "1")
+                        {
+                            $localOutcomeLabel = "Domicile";
+                            $localOutcome->setLabelOutcome("$localOutcomeLabel");
+                        }
+                        elseif($outcomes->label == "2")
+                        {
+                            $localOutcomeLabel = "Exterieur";
+
+                            $localOutcome->setLabelOutcome($localOutcomeLabel);
+                        }
+                        else {
+                            $localOutcomeLabel = $outcomes->label;
+                            $localOutcome->setLabelOutcome($localOutcomeLabel);
+                        }
                         $localOutcome->setCote($outcomes->cote);
                         $localOutcome->setEventId($offer->eventId);
                         $localOutcome->setIndexOffer($offer->index);
-                        $duplicateOutcome = $repositoryOutcome->verifyDuplicate($outcomes, $offer);
+                        $duplicateOutcome = $repositoryOutcome->verifyDuplicate($localOutcomeLabel, $offer);
                         if(empty($duplicateOutcome))
                         {
                             $em = $this->getDoctrine()->getManager();
@@ -117,12 +131,25 @@ class OfferController extends Controller
                         foreach ($formule->outcomes as $outcomes) {
                             $localOutcome = new Outcome();
                             $localOutcome->setOffer($localOfferFormule);
-                            $localOutcome->setLabelOutcome($outcomes->label);
+                            if($outcomes->label == "1")
+                            {
+                                $localOutcomeLabel = "Domicile";
+                                $localOutcome->setLabelOutcome("$localOutcomeLabel");
+                            }
+                            elseif($outcomes->label == "2")
+                            {
+                                $localOutcomeLabel = "Exterieur";
+
+                                $localOutcome->setLabelOutcome($localOutcomeLabel);
+                            }
+                            else {
+                                $localOutcomeLabel = $outcomes->label;
+                                $localOutcome->setLabelOutcome($localOutcomeLabel);
+                            }
                             $localOutcome->setCote($outcomes->cote);
                             $localOutcome->setEventId($formule->eventId);
                             $localOutcome->setIndexOffer($formule->index);
-
-                            $duplicateOutcome = $repositoryOutcome->verifyDuplicate($outcomes, $formule);
+                            $duplicateOutcome = $repositoryOutcome->verifyDuplicate($localOutcomeLabel, $formule);
                             if(empty($duplicateOutcome))
                             {
                                 $em = $this->getDoctrine()->getManager();

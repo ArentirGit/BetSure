@@ -6,12 +6,63 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use BS\ResultBundle\Entity\Result;
 use BS\ResultBundle\Entity\MarketResult;
+use BS\ResultBundle\Entity\Strategy;
 use BS\ResultBundle\Repository;
 
 class ResultController extends Controller
 {
 
-    public function updateResultAction()
+    public function resultStrategyHomeAction()
+    {
+        $strategyRepository = $this->getDoctrine()->getManager()->getRepository('BSResultBundle:Strategy');
+        $strategy = $strategyRepository->getByLabel('Home')[0];
+        $betRepository = $this->getDoctrine()->getManager()->getRepository('BSBetBundle:Bet');
+        $homeBetList = $betRepository->getAllByStrategy($strategy);
+        $moneyBet = 0.0;
+        $moneyEarned = 0.0;
+        foreach($homeBetList as $homeBet)
+        {
+            if(!is_null($homeBet->getMarketResult()))
+            {
+                $outcome = $homeBet->getOutcome();
+                $marketResult = $homeBet->getMarketResult();
+                if($outcome->getLabelOutcome() == $marketResult->getResultat())
+                {
+                    $moneyBet = $moneyBet + 1.0;
+                    $moneyEarned = $moneyEarned + $outcome->getCote();
+                }
+                else
+                {
+                    $moneyBet = $moneyBet + 1.0;
+                }
+            }
+        }
+        $strategy->setMoneyBet(floatval($strategy->getMoneyBet() + $moneyBet));
+        $strategy->setMoneyEarned(floatval($strategy->getMoneyEarned() + $moneyEarned));
+        $strategy->setReturnOnInvestment(floatval($strategy->getMoneyEarned() / $strategy->getMoneyBet()));
+
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($strategy);
+        $em->flush();
+        echo("jkjkjkjk");
+        return new Response("Hello World");
+    }
+
+    public function createStrategyAction($strategyLabel)
+    {
+        $strategy = new Strategy();
+        $strategy->setLabelStrategy($strategyLabel);
+        $strategy->setReturnOnInvestment(0.0);
+        $strategy->setMoneyBet(0.0);
+        $strategy->setMoneyEarned(0.0);
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($strategy);
+        $em->flush();
+
+        return new Response("Hello World");
+    }
+
+    /*public function updateResultAction()
     {
         $marketResultRepository = $this->getDoctrine()->getManager()->getRepository('BSResultBundle:MarketResult');
         $marketResultList = $marketResultRepository->findAll();
@@ -34,7 +85,7 @@ class ResultController extends Controller
         }
 
         return new Response("Hello World");
-    }
+    }*/
 
     /*
      * Récupération des résultats des paris s'étant fini la veille du jour courant
@@ -60,7 +111,17 @@ class ResultController extends Controller
                 $localMarketRes = new MarketResult();
                 $localMarketRes->setIndexMarketResult($marketRes->index);
                 $localMarketRes->setMarketType($marketRes->marketType);
-                $localMarketRes->setResultat($marketRes->resultat);
+                if($marketRes->resultat == "1")
+                {
+                    $localMarketRes->setResultat("Domicile");
+                }
+                elseif($marketRes->resultat == "3")
+                {
+                    $localMarketRes->setResultat("Exterieur");
+                }
+                else {
+                    $localMarketRes->setResultat($marketRes->resultat);
+                }
                 $localMarketRes->setResult($localResult);
                 $localMarketRes->setEventId($result->eventId);
 
