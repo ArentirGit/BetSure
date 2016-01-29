@@ -12,10 +12,10 @@ use BS\ResultBundle\Repository;
 class ResultController extends Controller
 {
 
-    public function resultStrategyHomeAction()
+    public function resultStrategyAction($strategyLabel)
     {
         $strategyRepository = $this->getDoctrine()->getManager()->getRepository('BSResultBundle:Strategy');
-        $strategy = $strategyRepository->getByLabel('Home')[0];
+        $strategy = $strategyRepository->getByLabel($strategyLabel)[0];
         $strategy->setMoneyBet(0.0);
         $strategy->setMoneyEarned(0.0);
         $betRepository = $this->getDoctrine()->getManager()->getRepository('BSBetBundle:Bet');
