@@ -15,7 +15,9 @@ class MainController extends Controller
         //$this->forward('BSOfferBundle:Offer:updateLabel');
         $this->forward('BSResultBundle:Result:get');
         //$this->forward('BSResultBundle:Result:updateResult');
-        $this->forward('BSBetBundle:Bet:home');
+        $this->forward('BSBetBundle:Bet:get', array('labelStrategy' => 'Home'));
+        $this->forward('BSBetBundle:Bet:get', array('labelStrategy' => 'Nul'));
+        $this->forward('BSBetBundle:Bet:get', array('labelStrategy' => 'Outside'));
         $this->forward('BSResultBundle:Result:offerToResult');
         $this->forward('BSBetBundle:Bet:update');
         $this->forward('BSResultBundle:Result:resultStrategyHome');

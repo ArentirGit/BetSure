@@ -1,7 +1,7 @@
 bs_bet_home:
-    path:    /Bet/Home
+    path:    /Bet/Get/{labelStrategy}
     defaults:
-        _controller:    BSBetBundle:Bet:home
+        _controller:    BSBetBundle:Bet:get
 
 bs_bet_result_update:
     path:    /Bet/Update

@@ -28,7 +28,7 @@ class MarketResult
     private $result;
 
     /**
-     * @var int
+     * @var string
      *
      * @ORM\Column(name="indexMarketResult", type="string", length=255)
      */
@@ -155,7 +155,7 @@ class MarketResult
     /**
      * Set indexMarketResult
      *
-     * @param integer $indexMarketResult
+     * @param string $indexMarketResult
      *
      * @return MarkatResult
      */
@@ -169,8 +169,8 @@ class MarketResult
     /**
      * Get indexMarketResult
      *
-     * @return integer
-     */
+     * @return string
+*/
     public function getIndexMarketResult()
     {
         return $this->indexMarketResult;

@@ -10,19 +10,31 @@ use BS\BetBundle\Entity\Bet;
 
 class BetController extends Controller
 {
-    public function homeAction()
+    public function getAction($labelStrategy)
     {
+        if($labelStrategy == 'Home')
+        {
+            $outcomeLabel = 'Domicile';
+        }
+        elseif($labelStrategy == 'Nul')
+        {
+            $outcomeLabel = 'N';
+        }
+        else
+        {
+            $outcomeLabel = 'Exterieur';
+        }
         $strategyRepository = $this->getDoctrine()->getManager()->getRepository('BSResultBundle:Strategy');
-        $strategy = $strategyRepository->getByLabel('Home')[0];
+        $strategy = $strategyRepository->getByLabel($labelStrategy)[0];
         $outcomeRepository = $this->getDoctrine()->getManager()->getRepository('BSOfferBundle:Outcome');
-        $homeOutcomeList = $outcomeRepository->getOutcomeByLabel('Domicile');
+        $outcomeList = $outcomeRepository->getOutcomeByLabel($outcomeLabel);
         $repositoryBet = $this->getDoctrine()->getManager()->getRepository('BSBetBundle:Bet');
-        foreach($homeOutcomeList as $homeOutcome)
+        foreach($outcomeList as $outcome)
         {
             $bet = new Bet();
-            $bet->setOutcome($homeOutcome);
+            $bet->setOutcome($outcome);
             $bet->setStrategy($strategy);
-            $duplicateBet = $repositoryBet->verifyDuplicate($homeOutcome, $strategy);
+            $duplicateBet = $repositoryBet->verifyDuplicate($outcome, $strategy);
             if(empty($duplicateBet))
             {
                 $em = $this->getDoctrine()->getManager();

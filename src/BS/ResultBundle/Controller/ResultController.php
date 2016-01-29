@@ -16,6 +16,8 @@ class ResultController extends Controller
     {
         $strategyRepository = $this->getDoctrine()->getManager()->getRepository('BSResultBundle:Strategy');
         $strategy = $strategyRepository->getByLabel('Home')[0];
+        $strategy->setMoneyBet(0.0);
+        $strategy->setMoneyEarned(0.0);
         $betRepository = $this->getDoctrine()->getManager()->getRepository('BSBetBundle:Bet');
         $homeBetList = $betRepository->getAllByStrategy($strategy);
         $moneyBet = 0.0;
@@ -44,7 +46,6 @@ class ResultController extends Controller
         $em = $this->getDoctrine()->getManager();
         $em->persist($strategy);
         $em->flush();
-        echo("jkjkjkjk");
         return new Response("Hello World");
     }
 
@@ -94,6 +95,7 @@ class ResultController extends Controller
     public function getAction()
     {
         $apiContent = file_get_contents("https://www.parionssport.fr/api/1n2/resultats?date=".strftime("%Y%m%d", mktime(0, 0, 0, date('m'), date('d')-1, date('y'))));
+        //$apiContent = file_get_contents("https://www.parionssport.fr/api/1n2/resultats?date=20160128");
         $resultInformations = json_decode($apiContent);
         $repositoryResult = $this->getDoctrine()->getManager()->getRepository('BSResultBundle:Result');
         $repositoryMarketResult = $this->getDoctrine()->getManager()->getRepository('BSResultBundle:MarketResult');
@@ -109,7 +111,19 @@ class ResultController extends Controller
             foreach($result->marketRes as $marketRes)
             {
                 $localMarketRes = new MarketResult();
-                $localMarketRes->setIndexMarketResult($marketRes->index);
+                if(strlen(strval($marketRes->index)) == 1)
+                {
+                    $indexMarketResult = "00".strval($marketRes->index);
+                }
+                elseif(strlen(strval($marketRes->index)) == 2)
+                {
+                    $indexMarketResult = "0".strval($marketRes->index);
+                }
+                else
+                {
+                    $indexMarketResult = strval($marketRes->index);
+                }
+                $localMarketRes->setIndexMarketResult($indexMarketResult);
                 $localMarketRes->setMarketType($marketRes->marketType);
                 if($marketRes->resultat == "1")
                 {
