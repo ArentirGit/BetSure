@@ -31,7 +31,14 @@ class ResultController extends Controller
                 if($outcome->getLabelOutcome() == $marketResult->getResultat())
                 {
                     $moneyBet = floatval($moneyBet + 1.0);
-                    $moneyEarned = floatval($moneyEarned + $outcome->getCote());
+                    $cote = "";
+                    $cote = $cote.$outcome->getCote()[0];
+                    $cote = $cote.".";
+                    $cote = $cote.$outcome->getCote()[2];
+                    $cote = $cote.$outcome->getCote()[3];
+                    $cote = floatval($cote);
+                    var_dump($cote);
+                    $moneyEarned = floatval($moneyEarned + $cote /*$outcome->getCote()*/);
                 }
                 else
                 {
