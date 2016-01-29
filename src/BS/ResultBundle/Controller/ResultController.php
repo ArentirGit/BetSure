@@ -30,12 +30,12 @@ class ResultController extends Controller
                 $marketResult = $homeBet->getMarketResult();
                 if($outcome->getLabelOutcome() == $marketResult->getResultat())
                 {
-                    $moneyBet = $moneyBet + 1.0;
-                    $moneyEarned = $moneyEarned + $outcome->getCote();
+                    $moneyBet = floatval($moneyBet + 1.0);
+                    $moneyEarned = floatval($moneyEarned + $outcome->getCote());
                 }
                 else
                 {
-                    $moneyBet = $moneyBet + 1.0;
+                    $moneyBet = floatval($moneyBet + 1.0);
                 }
             }
         }
@@ -94,8 +94,8 @@ class ResultController extends Controller
      */
     public function getAction()
     {
-        $apiContent = file_get_contents("https://www.parionssport.fr/api/1n2/resultats?date=".strftime("%Y%m%d", mktime(0, 0, 0, date('m'), date('d')-1, date('y'))));
-        //$apiContent = file_get_contents("https://www.parionssport.fr/api/1n2/resultats?date=20160128");
+        //$apiContent = file_get_contents("https://www.parionssport.fr/api/1n2/resultats?date=".strftime("%Y%m%d", mktime(0, 0, 0, date('m'), date('d')-1, date('y'))));
+        $apiContent = file_get_contents("https://www.parionssport.fr/api/1n2/resultats?date=20160129");
         $resultInformations = json_decode($apiContent);
         $repositoryResult = $this->getDoctrine()->getManager()->getRepository('BSResultBundle:Result');
         $repositoryMarketResult = $this->getDoctrine()->getManager()->getRepository('BSResultBundle:MarketResult');

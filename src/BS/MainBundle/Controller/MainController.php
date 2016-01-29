@@ -20,9 +20,9 @@ class MainController extends Controller
         $this->forward('BSBetBundle:Bet:get', array('labelStrategy' => 'Outside'));
         $this->forward('BSResultBundle:Result:offerToResult');
         $this->forward('BSBetBundle:Bet:update');
-        $this->forward('BSResultBundle:Result:resultStrategy', array('labelStrategy' => 'Home'));
-        $this->forward('BSResultBundle:Result:resultStrategy', array('labelStrategy' => 'Nul'));
-        $this->forward('BSResultBundle:Result:resultStrategy', array('labelStrategy' => 'Outside'));
+        $this->forward('BSResultBundle:Result:resultStrategy', array('strategyLabel' => 'Home'));
+        $this->forward('BSResultBundle:Result:resultStrategy', array('strategyLabel' => 'Nul'));
+        $this->forward('BSResultBundle:Result:resultStrategy', array('strategyLabel' => 'Outside'));
 
 
         return new Response("Hello World");
