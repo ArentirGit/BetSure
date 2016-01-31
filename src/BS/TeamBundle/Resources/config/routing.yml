@@ -1,0 +1,4 @@
+bs_team_get:
+    path:    /Team/Get
+    defaults:
+        _controller:    BSTeamBundle:Team:get

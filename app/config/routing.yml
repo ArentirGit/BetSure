@@ -1,3 +1,7 @@
+bs_team:
+    resource: "@BSTeamBundle/Resources/config/routing.yml"
+    prefix:   /
+
 bs_main:
     resource: "@BSMainBundle/Resources/config/routing.yml"
     prefix:   /

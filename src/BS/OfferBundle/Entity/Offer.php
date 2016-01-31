@@ -33,7 +33,21 @@ class Offer
     /**
      * @var string
      *
-     * @ORM\Column(name="marketId", type="string", length=255)
+     * @ORM\Column(name="homeTeamId", type="string", length=255)
+     */
+    private $homeTeamId;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="outsideTeamId", type="string", length=255, nullable=true)
+     */
+    private $outsideTeamId;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="marketId", type="string", length=255, nullable=true)
      */
     private $marketId;
 

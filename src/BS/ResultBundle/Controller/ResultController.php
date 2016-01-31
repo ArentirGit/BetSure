@@ -190,15 +190,4 @@ class ResultController extends Controller
         }
         return new Response('Hello World');
     }
-
-    public function addTeamAction(){
-        $repositoryOffer = $this->getDoctrine()->getManager()->getRepository('BSOfferBundle:Offer');
-        $labelOfferList = $repositoryOffer->getLabelOffer();
-        foreach($labelOfferList as $labelOffer)
-        {
-            List($dom, $ext) = explode("-",$labelOffer['labelOffer']);
-            echo $dom, "</br>", $ext, "</br>";
-        }
-        return new Response('It works');
-    }
 }
