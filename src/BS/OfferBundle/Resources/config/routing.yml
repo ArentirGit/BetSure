@@ -12,3 +12,8 @@ bs_outcome_update_label:
     path:    /Outcome/Update
     defaults:
         _controller:    BSOfferBundle:Offer:updateLabel
+
+bs_offer_update_home_outside:
+    path:    /Offer/Update
+    defaults:
+        _controller:    BSOfferBundle:Offer:updateHomeOutside

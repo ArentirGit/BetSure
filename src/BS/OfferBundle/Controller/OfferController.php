@@ -2,6 +2,7 @@
 
 namespace BS\OfferBundle\Controller;
 
+use Proxies\__CG__\BS\ResultBundle\Entity\Result;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use BS\OfferBundle\Entity\Offer;
@@ -11,6 +12,26 @@ use BS\OfferBundle\Entity\Outcome;
 
 class OfferController extends Controller
 {
+    public function  updateHomeOutsideAction(){
+        $repositoryOffer = $this->getDoctrine()->getManager()->getRepository('BSOfferBundle:Offer');
+        $repositoryTeam = $this->getDoctrine()->getManager()->getRepository('BSTeamBundle:Team');
+        $OfferList = $repositoryOffer->findAll();
+        foreach($OfferList as $Offer){
+            List($dom, $ext) = explode("-", $Offer->getLabelOffer());
+            $teamDomId = $repositoryTeam->getIdByName($dom);
+            $teamExtId = $repositoryTeam->getIdByName($ext);
+            if(!empty($teamDomId) and !empty($teamExtId)){
+                var_dump($teamExtId);
+                $Offer->setHomeTeamId($teamDomId);
+                $Offer->setOutsideTeamId($teamExtId);
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($Offer);
+                $em->flush();
+            }
+        }
+        return new Result("Done");
+    }
+
     /*public function updateLabelAction()
     {
         $outcomeRepository = $this->getDoctrine()->getManager()->getRepository('BSOfferBundle:Outcome');

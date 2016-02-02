@@ -342,4 +342,51 @@ class Offer
     }
 
 
+    /**
+     * Get homeTeamId
+     *
+     * @return string
+     */
+    public function getHomeTeamId()
+    {
+        return $this->homeTeamId;
+    }
+
+    /**
+     * Set homeTeamId
+     *
+     * @param string $homeTeamId
+     *
+     * @return Offer
+     */
+    public function setHomeTeamId($homeTeamId)
+    {
+        $this->homeTeamId = $homeTeamId;
+
+        return $this;
+    }
+
+    /**
+     * Get outsideTeamId
+     *
+     * @return string
+     */
+    public function getOutsideTeamId()
+    {
+        return $this->outsideTeamId;
+    }
+
+    /**
+     * Set outsideTeamId
+     *
+     * @param string $outsideTeamId
+     *
+     * @return Offer
+     */
+    public function setOutsideTeamId($outsideTeamId)
+    {
+        $this->outsideTeamId = $outsideTeamId;
+
+        return $this;
+    }
 }

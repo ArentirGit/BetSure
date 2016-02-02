@@ -17,4 +17,10 @@ class TeamRepository extends \Doctrine\ORM\EntityRepository
         $query->setParameter('searchName', $teamName);
         return $query->getResult();
     }
+
+    public function getIdByName($name){
+        $query = $this->_em->createQuery('SELECT t.id FROM BSTeamBundle:Team t WHERE t.name = :name');
+        $query->setParameter('name', $name);
+        return $query->getResult();
+    }
 }
