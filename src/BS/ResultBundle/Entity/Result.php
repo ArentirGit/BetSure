@@ -24,6 +24,20 @@ class Result
     /**
      * @var string
      *
+     * @ORM\Column(name="homeTeamId", type="string", length=255, nullable=true)
+     */
+    private $homeTeamId;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="outsideTeamId", type="string", length=255, nullable=true)
+     */
+    private $outsideTeamId;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="eventId", type="string", length=255)
      */
     private $eventId;
@@ -260,5 +274,53 @@ class Result
     public function getEventId()
     {
         return $this->eventId;
+    }
+
+    /**
+     * Set homeTeamId
+     *
+     * @param string $homeTeamId
+     *
+     * @return Result
+     */
+    public function setHomeTeamId($homeTeamId)
+    {
+        $this->homeTeamId = $homeTeamId;
+
+        return $this;
+    }
+
+    /**
+     * Get homeTeamId
+     *
+     * @return string
+     */
+    public function getHomeTeamId()
+    {
+        return $this->homeTeamId;
+    }
+
+    /**
+     * Set outsideTeamId
+     *
+     * @param string $outsideTeamId
+     *
+     * @return Result
+     */
+    public function setOutsideTeamId($outsideTeamId)
+    {
+        $this->outsideTeamId = $outsideTeamId;
+
+        return $this;
+    }
+
+    /**
+     * Get outsideTeamId
+     *
+     * @return string
+     */
+    public function getOutsideTeamId()
+    {
+        return $this->outsideTeamId;
     }
 }

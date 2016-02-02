@@ -69,28 +69,5 @@ class Team
     {
         return $this->name;
     }
-
-    /**
-     * Set competitionId
-     *
-     * @param string $competitionId
-     *
-     * @return Team
-     */
-    public function setCompetitionId($competitionId)
-    {
-        $this->competitionId = $competitionId;
-
-        return $this;
-    }
-
-    /**
-     * Get competitionId
-     *
-     * @return string
-     */
-    public function getCompetitionId()
-    {
-        return $this->competitionId;
-    }
 }
+

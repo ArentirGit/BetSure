@@ -15,6 +15,7 @@ class ResultController extends Controller
     public function resultStrategyAction($strategyLabel)
     {
         ini_set('max_execution_time', 18000);
+        ini_set('memory_limit', '-1');
         $strategyRepository = $this->getDoctrine()->getManager()->getRepository('BSResultBundle:Strategy');
         $strategy = $strategyRepository->getByLabel($strategyLabel)[0];
         $strategy->setMoneyBet(0.0);
@@ -104,7 +105,8 @@ class ResultController extends Controller
     {
         ini_set('max_execution_time', 18000);
         //$apiContent = file_get_contents("https://www.parionssport.fr/api/1n2/resultats?date=".strftime("%Y%m%d", mktime(0, 0, 0, date('m'), date('d')-1, date('y'))));
-        $apiContent = file_get_contents("https://www.parionssport.fr/api/1n2/resultats?date=20160201");
+        for($i=0; $i<10; $i++)
+        {$apiContent = file_get_contents("https://www.parionssport.fr/api/1n2/resultats?date=2016011".$i);
         $resultInformations = json_decode($apiContent);
         $repositoryResult = $this->getDoctrine()->getManager()->getRepository('BSResultBundle:Result');
         $repositoryMarketResult = $this->getDoctrine()->getManager()->getRepository('BSResultBundle:MarketResult');
@@ -164,6 +166,8 @@ class ResultController extends Controller
                 $em->flush();
             }
         }
+        }
+
         return new Response("Hello World");
     }
 
@@ -192,5 +196,9 @@ class ResultController extends Controller
             }
         }
         return new Response('Hello World');
+    }
+
+    public function updateResultAction(){
+
     }
 }

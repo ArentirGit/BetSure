@@ -21,15 +21,16 @@ class OfferController extends Controller
             $teamDomId = $repositoryTeam->getIdByName($dom);
             $teamExtId = $repositoryTeam->getIdByName($ext);
             if(!empty($teamDomId) and !empty($teamExtId)){
-                var_dump($teamExtId);
-                $Offer->setHomeTeamId($teamDomId);
-                $Offer->setOutsideTeamId($teamExtId);
+                $Offer->setHomeTeamId($teamDomId[0]['id']);
+                $Offer->setOutsideTeamId($teamExtId[0]['id']);
+
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($Offer);
                 $em->flush();
+
             }
         }
-        return new Result("Done");
+        return new Response("Hello world");
     }
 
     /*public function updateLabelAction()
