@@ -14,6 +14,7 @@ class ResultController extends Controller
 
     public function resultStrategyAction($strategyLabel)
     {
+        ini_set('max_execution_time', 18000);
         $strategyRepository = $this->getDoctrine()->getManager()->getRepository('BSResultBundle:Strategy');
         $strategy = $strategyRepository->getByLabel($strategyLabel)[0];
         $strategy->setMoneyBet(0.0);
@@ -37,7 +38,6 @@ class ResultController extends Controller
                     $cote = $cote.$outcome->getCote()[2];
                     $cote = $cote.$outcome->getCote()[3];
                     $cote = floatval($cote);
-                    var_dump($cote);
                     $moneyEarned = floatval($moneyEarned + $cote /*$outcome->getCote()*/);
                 }
                 else
@@ -58,6 +58,7 @@ class ResultController extends Controller
 
     public function createStrategyAction($strategyLabel)
     {
+        ini_set('max_execution_time', 18000);
         $strategy = new Strategy();
         $strategy->setLabelStrategy($strategyLabel);
         $strategy->setReturnOnInvestment(0.0);
@@ -101,8 +102,9 @@ class ResultController extends Controller
      */
     public function getAction()
     {
+        ini_set('max_execution_time', 18000);
         //$apiContent = file_get_contents("https://www.parionssport.fr/api/1n2/resultats?date=".strftime("%Y%m%d", mktime(0, 0, 0, date('m'), date('d')-1, date('y'))));
-        $apiContent = file_get_contents("https://www.parionssport.fr/api/1n2/resultats?date=20160129");
+        $apiContent = file_get_contents("https://www.parionssport.fr/api/1n2/resultats?date=20160201");
         $resultInformations = json_decode($apiContent);
         $repositoryResult = $this->getDoctrine()->getManager()->getRepository('BSResultBundle:Result');
         $repositoryMarketResult = $this->getDoctrine()->getManager()->getRepository('BSResultBundle:MarketResult');
@@ -141,7 +143,7 @@ class ResultController extends Controller
                     $localMarketRes->setResultat("Exterieur");
                 }
                 else {
-                    $localMarketRes->setResultat($marketRes->resultat);
+                    $localMarketRes->setResultat("N");
                 }
                 $localMarketRes->setResult($localResult);
                 $localMarketRes->setEventId($result->eventId);
@@ -172,6 +174,7 @@ class ResultController extends Controller
      */
     public function offerToResultAction()
     {
+        ini_set('max_execution_time', 18000);
         $repositoryOffer = $this->getDoctrine()->getManager()->getRepository('BSOfferBundle:Offer');
         $offerParameterList = $repositoryOffer->getEventId();
 

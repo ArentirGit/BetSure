@@ -34,6 +34,27 @@ class OutcomeRepository extends EntityRepository
         $query->setParameter('labelOutcome', $labelOutcome);
         return $query->getResult();
     }
+    public function getOutcomeByLabelAndMinimumCote($labelOutcome, $coteOutcome)
+    {
+        $query = $this->_em->createQuery('SELECT o FROM BSOfferBundle:Outcome o WHERE o.labelOutcome = :labelOutcome AND o.cote >= :cote');
+        $query->setParameters(array('labelOutcome' => $labelOutcome, 'cote' => $coteOutcome));
+        return $query->getResult();
+    }
+
+    public function getOutcomeByLabelAndMaximumCote($labelOutcome, $coteOutcome)
+    {
+        $query = $this->_em->createQuery('SELECT o FROM BSOfferBundle:Outcome o WHERE o.labelOutcome = :labelOutcome AND o.cote <= :cote');
+        $query->setParameters(array('labelOutcome' => $labelOutcome, 'cote' => $coteOutcome));
+        return $query->getResult();
+    }
+
+    public function getOutcomeByLabelAndBetweenCote($labelOutcome, $coteLowOutcome, $coteUpOutcome)
+    {
+        $query = $this->_em->createQuery('SELECT o FROM BSOfferBundle:Outcome o WHERE o.labelOutcome = :labelOutcome AND o.cote <= :coteUp AND o.cote >= :coteLow');
+        $query->setParameters(array('labelOutcome' => $labelOutcome, 'coteUp' => $coteUpOutcome, 'coteLow' => $coteLowOutcome));
+        return $query->getResult();
+    }
+
 
     public function verifyDuplicate($label, $offer)
     {

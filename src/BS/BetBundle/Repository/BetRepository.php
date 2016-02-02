@@ -26,4 +26,11 @@ class BetRepository extends \Doctrine\ORM\EntityRepository
 
         return $query->getResult();
     }
+
+    public function getAllForUpdate()
+    {
+        $query = $this->_em->createQuery('SELECT b FROM BSBetBundle:Bet b WHERE b.marketResult IS NULL');
+
+        return $query->getResult();
+    }
 }

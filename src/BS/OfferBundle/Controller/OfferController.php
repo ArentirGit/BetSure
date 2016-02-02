@@ -63,7 +63,7 @@ class OfferController extends Controller
      */
     public function getAction()
     {
-        ini_set('max_execution_time', 600); //300 seconds = 5 minutes
+        ini_set('max_execution_time', 18000);
         $offerInformationsArray = array();
         $apiContentFootball = file_get_contents("https://www.parionssport.fr/api/1n2/offre?sport=100");
         $offerFootballInformations = json_decode($apiContentFootball);
