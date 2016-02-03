@@ -15,6 +15,7 @@ class ResultController extends Controller
     public function resultStrategyAction($strategyLabel)
     {
         ini_set('max_execution_time', 18000);
+        ini_set('memory_limit', '-1');
         $strategyRepository = $this->getDoctrine()->getManager()->getRepository('BSResultBundle:Strategy');
         $strategy = $strategyRepository->getByLabel($strategyLabel)[0];
         $strategy->setMoneyBet(0.0);
@@ -173,6 +174,7 @@ class ResultController extends Controller
                 $em->flush();
             }
         }
+
         return new Response("Hello World");
     }
 
@@ -201,5 +203,9 @@ class ResultController extends Controller
         }
     }
         return new Response('Hello World');
+    }
+
+    public function updateResultAction(){
+
     }
 }

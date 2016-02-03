@@ -17,3 +17,8 @@ bs_offer_update_home_outside:
     path:    /Offer/Update
     defaults:
         _controller:    BSOfferBundle:Offer:updateHomeOutside
+
+bs_result_update:
+    path:    /Result/Update
+    defaults:
+        _controller:    BSResultBundle:Result:updateResult

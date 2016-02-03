@@ -26,9 +26,9 @@ class ResultRepository extends \Doctrine\ORM\EntityRepository
         return $query->getResult();
     }
 
-    public function getLabelResult()
+    public function getAllResult()
     {
-        $query = $this->_em->createQuery('SELECT r.eventLabel FROM BSResultBundle:Result r');
+        $query = $this->_em->createQuery('SELECT r FROM BSResultBundle:Result r');
         return $query->getResult();
     }
 }
