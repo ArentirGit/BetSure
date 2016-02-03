@@ -49,6 +49,12 @@ class Strategy
      */
     private $returnOnInvestment;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="badSportId", type="string")
+     */
+    private $badSportId;
 
     /**
      * Get id
@@ -84,6 +90,7 @@ class Strategy
         return $this->labelStrategy;
     }
 
+
     /**
      * Set returnOnInvestment
      *
@@ -107,5 +114,52 @@ class Strategy
     {
         return $this->returnOnInvestment;
     }
-}
 
+    /**
+     * Set moneyBet
+     *
+     * @param float $moneyBet
+     *
+     * @return Strategy
+     */
+    public function setMoneyBet($moneyBet)
+    {
+        $this->moneyBet = $moneyBet;
+
+        return $this;
+    }
+
+    /**
+     * Get moneyBet
+     *
+     * @return float
+     */
+    public function getMoneyBet()
+    {
+        return $this->moneyBet;
+    }
+
+    /**
+     * Set moneyEarned
+     *
+     * @param float $moneyEarned
+     *
+     * @return Strategy
+     */
+    public function setMoneyEarned($moneyEarned)
+    {
+        $this->moneyEarned = $moneyEarned;
+
+        return $this;
+    }
+
+    /**
+     * Get moneyEarned
+     *
+     * @return float
+     */
+    public function getMoneyEarned()
+    {
+        return $this->moneyEarned;
+    }
+}

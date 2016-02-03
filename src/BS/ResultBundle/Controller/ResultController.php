@@ -20,39 +20,48 @@ class ResultController extends Controller
         $strategy->setMoneyBet(0.0);
         $strategy->setMoneyEarned(0.0);
         $betRepository = $this->getDoctrine()->getManager()->getRepository('BSBetBundle:Bet');
-        $homeBetList = $betRepository->getAllByStrategy($strategy);
+        $betList = $betRepository->getAllByStrategy($strategy);
         $moneyBet = 0.0;
         $moneyEarned = 0.0;
-        foreach($homeBetList as $homeBet)
-        {
-            if(!is_null($homeBet->getMarketResult()))
-            {
-                $outcome = $homeBet->getOutcome();
-                $marketResult = $homeBet->getMarketResult();
-                if($outcome->getLabelOutcome() == $marketResult->getResultat())
-                {
-                    $moneyBet = floatval($moneyBet + 1.0);
-                    $cote = "";
-                    $cote = $cote.$outcome->getCote()[0];
-                    $cote = $cote.".";
-                    $cote = $cote.$outcome->getCote()[2];
-                    $cote = $cote.$outcome->getCote()[3];
-                    $cote = floatval($cote);
-                    $moneyEarned = floatval($moneyEarned + $cote /*$outcome->getCote()*/);
-                }
-                else
-                {
-                    $moneyBet = floatval($moneyBet + 1.0);
+        $sportArray = array("100" => 0, "601600" => 0, "600" => 0, "964500" => 0, "1200" => 0, "1100" => 0, "2100" => 0, "700" => 0);
+        if(!empty($betList)) {
+            foreach ($betList as $homeBet) {
+                if (!is_null($homeBet->getMarketResult())) {
+                    $outcome = $homeBet->getOutcome();
+                    $marketResult = $homeBet->getMarketResult();
+                    if ($outcome->getLabelOutcome() == $marketResult->getResultat()) {
+                        $moneyBet = $moneyBet + 1.0;
+                        $cote = "";
+                        $cote = $cote . $outcome->getCote()[0];
+                        $cote = $cote . ".";
+                        $cote = $cote . $outcome->getCote()[2];
+                        $cote = $cote . $outcome->getCote()[3];
+                        $cote = floatval($cote);
+                        $moneyEarned = $moneyEarned + $cote /*$outcome->getCote()*/;
+                    } else {
+                        $moneyBet = $moneyBet + 1.0;
+                        $sportId = $homeBet->getMarketResult()->getResult()->getSportId();
+                        $sportArray[$sportId] = $sportArray[$sportId] + 1;
+                    }
                 }
             }
-        }
-        $strategy->setMoneyBet(floatval($strategy->getMoneyBet() + $moneyBet));
-        $strategy->setMoneyEarned(floatval($strategy->getMoneyEarned() + $moneyEarned));
-        $strategy->setReturnOnInvestment(floatval($strategy->getMoneyEarned() / $strategy->getMoneyBet()));
+            $matchLost = 0;
+            $badSportId = null;
+            foreach ($sportArray as $sportId => $value) {
+                if ($value > $matchLost) {
+                    $matchLost = $value;
+                    $badSportId = $sportId;
+                }
+            }
+            $strategy->setBadSportId($badSportId);
+            $strategy->setMoneyBet($strategy->getMoneyBet() + $moneyBet);
+            $strategy->setMoneyEarned($strategy->getMoneyEarned() + $moneyEarned);
+            $strategy->setReturnOnInvestment($strategy->getMoneyEarned() / $strategy->getMoneyBet());
 
-        $em = $this->getDoctrine()->getManager();
-        $em->persist($strategy);
-        $em->flush();
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($strategy);
+            $em->flush();
+        }
         return new Response("Hello World");
     }
 
@@ -104,7 +113,7 @@ class ResultController extends Controller
     {
         ini_set('max_execution_time', 18000);
         //$apiContent = file_get_contents("https://www.parionssport.fr/api/1n2/resultats?date=".strftime("%Y%m%d", mktime(0, 0, 0, date('m'), date('d')-1, date('y'))));
-        $apiContent = file_get_contents("https://www.parionssport.fr/api/1n2/resultats?date=20160201");
+        $apiContent = file_get_contents("https://www.parionssport.fr/api/1n2/resultats?date=20160202");
         $resultInformations = json_decode($apiContent);
         $repositoryResult = $this->getDoctrine()->getManager()->getRepository('BSResultBundle:Result');
         $repositoryMarketResult = $this->getDoctrine()->getManager()->getRepository('BSResultBundle:MarketResult');
@@ -180,17 +189,17 @@ class ResultController extends Controller
 
         $repositoryResult = $this->getDoctrine()->getManager()->getRepository('BSResultBundle:Result');
         $em = $this->getDoctrine()->getManager();
-        foreach($offerParameterList as $offerParameter)
-        {
+        if (!empty($offerParameterList)) {
+        foreach ($offerParameterList as $offerParameter) {
             $Result = $repositoryResult->getResultByEventId($offerParameter['eventId']);
-            if(!empty($Result))
-            {
+            if (!empty($Result)) {
                 $Result[0]->setMarketId($offerParameter['marketId']);
                 $Result[0]->setSportId($offerParameter['sportId']);
                 $em->persist($Result[0]);
                 $em->flush();
             }
         }
+    }
         return new Response('Hello World');
     }
 }

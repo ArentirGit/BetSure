@@ -41,6 +41,13 @@ class OutcomeRepository extends EntityRepository
         return $query->getResult();
     }
 
+    public function getOutcomeByLabelAndMinimumCoteAndWBS($labelOutcome, $coteOutcome, $sportId)
+    {
+        $query = $this->_em->createQuery('SELECT ou, o FROM BSOfferBundle:Outcome ou JOIN ou.offer o WHERE ou.labelOutcome = :labelOutcome AND ou.cote >= :cote AND o.sportId <> :sportId');
+        $query->setParameters(array('labelOutcome' => $labelOutcome, 'cote' => $coteOutcome, 'sportId' => $sportId));
+        return $query->getResult();
+    }
+
     public function getOutcomeByLabelAndMaximumCote($labelOutcome, $coteOutcome)
     {
         $query = $this->_em->createQuery('SELECT o FROM BSOfferBundle:Outcome o WHERE o.labelOutcome = :labelOutcome AND o.cote <= :cote');
@@ -60,6 +67,13 @@ class OutcomeRepository extends EntityRepository
     {
         $query = $this->_em->createQuery('SELECT o FROM BSOfferBundle:Outcome o WHERE o.indexOffer = :indexOffer AND o.eventId = :eventId AND o.labelOutcome = :labelOutcome');
         $query->setParameters(array('eventId' => $offer->eventId, 'indexOffer' => $offer->index, 'labelOutcome' => $label));
+        return $query->getResult();
+    }
+
+    public function getOutcomeByLabelAndBetweenCoteAndWBS($labelOutcome, $coteLowOutcome, $coteUpOutcome, $sportId)
+    {
+        $query = $this->_em->createQuery('SELECT ou, o FROM BSOfferBundle:Outcome ou JOIN ou.offer o WHERE ou.labelOutcome = :labelOutcome AND ou.cote <= :coteUp AND ou.cote >= :coteLow AND o.sportId <> :sportId');
+        $query->setParameters(array('labelOutcome' => $labelOutcome, 'coteUp' => $coteUpOutcome, 'coteLow' => $coteLowOutcome, 'sportId' => $sportId));
         return $query->getResult();
     }
 }

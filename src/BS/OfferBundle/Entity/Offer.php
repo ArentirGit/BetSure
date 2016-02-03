@@ -33,7 +33,7 @@ class Offer
     /**
      * @var string
      *
-     * @ORM\Column(name="homeTeamId", type="string", length=255)
+     * @ORM\Column(name="homeTeamId", type="string", length=255, nullable=true)
      */
     private $homeTeamId;
 
@@ -145,7 +145,6 @@ class Offer
     public function setSportId($sportId)
     {
         $this->sportId = $sportId;
-
         return $this;
     }
 
