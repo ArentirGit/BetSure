@@ -217,4 +217,19 @@ class BetController extends Controller
         }
         return new Response("Hello World");
     }
+
+    public function getToPlayAction()
+    {
+        $strategyRepository = $this->getDoctrine()->getManager()->getRepository('BSResultBundle:Strategy');
+        $strategyList = $strategyRepository->getPositive();
+        $betRepository = $this->getDoctrine()->getManager()->getRepository('BSBetBundle:Bet');
+        foreach($strategyList as $strategy)
+        {
+            $betList = $betRepository->getToPlay($strategy);
+            foreach($betList as $bet)
+            {
+                var_dump($bet->getOutcome()->getOffer());
+            }
+        }
+    }
 }

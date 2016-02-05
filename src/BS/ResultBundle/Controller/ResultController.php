@@ -24,12 +24,14 @@ class ResultController extends Controller
         $betList = $betRepository->getAllByStrategy($strategy);
         $moneyBet = 0.0;
         $moneyEarned = 0.0;
-        $sportArray = array("100" => 0, "601600" => 0, "600" => 0, "964500" => 0, "1200" => 0, "1100" => 0, "2100" => 0, "700" => 0);
+        $sportArray = array("100" => array("defeat" => 0, "played" => 0), "601600" => array("defeat" => 0, "played" => 0), "600" => array("defeat" => 0, "played" => 0), "964500" => array("defeat" => 0, "played" => 0), "1200" => array("defeat" => 0, "played" => 0), "1100" => array("defeat" => 0, "played" => 0), "2100"=> array("defeat" => 0, "played" => 0), "700" => array("defeat" => 0, "played" => 0));
         if(!empty($betList)) {
-            foreach ($betList as $homeBet) {
-                if (!is_null($homeBet->getMarketResult())) {
-                    $outcome = $homeBet->getOutcome();
-                    $marketResult = $homeBet->getMarketResult();
+            foreach ($betList as $bet) {
+                if (!is_null($bet->getMarketResult())) {
+                    $outcome = $bet->getOutcome();
+                    $marketResult = $bet->getMarketResult();
+                    $sportId = $bet->getMarketResult()->getResult()->getSportId();
+                    $sportArray[$sportId]['played'] = $sportArray[$sportId]['played'] + 1.0;
                     if ($outcome->getLabelOutcome() == $marketResult->getResultat()) {
                         $moneyBet = $moneyBet + 1.0;
                         $cote = "";
@@ -40,20 +42,23 @@ class ResultController extends Controller
                         $cote = floatval($cote);
                         $moneyEarned = $moneyEarned + $cote /*$outcome->getCote()*/;
                     } else {
+                        $sportArray[$sportId]['defeat'] = $sportArray[$sportId]['defeat'] + 1.0;
                         $moneyBet = $moneyBet + 1.0;
-                        $sportId = $homeBet->getMarketResult()->getResult()->getSportId();
-                        $sportArray[$sportId] = $sportArray[$sportId] + 1;
                     }
                 }
             }
-            $matchLost = 0;
+            $badRate = 0.0;
             $badSportId = null;
-            foreach ($sportArray as $sportId => $value) {
-                if ($value > $matchLost) {
-                    $matchLost = $value;
-                    $badSportId = $sportId;
+            foreach ($sportArray as $sportId => $stats) {
+                if($stats['played'] != 0) {
+                    $rate = (float)$stats['defeat'] / $stats['played'];
+                    if ($rate > $badRate) {
+                        $badRate = $rate;
+                        $badSportId = $sportId;
+                    }
                 }
             }
+
             $strategy->setBadSportId($badSportId);
             $strategy->setMoneyBet($strategy->getMoneyBet() + $moneyBet);
             $strategy->setMoneyEarned($strategy->getMoneyEarned() + $moneyEarned);
@@ -62,6 +67,10 @@ class ResultController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($strategy);
             $em->flush();
+
+            var_dump($strategy->getMoneyEarned() / $strategy->getMoneyBet());
+            var_dump($badRate);
+            echo "<br>";
         }
         return new Response("Hello World");
     }
@@ -114,7 +123,7 @@ class ResultController extends Controller
     {
         ini_set('max_execution_time', 18000);
         //$apiContent = file_get_contents("https://www.parionssport.fr/api/1n2/resultats?date=".strftime("%Y%m%d", mktime(0, 0, 0, date('m'), date('d')-1, date('y'))));
-        $apiContent = file_get_contents("https://www.parionssport.fr/api/1n2/resultats?date=20160202");
+        $apiContent = file_get_contents("https://www.parionssport.fr/api/1n2/resultats?date=20160204");
         $resultInformations = json_decode($apiContent);
         $repositoryResult = $this->getDoctrine()->getManager()->getRepository('BSResultBundle:Result');
         $repositoryMarketResult = $this->getDoctrine()->getManager()->getRepository('BSResultBundle:MarketResult');

@@ -17,4 +17,11 @@ class StrategyRepository extends \Doctrine\ORM\EntityRepository
 
         return $query->getResult();
     }
+
+    public function getPositive()
+    {
+        $query = $this->_em->createQuery('SELECT s FROM BSResultBundle:Strategy s WHERE s.returnOnInvestment >= 1');
+
+        return $query->getResult();
+    }
 }

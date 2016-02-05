@@ -21,7 +21,7 @@ class BetRepository extends \Doctrine\ORM\EntityRepository
     public function getAllByStrategy($strategy)
     {
 
-        $query = $this->_em->createQuery('SELECT b FROM BSBetBundle:Bet b WHERE b.strategy = :strategy');
+        $query = $this->_em->createQuery('SELECT b, ou, mr FROM BSBetBundle:Bet b  JOIN b.outcome ou JOIN b.marketResult mr WHERE b.strategy = :strategy');
         $query->setParameter('strategy', $strategy);
 
         return $query->getResult();
@@ -30,6 +30,14 @@ class BetRepository extends \Doctrine\ORM\EntityRepository
     public function getAllForUpdate()
     {
         $query = $this->_em->createQuery('SELECT b FROM BSBetBundle:Bet b WHERE b.marketResult IS NULL');
+
+        return $query->getResult();
+    }
+
+    public function getToPlay($strategy)
+    {
+        $query = $this->_em->createQuery('SELECT b, ou, o FROM BSBetBundle:Bet b JOIN b.outcome ou JOIN ou.offer o WHERE b.strategy = :strategy AND b.marketResult IS NULL');
+        $query->setParameter('strategy', $strategy);
 
         return $query->getResult();
     }

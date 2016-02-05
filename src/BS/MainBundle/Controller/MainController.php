@@ -12,7 +12,6 @@ class MainController extends Controller
         ini_set('max_execution_time', 18000);
         ini_set('memory_limit', '-1');
 
-
         /*$this->forward('BSOfferBundle:Offer:get');
         $this->forward('BSResultBundle:Result:get');*/
 
@@ -65,7 +64,7 @@ class MainController extends Controller
 
 
 
-        /*$this->forward('BSResultBundle:Result:resultStrategy', array('strategyLabel' => 'HomeBetween110120'));
+        $this->forward('BSResultBundle:Result:resultStrategy', array('strategyLabel' => 'HomeBetween110120'));
         $this->forward('BSResultBundle:Result:resultStrategy', array('strategyLabel' => 'HomeBetween120130'));
         $this->forward('BSResultBundle:Result:resultStrategy', array('strategyLabel' => 'HomeBetween130140'));
         $this->forward('BSResultBundle:Result:resultStrategy', array('strategyLabel' => 'HomeBetween140150'));
@@ -105,7 +104,7 @@ class MainController extends Controller
         $this->forward('BSResultBundle:Result:resultStrategy', array('strategyLabel' => 'OutsideBetween300350'));
         $this->forward('BSResultBundle:Result:resultStrategy', array('strategyLabel' => 'OutsideBetween350400'));
 
-        $this->forward('BSResultBundle:Result:resultStrategy', array('strategyLabel' => 'OutsideUpper400'));*/
+        $this->forward('BSResultBundle:Result:resultStrategy', array('strategyLabel' => 'OutsideUpper400'));
 
 
 
@@ -152,10 +151,10 @@ class MainController extends Controller
 
         $this->forward('BSBetBundle:Bet:getMinimumPriceWBS', array('labelStrategy' => 'OutsideUpper400', 'outcomeCote' => '4,00'));*/
 
-        /*$this->forward('BSBetBundle:Bet:update');*/
+        //$this->forward('BSBetBundle:Bet:update');
 
 
-        $this->forward('BSResultBundle:Result:resultStrategy', array('strategyLabel' => 'HomeBetween110120WBS'));
+        /*$this->forward('BSResultBundle:Result:resultStrategy', array('strategyLabel' => 'HomeBetween110120WBS'));
         $this->forward('BSResultBundle:Result:resultStrategy', array('strategyLabel' => 'HomeBetween120130WBS'));
         $this->forward('BSResultBundle:Result:resultStrategy', array('strategyLabel' => 'HomeBetween130140WBS'));
         $this->forward('BSResultBundle:Result:resultStrategy', array('strategyLabel' => 'HomeBetween140150WBS'));
@@ -195,9 +194,9 @@ class MainController extends Controller
         $this->forward('BSResultBundle:Result:resultStrategy', array('strategyLabel' => 'OutsideBetween300350WBS'));
         $this->forward('BSResultBundle:Result:resultStrategy', array('strategyLabel' => 'OutsideBetween350400WBS'));
 
-        $this->forward('BSResultBundle:Result:resultStrategy', array('strategyLabel' => 'OutsideUpper400WBS'));
+        $this->forward('BSResultBundle:Result:resultStrategy', array('strategyLabel' => 'OutsideUpper400WBS'));*/
 
-
+        //$this->forward('BSBetBundle:Bet:getToPlay');
 
         return new Response("Hello World");
     }
