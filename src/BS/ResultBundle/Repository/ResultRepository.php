@@ -31,4 +31,12 @@ class ResultRepository extends \Doctrine\ORM\EntityRepository
         $query = $this->_em->createQuery('SELECT r FROM BSResultBundle:Result r');
         return $query->getResult();
     }
+
+    public function getResultByTeamId($teamId)
+    {
+        $query = $this->_em->createQuery('SELECT r FROM BSResultBundle:Result r WHERE r.homeTeamId = :id OR r.outsideTeamId = :id');
+        $query->setParameter('id',$teamId);
+        return $query->getResult();
+    }
+
 }

@@ -35,6 +35,47 @@ class Team
      */
     private $competitionId;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="homeVictory", type="string", length=255)
+     */
+    private $homeVictory;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="homeDefeat", type="string", length=255)
+     */
+    private $homeDefeat;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="outsideVictory", type="string", length=255)
+     */
+    private $outsideVictory;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="outsideDefeat", type="string", length=255)
+     */
+    private $outsideDefeat;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="rank", type="string", length=255)
+     */
+    private $rank;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="points", type="string", length=255)
+     */
+    private $points;
 
     /**
      * Get id
@@ -92,5 +133,149 @@ class Team
     public function getCompetitionId()
     {
         return $this->competitionId;
+    }
+
+    /**
+     * Set homeVictory
+     *
+     * @param string $homeVictory
+     *
+     * @return Team
+     */
+    public function setHomeVictory($homeVictory)
+    {
+        $this->homeVictory = $homeVictory;
+
+        return $this;
+    }
+
+    /**
+     * Get homeVictory
+     *
+     * @return string
+     */
+    public function getHomeVictory()
+    {
+        return $this->homeVictory;
+    }
+
+    /**
+     * Set homeDefeat
+     *
+     * @param string $homeDefeat
+     *
+     * @return Team
+     */
+    public function setHomeDefeat($homeDefeat)
+    {
+        $this->homeDefeat = $homeDefeat;
+
+        return $this;
+    }
+
+    /**
+     * Get homeDefeat
+     *
+     * @return string
+     */
+    public function getHomeDefeat()
+    {
+        return $this->homeDefeat;
+    }
+
+    /**
+     * Set outsideVictory
+     *
+     * @param string $outsideVictory
+     *
+     * @return Team
+     */
+    public function setOutsideVictory($outsideVictory)
+    {
+        $this->outsideVictory = $outsideVictory;
+
+        return $this;
+    }
+
+    /**
+     * Get outsideVictory
+     *
+     * @return string
+     */
+    public function getOutsideVictory()
+    {
+        return $this->outsideVictory;
+    }
+
+    /**
+     * Set outsideDefeat
+     *
+     * @param string $outsideDefeat
+     *
+     * @return Team
+     */
+    public function setOutsideDefeat($outsideDefeat)
+    {
+        $this->outsideDefeat = $outsideDefeat;
+
+        return $this;
+    }
+
+    /**
+     * Get outsideDefeat
+     *
+     * @return string
+     */
+    public function getOutsideDefeat()
+    {
+        return $this->outsideDefeat;
+    }
+
+    /**
+     * Set rank
+     *
+     * @param string $rank
+     *
+     * @return Team
+     */
+    public function setRank($rank)
+    {
+        $this->rank = $rank;
+
+        return $this;
+    }
+
+    /**
+     * Get rank
+     *
+     * @return string
+     */
+    public function getRank()
+    {
+        return $this->rank;
+    }
+
+    /**
+     * Set points
+     *
+     * @param string $points
+     *
+     * @return Team
+     */
+    public function setPoints($points)
+    {
+        $this->points = $points;
+
+        return $this;
+    }
+
+    /**
+     * Get points
+     *
+     * @return string
+     */
+    public function getPoints()
+    {
+        return $this->points;
     }
 }

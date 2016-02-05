@@ -2,3 +2,8 @@ bs_team_get:
     path:    /Team/Get
     defaults:
         _controller:    BSTeamBundle:Team:get
+
+bs_team_get_result:
+    path:    /Team/Result/Get
+    defaults:
+        _controller:    BSTeamBundle:Team:getTeamResult

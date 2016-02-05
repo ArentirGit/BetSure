@@ -26,4 +26,11 @@ class MarketResultRepository extends \Doctrine\ORM\EntityRepository
         $query->setParameters(array('eventId' => $bet->getOutcome()->getEventId(), 'indexMarketResult' => $bet->getOutcome()->getIndexOffer()));
         return $query->getResult();
     }
+
+    public function getVictory($resultId)
+    {
+        $query = $this->_em->createQuery('SELECT m FROM BSResultBundle:MarketResult m WHERE m.result  = :resultId AND m.marketType = :marketType');
+        $query->setParameters(array('resultId' => $resultId, 'marketType' => '1/N/2'));
+        return $query->getResult();
+    }
 }
