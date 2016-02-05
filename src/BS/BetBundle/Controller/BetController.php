@@ -223,13 +223,25 @@ class BetController extends Controller
         $strategyRepository = $this->getDoctrine()->getManager()->getRepository('BSResultBundle:Strategy');
         $strategyList = $strategyRepository->getPositive();
         $betRepository = $this->getDoctrine()->getManager()->getRepository('BSBetBundle:Bet');
+        $offerList = array();
         foreach($strategyList as $strategy)
         {
             $betList = $betRepository->getToPlay($strategy);
             foreach($betList as $bet)
             {
-                var_dump($bet->getOutcome()->getOffer());
+                array_push($offerList, $bet->getOutcome()->getOffer());
             }
         }
+        $message = \Swift_Message::newInstance()
+            ->setSubject('Paris à jouer '.strftime("%Y/%m/%d", mktime(0, 0, 0, date('m'), date('d'), date('y'))))
+            ->setFrom('arentir.contact@gmail.com')
+            ->setTo('arentir.contact@gmail.com')
+            //->setTo('bjorn.dagens@gmail.com')
+            ->setBody($this->renderView('BSBetBundle:Bet:offerToPlay.html.twig', array('offerList' => $offerList, 'strategyList' => $strategyList)))
+            ->setContentType('text/html');
+
+        $this->get('mailer')->send($message);
+
+        return new Response("Hello World");
     }
 }
