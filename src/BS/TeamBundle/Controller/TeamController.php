@@ -23,19 +23,19 @@ class TeamController extends Controller
         foreach ($ResultList as $Result) {
             List($dom, $ext) = explode("-", $Result->getEventLabel());
             // parsing of team name with match title
-            $teamList = $repositoryTeam->verifyDuplicate($dom);
+            $teamList = $repositoryTeam->verifyDuplicate($dom, $Result->getCompetitionID());
             //verify if a home playing team is already present in the Team table
             if(empty($teamList)){
                 $team = new Team();
                 $team->setName($dom);
                 $team->setCompetitionId($Result->getCompetitionID());
-                var_dump($Result->getCompetitionID());
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($team);
                 $em->flush();
                 // add in the Team table the home team
+                var_dump($team);
             }
-            $teamList = $repositoryTeam->verifyDuplicate($ext);
+            $teamList = $repositoryTeam->verifyDuplicate($ext, $Result->getCompetitionID());
             if(empty($teamList)){
                 $team = new Team();
                 $team->setName($ext);
@@ -43,10 +43,10 @@ class TeamController extends Controller
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($team);
                 $em->flush();
+                var_dump($team);
             }
-            var_dump($Result);
-            $teamHome = $repositoryTeam->verifyDuplicate($dom);
-            $teamOutside = $repositoryTeam->verifyDuplicate($ext);
+            $teamHome = $repositoryTeam->verifyDuplicate($dom, $Result->getCompetitionID());
+            $teamOutside = $repositoryTeam->verifyDuplicate($ext, $Result->getCompetitionID());
             $Result->setHomeTeamId($teamHome[0]->getId());
             $Result->setOutsideTeamId($teamOutside[0]->getId());
             $em = $this->getDoctrine()->getManager();
@@ -56,16 +56,13 @@ class TeamController extends Controller
         return new Response('');
     }
 
-    public function getTeamResultAction(){
+    public function initSeasonAction(){
+
         ini_set('max_execution_time', 18000);
         $teamRepository = $this->getDoctrine()->getManager()->getRepository('BSTeamBundle:Team');
         $teamList = $teamRepository->findAll();
 
-        $resultRepository = $this->getDoctrine()->getManager()->getRepository('BSResultBundle:Result');
-
-        $marketRepository = $this->getDoctrine()->getManager()->getRepository('BSResultBundle:MarketResult');
-
-        foreach($teamList as $team){
+        foreach($teamList as $team) {
             $team->setHomeVictory("0");
             $team->setHomeDefeat("0");
             $team->setOutsideVictory("0");
@@ -75,18 +72,31 @@ class TeamController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($team);
             $em->flush();
-            $resultList = $resultRepository->getResultByTeamId($team->getId());
-            foreach($resultList as $result){
-                $marketResult = $marketRepository->getVictory($result->getId());
-                if($result->getSportId() == 100) {
-                    if ($result->getHomeTeamId() == $team->getId()) {
-                        if ($marketResult[0]->getResultat() == 'Domicile') {
+        }
+        return new Response('');
+    }
+
+    public function getTeamResultAction(){
+        ini_set('max_execution_time', 18000);
+
+        $teamRepository = $this->getDoctrine()->getManager()->getRepository('BSTeamBundle:Team');
+        $teamList = $teamRepository->findAll();
+        $marketRepository = $this->getDoctrine()->getManager()->getRepository('BSResultBundle:MarketResult');
+
+        foreach($teamList as $team){
+            $resultAndMarketList = $marketRepository->getResultJoinMarket($team->getId());
+            foreach($resultAndMarketList as $result){
+                //var_dump($result);
+                if($result->getResult()->getSportId() == 100 and $result->getResult()->getCompetitionID() == $team->getCompetitionId()) {
+                    var_dump($team->getName() + " : " + $team->getCompetition() + "\n" + $result->getResult()->getCompetitionID());
+                    if ($result->getResult()->getHomeTeamId() == $team->getId()) {
+                        if ($result->getResultat() == 'Domicile') {
                             $team->setHomeVictory($team->getHomeVictory() + 1);
                             $team->setPoints($team->getPoints() + 3);
                             $em = $this->getDoctrine()->getManager();
                             $em->persist($team);
                             $em->flush();
-                        } else if ($marketResult[0]->getResultat() == 'Exterieur') {
+                        } else if ($result->getResultat() == 'Exterieur') {
                             $team->setOutsideDefeat($team->getOutsideDefeat() + 1);
                             $em = $this->getDoctrine()->getManager();
                             $em->persist($team);
@@ -98,12 +108,12 @@ class TeamController extends Controller
                             $em->flush();
                         }
                     } else {
-                        if ($marketResult[0]->getResultat() == 'Domicile') {
+                        if ($result->getResultat() == 'Domicile') {
                             $team->setHomeDefeat($team->getHomeDefeat() + 1);
                             $em = $this->getDoctrine()->getManager();
                             $em->persist($team);
                             $em->flush();
-                        } else if ($marketResult[0]->getResultat() == 'Exterieur') {
+                        } else if ($result->getResultat() == 'Exterieur') {
                             $team->setOutsideVictory($team->getOutsideVictory() + 1);
                             $team->setPoints($team->getPoints() + 3);
                             $em = $this->getDoctrine()->getManager();
@@ -118,8 +128,8 @@ class TeamController extends Controller
                     }
                 }
             }
-            var_dump($team);
         }
+        return new Response('');
     }
 }
 ?>

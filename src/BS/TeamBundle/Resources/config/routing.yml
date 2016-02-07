@@ -7,3 +7,8 @@ bs_team_get_result:
     path:    /Team/Result/Get
     defaults:
         _controller:    BSTeamBundle:Team:getTeamResult
+
+bs_team_init_season:
+    path:    /Team/Init/Season
+    defaults:
+        _controller:    BSTeamBundle:Team:initSeason

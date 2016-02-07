@@ -39,4 +39,5 @@ class ResultRepository extends \Doctrine\ORM\EntityRepository
         return $query->getResult();
     }
 
+
 }

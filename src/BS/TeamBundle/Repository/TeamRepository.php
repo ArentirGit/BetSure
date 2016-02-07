@@ -11,10 +11,10 @@ use Doctrine\ORM\EntityRepository;
  */
 class TeamRepository extends \Doctrine\ORM\EntityRepository
 {
-    public function verifyDuplicate($teamName)
+    public function verifyDuplicate($teamName, $competitionId)
     {
-        $query = $this->_em->createQuery('SELECT t FROM BSTeamBundle:Team t WHERE t.name = :searchName');
-        $query->setParameter('searchName', $teamName);
+        $query = $this->_em->createQuery('SELECT t FROM BSTeamBundle:Team t WHERE t.name = :teamName AND t.competitionId = :competitionId');
+        $query->setParameters(Array('teamName' => $teamName, 'competitionId' => $competitionId));
         return $query->getResult();
     }
 

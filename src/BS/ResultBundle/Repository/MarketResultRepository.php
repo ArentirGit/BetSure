@@ -33,4 +33,12 @@ class MarketResultRepository extends \Doctrine\ORM\EntityRepository
         $query->setParameters(array('resultId' => $resultId, 'marketType' => '1/N/2'));
         return $query->getResult();
     }
+
+    public function getResultJoinMarket($teamId)
+    {
+        $query = $this->_em->createQuery('SELECT mr, r FROM BSResultBundle:MarketResult mr JOIN mr.result r WHERE mr.marketType = :marketType AND (r.homeTeamId = :id OR r.outsideTeamId = :id)');
+        $query->setParameters(array('id' => $teamId, 'marketType' => '1/N/2'));
+        return $query->getResult();
+    }
+
 }

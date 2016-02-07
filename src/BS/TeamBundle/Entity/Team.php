@@ -38,44 +38,45 @@ class Team
     /**
      * @var string
      *
-     * @ORM\Column(name="homeVictory", type="string", length=255)
+     * @ORM\Column(name="homeVictory", type="string", length=255, nullable=true)
      */
     private $homeVictory;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="homeDefeat", type="string", length=255)
+     * @ORM\Column(name="homeDefeat", type="string", length=255, nullable=true)
      */
     private $homeDefeat;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="outsideVictory", type="string", length=255)
+     * @ORM\Column(name="outsideVictory", type="string", length=255, nullable=true)
      */
     private $outsideVictory;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="outsideDefeat", type="string", length=255)
+     * @ORM\Column(name="outsideDefeat", type="string", length=255, nullable=true)
      */
     private $outsideDefeat;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="rank", type="string", length=255)
+     * @ORM\Column(name="rank", type="string", length=255, nullable=true)
      */
     private $rank;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="points", type="string", length=255)
+     * @ORM\Column(name="points", type="string", length=255, nullable=true)
      */
     private $points;
+
 
     /**
      * Get id
