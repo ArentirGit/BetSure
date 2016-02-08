@@ -123,7 +123,7 @@ class ResultController extends Controller
     {
         ini_set('max_execution_time', 18000);
         //$apiContent = file_get_contents("https://www.parionssport.fr/api/1n2/resultats?date=".strftime("%Y%m%d", mktime(0, 0, 0, date('m'), date('d')-1, date('y'))));
-        $apiContent = file_get_contents("https://www.parionssport.fr/api/1n2/resultats?date=20160204");
+        $apiContent = file_get_contents("https://www.parionssport.fr/api/1n2/resultats?date=20160206");
         $resultInformations = json_decode($apiContent);
         $repositoryResult = $this->getDoctrine()->getManager()->getRepository('BSResultBundle:Result');
         $repositoryMarketResult = $this->getDoctrine()->getManager()->getRepository('BSResultBundle:MarketResult');
