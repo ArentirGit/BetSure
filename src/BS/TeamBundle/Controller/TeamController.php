@@ -80,55 +80,52 @@ class TeamController extends Controller
         ini_set('max_execution_time', 18000);
 
         $teamRepository = $this->getDoctrine()->getManager()->getRepository('BSTeamBundle:Team');
-        $teamList = $teamRepository->findAll();
+        //$teamList = $teamRepository->findAll();
         $marketRepository = $this->getDoctrine()->getManager()->getRepository('BSResultBundle:MarketResult');
-
-        foreach($teamList as $team){
-            $resultAndMarketList = $marketRepository->getResultJoinMarket($team->getId());
+            $resultAndMarketList = $marketRepository->getResultJoinMarket();
             foreach($resultAndMarketList as $result){
-                //var_dump($result);
-                if($result->getResult()->getSportId() == 100 and $result->getResult()->getCompetitionID() == $team->getCompetitionId()) {
-                    var_dump($team->getName() + " : " + $team->getCompetition() + "\n" + $result->getResult()->getCompetitionID());
-                    if ($result->getResult()->getHomeTeamId() == $team->getId()) {
-                        if ($result->getResultat() == 'Domicile') {
-                            $team->setHomeVictory($team->getHomeVictory() + 1);
-                            $team->setPoints($team->getPoints() + 3);
-                            $em = $this->getDoctrine()->getManager();
-                            $em->persist($team);
-                            $em->flush();
-                        } else if ($result->getResultat() == 'Exterieur') {
-                            $team->setOutsideDefeat($team->getOutsideDefeat() + 1);
-                            $em = $this->getDoctrine()->getManager();
-                            $em->persist($team);
-                            $em->flush();
-                        } else {
-                            $team->setPoints($team->getPoints() + 1);
-                            $em = $this->getDoctrine()->getManager();
-                            $em->persist($team);
-                            $em->flush();
-                        }
-                    } else {
-                        if ($result->getResultat() == 'Domicile') {
-                            $team->setHomeDefeat($team->getHomeDefeat() + 1);
-                            $em = $this->getDoctrine()->getManager();
-                            $em->persist($team);
-                            $em->flush();
-                        } else if ($result->getResultat() == 'Exterieur') {
-                            $team->setOutsideVictory($team->getOutsideVictory() + 1);
-                            $team->setPoints($team->getPoints() + 3);
-                            $em = $this->getDoctrine()->getManager();
-                            $em->persist($team);
-                            $em->flush();
-                        } else {
-                            $team->setPoints($team->getPoints() + 1);
-                            $em = $this->getDoctrine()->getManager();
-                            $em->persist($team);
-                            $em->flush();
-                        }
+                    $teamH = $teamRepository->getTeamByCompetition($result->getResult()->getCompetitionID(), $result->getResult()->getHomeTeamId());
+                    if ($result->getResultat() == 'Domicile') {
+                        $teamH[0]->setHomeVictory($teamH[0]->getHomeVictory() + 1);
+                        $teamH[0]->setPoints($teamH[0]->getPoints() + 3);
+                        $em = $this->getDoctrine()->getManager();
+                        $em->persist($teamH[0]);
                     }
-                }
+                    else if ($result->getResultat() == 'Exterieur') {
+                        $teamH[0]->setOutsideDefeat($teamH[0]->getOutsideDefeat() + 1);
+                        $em = $this->getDoctrine()->getManager();
+                        $em->persist($teamH[0]);
+                    }
+                    else {
+                        $teamH[0]->setPoints($teamH[0]->getPoints() + 1);
+                        $em = $this->getDoctrine()->getManager();
+                        $em->persist($teamH[0]);
+                    }
+
+                    $teamO = $teamRepository->getTeamByCompetition($result->getResult()->getCompetitionID(), $result->getResult()->getOutsideTeamId());
+                    if ($result->getResultat() == 'Domicile')
+                    {
+                        $teamO[0]->setHomeDefeat($teamO[0]->getHomeDefeat() + 1);
+                        $em = $this->getDoctrine()->getManager();
+                        $em->persist($teamO[0]);
+                        }
+                    else if ($result->getResultat() == 'Exterieur') {
+                        $teamO[0]->setOutsideVictory($teamO[0]->getOutsideVictory() + 1);
+                        $teamO[0]->setPoints($teamO[0]->getPoints() + 3);
+                        $em = $this->getDoctrine()->getManager();
+                        $em->persist($teamO[0]);
+                    }
+                    else
+                    {
+                        $teamO[0]->setPoints($teamO[0]->getPoints() + 1);
+                        $em = $this->getDoctrine()->getManager();
+                        $em->persist($teamO[0]);
+                    }
+                        var_dump($teamH[0]->getName() + " : " + $teamH[0]->getId() + " : " + $teamH[0]->getCompetitionId() + "\n" + $result->getResult()->getHomeTeamId() + "\n");
+                        var_dump($teamH[0]->getName() + " : " + $teamH[0]->getId() + " : " + $teamH[0]->getCompetitionId() + "\n" + $result->getResult()->getOutsideTeamId() + "\n");
+                        $em->flush();
+
             }
-        }
         return new Response('');
     }
 }

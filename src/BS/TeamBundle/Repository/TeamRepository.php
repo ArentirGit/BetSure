@@ -23,4 +23,11 @@ class TeamRepository extends \Doctrine\ORM\EntityRepository
         $query->setParameter('name', $name);
         return $query->getResult();
     }
+
+    public function getTeamByCompetition($competitionId, $teamId){
+        $query = $this->_em->createQuery('SELECT t FROM BSTeamBundle:Team t WHERE t.competitionId = :competitionId AND t.id = :teamId');
+        $query->setParameters(Array('competitionId' => $competitionId, 'teamId' => $teamId));
+        return $query->getResult();
+    }
+
 }
