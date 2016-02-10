@@ -67,10 +67,6 @@ class ResultController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($strategy);
             $em->flush();
-
-            var_dump($strategy->getMoneyEarned() / $strategy->getMoneyBet());
-            var_dump($badRate);
-            echo "<br>";
         }
         return new Response("Hello World");
     }
@@ -122,65 +118,55 @@ class ResultController extends Controller
     public function getAction()
     {
         ini_set('max_execution_time', 18000);
-        //$apiContent = file_get_contents("https://www.parionssport.fr/api/1n2/resultats?date=".strftime("%Y%m%d", mktime(0, 0, 0, date('m'), date('d')-1, date('y'))));
-        $apiContent = file_get_contents("https://www.parionssport.fr/api/1n2/resultats?date=20160206");
-        $resultInformations = json_decode($apiContent);
-        $repositoryResult = $this->getDoctrine()->getManager()->getRepository('BSResultBundle:Result');
-        $repositoryMarketResult = $this->getDoctrine()->getManager()->getRepository('BSResultBundle:MarketResult');
-        foreach($resultInformations as $result)
-        {
-            $localResult = new Result();
-            $localResult->setEventId($result->eventId);
-            $localResult->setEnd($result->end);
-            $localResult->setEventLabel($result->label);
-            $localResult->setCompetition($result->competition);
-            $localResult->setCompetitionID($result->competitionID);
+        for($i=0; $i<10; $i++) {
+            //$apiContent = file_get_contents("https://www.parionssport.fr/api/1n2/resultats?date=".strftime("%Y%m%d", mktime(0, 0, 0, date('m'), date('d')-1, date('y'))));
+            $apiContent = file_get_contents("https://www.parionssport.fr/api/1n2/resultats?date=2016020".$i);
+            $resultInformations = json_decode($apiContent);
+            $repositoryResult = $this->getDoctrine()->getManager()->getRepository('BSResultBundle:Result');
+            $repositoryMarketResult = $this->getDoctrine()->getManager()->getRepository('BSResultBundle:MarketResult');
+            foreach ($resultInformations as $result) {
+                $localResult = new Result();
+                $localResult->setEventId($result->eventId);
+                $localResult->setEnd($result->end);
+                $localResult->setEventLabel($result->label);
+                $localResult->setCompetition($result->competition);
+                $localResult->setCompetitionID($result->competitionID);
 
-            foreach($result->marketRes as $marketRes)
-            {
-                $localMarketRes = new MarketResult();
-                if(strlen(strval($marketRes->index)) == 1)
-                {
-                    $indexMarketResult = "00".strval($marketRes->index);
-                }
-                elseif(strlen(strval($marketRes->index)) == 2)
-                {
-                    $indexMarketResult = "0".strval($marketRes->index);
-                }
-                else
-                {
-                    $indexMarketResult = strval($marketRes->index);
-                }
-                $localMarketRes->setIndexMarketResult($indexMarketResult);
-                $localMarketRes->setMarketType($marketRes->marketType);
-                if($marketRes->resultat == "1")
-                {
-                    $localMarketRes->setResultat("Domicile");
-                }
-                elseif($marketRes->resultat == "3")
-                {
-                    $localMarketRes->setResultat("Exterieur");
-                }
-                else {
-                    $localMarketRes->setResultat("N");
-                }
-                $localMarketRes->setResult($localResult);
-                $localMarketRes->setEventId($result->eventId);
+                foreach ($result->marketRes as $marketRes) {
+                    $localMarketRes = new MarketResult();
+                    if (strlen(strval($marketRes->index)) == 1) {
+                        $indexMarketResult = "00" . strval($marketRes->index);
+                    } elseif (strlen(strval($marketRes->index)) == 2) {
+                        $indexMarketResult = "0" . strval($marketRes->index);
+                    } else {
+                        $indexMarketResult = strval($marketRes->index);
+                    }
+                    $localMarketRes->setIndexMarketResult($indexMarketResult);
+                    $localMarketRes->setMarketType($marketRes->marketType);
+                    if ($marketRes->resultat == "1") {
+                        $localMarketRes->setResultat("Domicile");
+                    } elseif ($marketRes->resultat == "3") {
+                        $localMarketRes->setResultat("Exterieur");
+                    } else {
+                        $localMarketRes->setResultat("N");
+                    }
+                    $localMarketRes->setResult($localResult);
+                    $localMarketRes->setEventId($result->eventId);
 
-                $duplicateMarketResult = $repositoryMarketResult->verifyDuplicate($marketRes, $result);
-                if(empty($duplicateMarketResult))
-                {
+                    $duplicateMarketResult = $repositoryMarketResult->verifyDuplicate($marketRes, $result);
+                    if (empty($duplicateMarketResult)) {
+                        $em = $this->getDoctrine()->getManager();
+                        $em->persist($localMarketRes);
+                        $em->flush();
+                    }
+
+                }
+                $duplicateResult = $repositoryResult->verifyDuplicate($result);
+                if (empty($duplicateResult)) {
                     $em = $this->getDoctrine()->getManager();
-                    $em->persist($localMarketRes);
+                    $em->persist($localResult);
                     $em->flush();
                 }
-
-            }
-            $duplicateResult = $repositoryResult->verifyDuplicate($result);
-            if(empty($duplicateResult)) {
-                $em = $this->getDoctrine()->getManager();
-                $em->persist($localResult);
-                $em->flush();
             }
         }
 

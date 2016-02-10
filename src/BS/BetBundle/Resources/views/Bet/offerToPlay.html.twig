@@ -3,27 +3,27 @@ Voici les paris à jouer pour aujourd'hui :
 <br>
 <br>
 
-{% for strategy in strategyList %}
-    {% for offer in offerList %}
-        Pari n°{{ offer.indexOffer }}
+{% for bet in betList %}
+        Pari n°{{ bet.outcome.offer.indexOffer }}
         <br>
-        Label : {{ offer.labelOffer }}
+        Label : {{ bet.outcome.offer.labelOffer }}
         <br>
-        Heure de fin de disponibilité : {{ offer.end }}
+        Heure de fin de disponibilité : {{ bet.outcome.offer.end }}
         <br>
-        {% if strategy.labelStrategy starts with 'Home.*' %}
+        {% if bet.strategy.labelStrategy starts with 'Home' %}
         Pronostic : 1
         {% endif %}
-        {% if strategy.labelStrategy starts with 'Outside.*' %}
+        {% if bet.strategy.labelStrategy starts with 'Outside' %}
             Pronostic : 2
         {% endif %}
         <br>
         <br>
         <br>
-    {% endfor %}
 {% endfor %}
 
 Merci et à demain pour de nouveaux paris.
+<br>
+<br>
 
 
 L'équipe de BetSure vous remercie et vous souhaite bon gains.

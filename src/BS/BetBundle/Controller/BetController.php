@@ -223,24 +223,26 @@ class BetController extends Controller
         $strategyRepository = $this->getDoctrine()->getManager()->getRepository('BSResultBundle:Strategy');
         $strategyList = $strategyRepository->getPositive();
         $betRepository = $this->getDoctrine()->getManager()->getRepository('BSBetBundle:Bet');
-        $offerList = array();
-        foreach($strategyList as $strategy)
-        {
+        $betToPlayList = array();
+        foreach($strategyList as $strategy) {
             $betList = $betRepository->getToPlay($strategy);
-            foreach($betList as $bet)
-            {
-                array_push($offerList, $bet->getOutcome()->getOffer());
+            foreach ($betList as $bet) {
+                array_push($betToPlayList, $bet);
             }
         }
-        $message = \Swift_Message::newInstance()
-            ->setSubject('Paris à jouer '.strftime("%Y/%m/%d", mktime(0, 0, 0, date('m'), date('d'), date('y'))))
-            ->setFrom('arentir.contact@gmail.com')
-            ->setTo('arentir.contact@gmail.com')
-            //->setTo('bjorn.dagens@gmail.com')
-            ->setBody($this->renderView('BSBetBundle:Bet:offerToPlay.html.twig', array('offerList' => $offerList, 'strategyList' => $strategyList)))
-            ->setContentType('text/html');
+            $message = \Swift_Message::newInstance()
+                ->setSubject('Paris à jouer ' . strftime("%Y/%m/%d", mktime(0, 0, 0, date('m'), date('d'), date('y'))))
+                ->setFrom('arentir.contact@gmail.com')
+                ->setTo('arentir.contact@gmail.com')
+                //->setTo('bjorn.dagens@gmail.com')
+                ->setBody($this->renderView('BSBetBundle:Bet:offerToPlay.html.twig', array('betList' => $betToPlayList)))
+                ->setContentType('text/html');
 
-        $this->get('mailer')->send($message);
+            $this->get('mailer')->send($message);
+        /*$this->container->setParameter('database_name', 'betsure');
+        var_dump($this->container->getParameter('database_name'));*/
+
+
 
         return new Response("Hello World");
     }
