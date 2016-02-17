@@ -12,3 +12,18 @@ bs_team_init_season:
     path:    /Team/Init/Season
     defaults:
         _controller:    BSTeamBundle:Team:initSeason
+
+bs_team_update_rank:
+    path:    /Team/Update/Rank
+    defaults:
+        _controller:    BSTeamBundle:Team:updateRank
+
+bs_team_update_home_rank:
+    path:    /Team/Update/Home/Rank
+    defaults:
+        _controller:    BSTeamBundle:Team:updateHomeRank
+
+bs_team_update_outside_rank:
+    path:    /Team/Update/Outside/Rank
+    defaults:
+        _controller:    BSTeamBundle:Team:updateOutsideRank

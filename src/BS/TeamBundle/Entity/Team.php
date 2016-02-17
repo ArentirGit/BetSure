@@ -45,6 +45,13 @@ class Team
     /**
      * @var string
      *
+     * @ORM\Column(name="homeNull", type="string", length=255, nullable=true)
+     */
+    private $homeNull;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="homeDefeat", type="string", length=255, nullable=true)
      */
     private $homeDefeat;
@@ -59,6 +66,13 @@ class Team
     /**
      * @var string
      *
+     * @ORM\Column(name="outsideNull", type="string", length=255, nullable=true)
+     */
+    private $outsideNull;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="outsideDefeat", type="string", length=255, nullable=true)
      */
     private $outsideDefeat;
@@ -69,6 +83,34 @@ class Team
      * @ORM\Column(name="rank", type="string", length=255, nullable=true)
      */
     private $rank;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="outsideRank", type="string", length=255, nullable=true)
+     */
+    private $outsideRank;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="homeRank", type="string", length=255, nullable=true)
+     */
+    private $homeRank;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="homePoints", type="string", length=255, nullable=true)
+     */
+    private $homePoints;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="outsidePoints", type="string", length=255, nullable=true)
+     */
+    private $outsidePoints;
 
     /**
      * @var string
@@ -278,5 +320,149 @@ class Team
     public function getPoints()
     {
         return $this->points;
+    }
+
+    /**
+     * Set homeNull
+     *
+     * @param string $homeNull
+     *
+     * @return Team
+     */
+    public function setHomeNull($homeNull)
+    {
+        $this->homeNull = $homeNull;
+
+        return $this;
+    }
+
+    /**
+     * Get homeNull
+     *
+     * @return string
+     */
+    public function getHomeNull()
+    {
+        return $this->homeNull;
+    }
+
+    /**
+     * Set outsideNull
+     *
+     * @param string $outsideNull
+     *
+     * @return Team
+     */
+    public function setOutsideNull($outsideNull)
+    {
+        $this->outsideNull = $outsideNull;
+
+        return $this;
+    }
+
+    /**
+     * Get outsideNull
+     *
+     * @return string
+     */
+    public function getOutsideNull()
+    {
+        return $this->outsideNull;
+    }
+
+    /**
+     * Set outsideRank
+     *
+     * @param string $outsideRank
+     *
+     * @return Team
+     */
+    public function setOutsideRank($outsideRank)
+    {
+        $this->outsideRank = $outsideRank;
+
+        return $this;
+    }
+
+    /**
+     * Get outsideRank
+     *
+     * @return string
+     */
+    public function getOutsideRank()
+    {
+        return $this->outsideRank;
+    }
+
+    /**
+     * Set homeRank
+     *
+     * @param string $homeRank
+     *
+     * @return Team
+     */
+    public function setHomeRank($homeRank)
+    {
+        $this->homeRank = $homeRank;
+
+        return $this;
+    }
+
+    /**
+     * Get homeRank
+     *
+     * @return string
+     */
+    public function getHomeRank()
+    {
+        return $this->homeRank;
+    }
+
+    /**
+     * Set homePoints
+     *
+     * @param string $homePoints
+     *
+     * @return Team
+     */
+    public function setHomePoints($homePoints)
+    {
+        $this->homePoints = $homePoints;
+
+        return $this;
+    }
+
+    /**
+     * Get homePoints
+     *
+     * @return string
+     */
+    public function getHomePoints()
+    {
+        return $this->homePoints;
+    }
+
+    /**
+     * Set outsidePoints
+     *
+     * @param string $outsidePoints
+     *
+     * @return Team
+     */
+    public function setOutsidePoints($outsidePoints)
+    {
+        $this->outsidePoints = $outsidePoints;
+
+        return $this;
+    }
+
+    /**
+     * Get outsidePoints
+     *
+     * @return string
+     */
+    public function getOutsidePoints()
+    {
+        return $this->outsidePoints;
     }
 }
