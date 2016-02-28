@@ -119,6 +119,13 @@ class Team
      */
     private $points;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="series", type="string", length=255, nullable=true)
+     */
+    private $series;
+
 
     /**
      * Get id
@@ -416,5 +423,53 @@ class Team
     public function getHomeRank()
     {
         return $this->homeRank;
+    }
+
+    /**
+     * Set homePoints
+     *
+     * @param string $homePoints
+     *
+     * @return Team
+     */
+    public function setHomePoints($homePoints)
+    {
+        $this->homePoints = $homePoints;
+
+        return $this;
+    }
+
+    /**
+     * Get homePoints
+     *
+     * @return string
+     */
+    public function getHomePoints()
+    {
+        return $this->homePoints;
+    }
+
+    /**
+     * Set outsidePoints
+     *
+     * @param string $outsidePoints
+     *
+     * @return Team
+     */
+    public function setOutsidePoints($outsidePoints)
+    {
+        $this->outsidePoints = $outsidePoints;
+
+        return $this;
+    }
+
+    /**
+     * Get outsidePoints
+     *
+     * @return string
+     */
+    public function getOutsidePoints()
+    {
+        return $this->outsidePoints;
     }
 }

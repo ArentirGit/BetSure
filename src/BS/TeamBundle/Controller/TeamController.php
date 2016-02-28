@@ -75,6 +75,7 @@ class TeamController extends Controller
             $team->setPoints("0");
             $team->setHomePoints("0");
             $team->setOutsidePoints("0");
+            $team->setSeries("");
             $em = $this->getDoctrine()->getManager();
             $em->persist($team);
             $em->flush();
@@ -97,11 +98,13 @@ class TeamController extends Controller
                         $teamH[0]->setHomePoints($teamH[0]->getHomePoints()+3);
                         $teamH[0]->setHomeVictory($teamH[0]->getHomeVictory() + 1);
                         $teamH[0]->setPoints($teamH[0]->getPoints() + 3);
+                        $teamH[0]->setSeries("V".$teamH[0]->getSeries());
                         $em = $this->getDoctrine()->getManager();
                         $em->persist($teamH[0]);
                     }
                     else if ($result->getResultat() == 'Exterieur') {
                         $teamH[0]->setOutsideDefeat($teamH[0]->getOutsideDefeat() + 1);
+                        $teamH[0]->setSeries("D".$teamH[0]->getSeries());
                         $em = $this->getDoctrine()->getManager();
                         $em->persist($teamH[0]);
                     }
@@ -109,6 +112,7 @@ class TeamController extends Controller
                         $teamH[0]->setHomePoints($teamH[0]->getHomePoints()+1);
                         $teamH[0]->setHomeNull($teamH[0]->getHomeNull()+1);
                         $teamH[0]->setPoints($teamH[0]->getPoints() + 1);
+                        $teamH[0]->setSeries("N".$teamH[0]->getSeries());
                         $em = $this->getDoctrine()->getManager();
                         $em->persist($teamH[0]);
                     }
@@ -118,12 +122,14 @@ class TeamController extends Controller
                     {
                         $teamO[0]->setHomeDefeat($teamO[0]->getHomeDefeat() + 1);
                         $em = $this->getDoctrine()->getManager();
+                        $teamO[0]->setSeries("D".$teamO[0]->getSeries());
                         $em->persist($teamO[0]);
                         }
                     else if ($result->getResultat() == 'Exterieur') {
                         $teamO[0]->setOutsidePoints($teamO[0]->getOutsidePoints()+1);
                         $teamO[0]->setOutsideVictory($teamO[0]->getOutsideVictory() + 1);
                         $teamO[0]->setPoints($teamO[0]->getPoints() + 3);
+                        $teamO[0]->setSeries("V".$teamO[0]->getSeries());
                         $em = $this->getDoctrine()->getManager();
                         $em->persist($teamO[0]);
                     }
@@ -132,6 +138,7 @@ class TeamController extends Controller
                         $teamO[0]->setOutsidePoints($teamO[0]->getOutsidePoints()+1);
                         $teamO[0]->setOutsideNull($teamO[0]->getOutsideNull()+1);
                         $teamO[0]->setPoints($teamO[0]->getPoints() + 1);
+                        $teamO[0]->setSeries("N".$teamO[0]->getSeries());
                         $em = $this->getDoctrine()->getManager();
                         $em->persist($teamO[0]);
                     }

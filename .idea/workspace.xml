@@ -22,11 +22,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="TeamController.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="TeamController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/BS/TeamBundle/Controller/TeamController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-19.692308">
-              <caret line="213" column="32" selection-start-line="213" selection-start-column="32" selection-end-line="213" selection-end-column="32" />
+            <state vertical-scroll-proportion="0.045822103">
+              <caret line="85" column="42" selection-start-line="85" selection-start-column="42" selection-end-line="85" selection-end-column="42" />
               <folding />
             </state>
           </provider>
@@ -45,18 +45,18 @@
       <file leaf-file-name="TeamRepository.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/BS/TeamBundle/Repository/TeamRepository.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-15.115385">
+            <state vertical-scroll-proportion="0.0">
               <caret line="44" column="131" selection-start-line="44" selection-start-column="131" selection-end-line="44" selection-end-column="131" />
               <folding>
-                <marker date="1455665716154" expanded="true" signature="379:474" placeholder="SELECT t FRO... BSTeamBundle" />
-                <marker date="1455665716154" expanded="true" signature="701:758" placeholder="SELECT t.id BSTeamBundle" />
-                <marker date="1455665716154" expanded="true" signature="959:1050" placeholder="SELECT t FRO... BSTeamBundle" />
-                <marker date="1455665716154" expanded="true" signature="1282:1338" placeholder="SELECT DISTI... BSTeamBundle" />
-                <marker date="1455665716154" expanded="true" signature="1472:1556" placeholder="SELECT t FRO... BSTeamBundle" />
-                <marker date="1455665716154" expanded="true" signature="1472:1567" placeholder="SELECT t FRO... BSTeamBundle" />
-                <marker date="1455665716154" expanded="true" signature="1472:1579" placeholder="SELECT t FRO... BSTeamBundle" />
-                <marker date="1455665716154" expanded="true" signature="1780:1891" placeholder="SELECT t FRO... BSTeamBundle" />
-                <marker date="1455665716154" expanded="true" signature="2095:2209" placeholder="SELECT t FRO... BSTeamBundle" />
+                <marker date="1455669654740" expanded="true" signature="379:474" placeholder="SELECT t FRO... BSTeamBundle" />
+                <marker date="1455669654740" expanded="true" signature="701:758" placeholder="SELECT t.id BSTeamBundle" />
+                <marker date="1455669654740" expanded="true" signature="959:1050" placeholder="SELECT t FRO... BSTeamBundle" />
+                <marker date="1455669654740" expanded="true" signature="1282:1338" placeholder="SELECT DISTI... BSTeamBundle" />
+                <marker date="1455669654740" expanded="true" signature="1472:1556" placeholder="SELECT t FRO... BSTeamBundle" />
+                <marker date="1455669654740" expanded="true" signature="1472:1567" placeholder="SELECT t FRO... BSTeamBundle" />
+                <marker date="1455669654740" expanded="true" signature="1472:1579" placeholder="SELECT t FRO... BSTeamBundle" />
+                <marker date="1455669654740" expanded="true" signature="1780:1891" placeholder="SELECT t FRO... BSTeamBundle" />
+                <marker date="1455669654740" expanded="true" signature="2095:2209" placeholder="SELECT t FRO... BSTeamBundle" />
               </folding>
             </state>
           </provider>
@@ -65,24 +65,24 @@
       <file leaf-file-name="MarketResultRepository.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/BS/ResultBundle/Repository/MarketResultRepository.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-19.038462">
+            <state vertical-scroll-proportion="0.0">
               <caret line="45" column="68" selection-start-line="45" selection-start-column="68" selection-end-line="45" selection-end-column="68" />
               <folding>
-                <marker date="1455664165878" expanded="true" signature="392:507" placeholder="SELECT m FRO... BSResultBundle" />
-                <marker date="1455664165878" expanded="true" signature="767:882" placeholder="SELECT m FRO... BSResultBundle" />
-                <marker date="1455664165878" expanded="true" signature="1164:1266" placeholder="SELECT m FRO... BSResultBundle" />
-                <marker date="1455664165878" expanded="true" signature="1491:1590" placeholder="SELECT mr, r... BSResultBundle" />
-                <marker date="1455664165878" expanded="true" signature="1771:1866" placeholder="SELECT c(mr.... BSResultBundle" />
+                <marker date="1455669654679" expanded="true" signature="392:507" placeholder="SELECT m FRO... BSResultBundle" />
+                <marker date="1455669654679" expanded="true" signature="767:882" placeholder="SELECT m FRO... BSResultBundle" />
+                <marker date="1455669654679" expanded="true" signature="1164:1266" placeholder="SELECT m FRO... BSResultBundle" />
+                <marker date="1455669654679" expanded="true" signature="1491:1590" placeholder="SELECT mr, r... BSResultBundle" />
+                <marker date="1455669654679" expanded="true" signature="1771:1866" placeholder="SELECT c(mr.... BSResultBundle" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Team.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Team.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/BS/TeamBundle/Entity/Team.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="2.712069">
-              <caret line="158" column="6" selection-start-line="158" selection-start-column="6" selection-end-line="158" selection-end-column="6" />
+            <state vertical-scroll-proportion="-15.038462">
+              <caret line="145" column="7" selection-start-line="145" selection-start-column="7" selection-end-line="145" selection-end-column="7" />
               <folding />
             </state>
           </provider>
@@ -110,9 +110,9 @@
         <option value="$PROJECT_DIR$/src/BS/OfferBundle/Repository/OutcomeRepository.php" />
         <option value="$PROJECT_DIR$/src/BS/MainBundle/Controller/MainController.php" />
         <option value="$PROJECT_DIR$/src/BS/ResultBundle/Repository/MarketResultRepository.php" />
-        <option value="$PROJECT_DIR$/src/BS/TeamBundle/Entity/Team.php" />
         <option value="$PROJECT_DIR$/src/BS/TeamBundle/Repository/TeamRepository.php" />
         <option value="$PROJECT_DIR$/src/BS/TeamBundle/Resources/config/routing.yml" />
+        <option value="$PROJECT_DIR$/src/BS/TeamBundle/Entity/Team.php" />
         <option value="$PROJECT_DIR$/src/BS/TeamBundle/Controller/TeamController.php" />
       </list>
     </option>
@@ -129,7 +129,7 @@
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
-    <option name="width" value="1382" />
+    <option name="width" value="1370" />
     <option name="height" value="744" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -157,7 +157,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -644,6 +643,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
       <pane id="Scratches" />
     </panes>
   </component>
@@ -701,13 +701,13 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="0" />
+    <frame x="-8" y="-8" width="1370" height="744" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24963397" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24963072" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.329653" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -761,15 +761,15 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="38" column="130" selection-start-line="38" selection-start-column="130" selection-end-line="38" selection-end-column="130" />
           <folding>
-            <marker date="1455665716154" expanded="true" signature="379:474" placeholder="SELECT t FRO... BSTeamBundle" />
-            <marker date="1455665716154" expanded="true" signature="701:758" placeholder="SELECT t.id BSTeamBundle" />
-            <marker date="1455665716154" expanded="true" signature="959:1050" placeholder="SELECT t FRO... BSTeamBundle" />
-            <marker date="1455665716154" expanded="true" signature="1282:1338" placeholder="SELECT DISTI... BSTeamBundle" />
-            <marker date="1455665716154" expanded="true" signature="1472:1556" placeholder="SELECT t FRO... BSTeamBundle" />
-            <marker date="1455665716154" expanded="true" signature="1472:1567" placeholder="SELECT t FRO... BSTeamBundle" />
-            <marker date="1455665716154" expanded="true" signature="1472:1579" placeholder="SELECT t FRO... BSTeamBundle" />
-            <marker date="1455665716154" expanded="true" signature="1780:1891" placeholder="SELECT t FRO... BSTeamBundle" />
-            <marker date="1455665716154" expanded="true" signature="2095:2209" placeholder="SELECT t FRO... BSTeamBundle" />
+            <marker date="1455669654740" expanded="true" signature="379:474" placeholder="SELECT t FRO... BSTeamBundle" />
+            <marker date="1455669654740" expanded="true" signature="701:758" placeholder="SELECT t.id BSTeamBundle" />
+            <marker date="1455669654740" expanded="true" signature="959:1050" placeholder="SELECT t FRO... BSTeamBundle" />
+            <marker date="1455669654740" expanded="true" signature="1282:1338" placeholder="SELECT DISTI... BSTeamBundle" />
+            <marker date="1455669654740" expanded="true" signature="1472:1556" placeholder="SELECT t FRO... BSTeamBundle" />
+            <marker date="1455669654740" expanded="true" signature="1472:1567" placeholder="SELECT t FRO... BSTeamBundle" />
+            <marker date="1455669654740" expanded="true" signature="1472:1579" placeholder="SELECT t FRO... BSTeamBundle" />
+            <marker date="1455669654740" expanded="true" signature="1780:1891" placeholder="SELECT t FRO... BSTeamBundle" />
+            <marker date="1455669654740" expanded="true" signature="2095:2209" placeholder="SELECT t FRO... BSTeamBundle" />
           </folding>
         </state>
       </provider>
@@ -795,15 +795,15 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="38" column="130" selection-start-line="38" selection-start-column="130" selection-end-line="38" selection-end-column="130" />
           <folding>
-            <marker date="1455665716154" expanded="true" signature="379:474" placeholder="SELECT t FRO... BSTeamBundle" />
-            <marker date="1455665716154" expanded="true" signature="701:758" placeholder="SELECT t.id BSTeamBundle" />
-            <marker date="1455665716154" expanded="true" signature="959:1050" placeholder="SELECT t FRO... BSTeamBundle" />
-            <marker date="1455665716154" expanded="true" signature="1282:1338" placeholder="SELECT DISTI... BSTeamBundle" />
-            <marker date="1455665716154" expanded="true" signature="1472:1556" placeholder="SELECT t FRO... BSTeamBundle" />
-            <marker date="1455665716154" expanded="true" signature="1472:1567" placeholder="SELECT t FRO... BSTeamBundle" />
-            <marker date="1455665716154" expanded="true" signature="1472:1579" placeholder="SELECT t FRO... BSTeamBundle" />
-            <marker date="1455665716154" expanded="true" signature="1780:1891" placeholder="SELECT t FRO... BSTeamBundle" />
-            <marker date="1455665716154" expanded="true" signature="2095:2209" placeholder="SELECT t FRO... BSTeamBundle" />
+            <marker date="1455669654740" expanded="true" signature="379:474" placeholder="SELECT t FRO... BSTeamBundle" />
+            <marker date="1455669654740" expanded="true" signature="701:758" placeholder="SELECT t.id BSTeamBundle" />
+            <marker date="1455669654740" expanded="true" signature="959:1050" placeholder="SELECT t FRO... BSTeamBundle" />
+            <marker date="1455669654740" expanded="true" signature="1282:1338" placeholder="SELECT DISTI... BSTeamBundle" />
+            <marker date="1455669654740" expanded="true" signature="1472:1556" placeholder="SELECT t FRO... BSTeamBundle" />
+            <marker date="1455669654740" expanded="true" signature="1472:1567" placeholder="SELECT t FRO... BSTeamBundle" />
+            <marker date="1455669654740" expanded="true" signature="1472:1579" placeholder="SELECT t FRO... BSTeamBundle" />
+            <marker date="1455669654740" expanded="true" signature="1780:1891" placeholder="SELECT t FRO... BSTeamBundle" />
+            <marker date="1455669654740" expanded="true" signature="2095:2209" placeholder="SELECT t FRO... BSTeamBundle" />
           </folding>
         </state>
       </provider>
@@ -829,15 +829,15 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="38" column="130" selection-start-line="38" selection-start-column="130" selection-end-line="38" selection-end-column="130" />
           <folding>
-            <marker date="1455665716154" expanded="true" signature="379:474" placeholder="SELECT t FRO... BSTeamBundle" />
-            <marker date="1455665716154" expanded="true" signature="701:758" placeholder="SELECT t.id BSTeamBundle" />
-            <marker date="1455665716154" expanded="true" signature="959:1050" placeholder="SELECT t FRO... BSTeamBundle" />
-            <marker date="1455665716154" expanded="true" signature="1282:1338" placeholder="SELECT DISTI... BSTeamBundle" />
-            <marker date="1455665716154" expanded="true" signature="1472:1556" placeholder="SELECT t FRO... BSTeamBundle" />
-            <marker date="1455665716154" expanded="true" signature="1472:1567" placeholder="SELECT t FRO... BSTeamBundle" />
-            <marker date="1455665716154" expanded="true" signature="1472:1579" placeholder="SELECT t FRO... BSTeamBundle" />
-            <marker date="1455665716154" expanded="true" signature="1780:1891" placeholder="SELECT t FRO... BSTeamBundle" />
-            <marker date="1455665716154" expanded="true" signature="2095:2209" placeholder="SELECT t FRO... BSTeamBundle" />
+            <marker date="1455669654740" expanded="true" signature="379:474" placeholder="SELECT t FRO... BSTeamBundle" />
+            <marker date="1455669654740" expanded="true" signature="701:758" placeholder="SELECT t.id BSTeamBundle" />
+            <marker date="1455669654740" expanded="true" signature="959:1050" placeholder="SELECT t FRO... BSTeamBundle" />
+            <marker date="1455669654740" expanded="true" signature="1282:1338" placeholder="SELECT DISTI... BSTeamBundle" />
+            <marker date="1455669654740" expanded="true" signature="1472:1556" placeholder="SELECT t FRO... BSTeamBundle" />
+            <marker date="1455669654740" expanded="true" signature="1472:1567" placeholder="SELECT t FRO... BSTeamBundle" />
+            <marker date="1455669654740" expanded="true" signature="1472:1579" placeholder="SELECT t FRO... BSTeamBundle" />
+            <marker date="1455669654740" expanded="true" signature="1780:1891" placeholder="SELECT t FRO... BSTeamBundle" />
+            <marker date="1455669654740" expanded="true" signature="2095:2209" placeholder="SELECT t FRO... BSTeamBundle" />
           </folding>
         </state>
       </provider>
@@ -863,15 +863,15 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="38" column="130" selection-start-line="38" selection-start-column="130" selection-end-line="38" selection-end-column="130" />
           <folding>
-            <marker date="1455665716154" expanded="true" signature="379:474" placeholder="SELECT t FRO... BSTeamBundle" />
-            <marker date="1455665716154" expanded="true" signature="701:758" placeholder="SELECT t.id BSTeamBundle" />
-            <marker date="1455665716154" expanded="true" signature="959:1050" placeholder="SELECT t FRO... BSTeamBundle" />
-            <marker date="1455665716154" expanded="true" signature="1282:1338" placeholder="SELECT DISTI... BSTeamBundle" />
-            <marker date="1455665716154" expanded="true" signature="1472:1556" placeholder="SELECT t FRO... BSTeamBundle" />
-            <marker date="1455665716154" expanded="true" signature="1472:1567" placeholder="SELECT t FRO... BSTeamBundle" />
-            <marker date="1455665716154" expanded="true" signature="1472:1579" placeholder="SELECT t FRO... BSTeamBundle" />
-            <marker date="1455665716154" expanded="true" signature="1780:1891" placeholder="SELECT t FRO... BSTeamBundle" />
-            <marker date="1455665716154" expanded="true" signature="2095:2209" placeholder="SELECT t FRO... BSTeamBundle" />
+            <marker date="1455669654740" expanded="true" signature="379:474" placeholder="SELECT t FRO... BSTeamBundle" />
+            <marker date="1455669654740" expanded="true" signature="701:758" placeholder="SELECT t.id BSTeamBundle" />
+            <marker date="1455669654740" expanded="true" signature="959:1050" placeholder="SELECT t FRO... BSTeamBundle" />
+            <marker date="1455669654740" expanded="true" signature="1282:1338" placeholder="SELECT DISTI... BSTeamBundle" />
+            <marker date="1455669654740" expanded="true" signature="1472:1556" placeholder="SELECT t FRO... BSTeamBundle" />
+            <marker date="1455669654740" expanded="true" signature="1472:1567" placeholder="SELECT t FRO... BSTeamBundle" />
+            <marker date="1455669654740" expanded="true" signature="1472:1579" placeholder="SELECT t FRO... BSTeamBundle" />
+            <marker date="1455669654740" expanded="true" signature="1780:1891" placeholder="SELECT t FRO... BSTeamBundle" />
+            <marker date="1455669654740" expanded="true" signature="2095:2209" placeholder="SELECT t FRO... BSTeamBundle" />
           </folding>
         </state>
       </provider>
@@ -889,15 +889,15 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1455665716154" expanded="true" signature="379:474" placeholder="SELECT t FRO... BSTeamBundle" />
-            <marker date="1455665716154" expanded="true" signature="701:758" placeholder="SELECT t.id BSTeamBundle" />
-            <marker date="1455665716154" expanded="true" signature="959:1050" placeholder="SELECT t FRO... BSTeamBundle" />
-            <marker date="1455665716154" expanded="true" signature="1282:1338" placeholder="SELECT DISTI... BSTeamBundle" />
-            <marker date="1455665716154" expanded="true" signature="1472:1556" placeholder="SELECT t FRO... BSTeamBundle" />
-            <marker date="1455665716154" expanded="true" signature="1472:1567" placeholder="SELECT t FRO... BSTeamBundle" />
-            <marker date="1455665716154" expanded="true" signature="1472:1579" placeholder="SELECT t FRO... BSTeamBundle" />
-            <marker date="1455665716154" expanded="true" signature="1780:1891" placeholder="SELECT t FRO... BSTeamBundle" />
-            <marker date="1455665716154" expanded="true" signature="2095:2209" placeholder="SELECT t FRO... BSTeamBundle" />
+            <marker date="1455669654740" expanded="true" signature="379:474" placeholder="SELECT t FRO... BSTeamBundle" />
+            <marker date="1455669654740" expanded="true" signature="701:758" placeholder="SELECT t.id BSTeamBundle" />
+            <marker date="1455669654740" expanded="true" signature="959:1050" placeholder="SELECT t FRO... BSTeamBundle" />
+            <marker date="1455669654740" expanded="true" signature="1282:1338" placeholder="SELECT DISTI... BSTeamBundle" />
+            <marker date="1455669654740" expanded="true" signature="1472:1556" placeholder="SELECT t FRO... BSTeamBundle" />
+            <marker date="1455669654740" expanded="true" signature="1472:1567" placeholder="SELECT t FRO... BSTeamBundle" />
+            <marker date="1455669654740" expanded="true" signature="1472:1579" placeholder="SELECT t FRO... BSTeamBundle" />
+            <marker date="1455669654740" expanded="true" signature="1780:1891" placeholder="SELECT t FRO... BSTeamBundle" />
+            <marker date="1455669654740" expanded="true" signature="2095:2209" placeholder="SELECT t FRO... BSTeamBundle" />
           </folding>
         </state>
       </provider>
@@ -1135,32 +1135,32 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/BS/ResultBundle/Repository/MarketResultRepository.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-19.038462">
+        <state vertical-scroll-proportion="0.0">
           <caret line="45" column="68" selection-start-line="45" selection-start-column="68" selection-end-line="45" selection-end-column="68" />
           <folding>
-            <marker date="1455664165878" expanded="true" signature="392:507" placeholder="SELECT m FRO... BSResultBundle" />
-            <marker date="1455664165878" expanded="true" signature="767:882" placeholder="SELECT m FRO... BSResultBundle" />
-            <marker date="1455664165878" expanded="true" signature="1164:1266" placeholder="SELECT m FRO... BSResultBundle" />
-            <marker date="1455664165878" expanded="true" signature="1491:1590" placeholder="SELECT mr, r... BSResultBundle" />
-            <marker date="1455664165878" expanded="true" signature="1771:1866" placeholder="SELECT c(mr.... BSResultBundle" />
+            <marker date="1455669654679" expanded="true" signature="392:507" placeholder="SELECT m FRO... BSResultBundle" />
+            <marker date="1455669654679" expanded="true" signature="767:882" placeholder="SELECT m FRO... BSResultBundle" />
+            <marker date="1455669654679" expanded="true" signature="1164:1266" placeholder="SELECT m FRO... BSResultBundle" />
+            <marker date="1455669654679" expanded="true" signature="1491:1590" placeholder="SELECT mr, r... BSResultBundle" />
+            <marker date="1455669654679" expanded="true" signature="1771:1866" placeholder="SELECT c(mr.... BSResultBundle" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/BS/TeamBundle/Repository/TeamRepository.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-15.115385">
+        <state vertical-scroll-proportion="0.0">
           <caret line="44" column="131" selection-start-line="44" selection-start-column="131" selection-end-line="44" selection-end-column="131" />
           <folding>
-            <marker date="1455665716154" expanded="true" signature="379:474" placeholder="SELECT t FRO... BSTeamBundle" />
-            <marker date="1455665716154" expanded="true" signature="701:758" placeholder="SELECT t.id BSTeamBundle" />
-            <marker date="1455665716154" expanded="true" signature="959:1050" placeholder="SELECT t FRO... BSTeamBundle" />
-            <marker date="1455665716154" expanded="true" signature="1282:1338" placeholder="SELECT DISTI... BSTeamBundle" />
-            <marker date="1455665716154" expanded="true" signature="1472:1556" placeholder="SELECT t FRO... BSTeamBundle" />
-            <marker date="1455665716154" expanded="true" signature="1472:1567" placeholder="SELECT t FRO... BSTeamBundle" />
-            <marker date="1455665716154" expanded="true" signature="1472:1579" placeholder="SELECT t FRO... BSTeamBundle" />
-            <marker date="1455665716154" expanded="true" signature="1780:1891" placeholder="SELECT t FRO... BSTeamBundle" />
-            <marker date="1455665716154" expanded="true" signature="2095:2209" placeholder="SELECT t FRO... BSTeamBundle" />
+            <marker date="1455669654740" expanded="true" signature="379:474" placeholder="SELECT t FRO... BSTeamBundle" />
+            <marker date="1455669654740" expanded="true" signature="701:758" placeholder="SELECT t.id BSTeamBundle" />
+            <marker date="1455669654740" expanded="true" signature="959:1050" placeholder="SELECT t FRO... BSTeamBundle" />
+            <marker date="1455669654740" expanded="true" signature="1282:1338" placeholder="SELECT DISTI... BSTeamBundle" />
+            <marker date="1455669654740" expanded="true" signature="1472:1556" placeholder="SELECT t FRO... BSTeamBundle" />
+            <marker date="1455669654740" expanded="true" signature="1472:1567" placeholder="SELECT t FRO... BSTeamBundle" />
+            <marker date="1455669654740" expanded="true" signature="1472:1579" placeholder="SELECT t FRO... BSTeamBundle" />
+            <marker date="1455669654740" expanded="true" signature="1780:1891" placeholder="SELECT t FRO... BSTeamBundle" />
+            <marker date="1455669654740" expanded="true" signature="2095:2209" placeholder="SELECT t FRO... BSTeamBundle" />
           </folding>
         </state>
       </provider>
@@ -1173,18 +1173,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/BS/TeamBundle/Controller/TeamController.php">
+    <entry file="file://$PROJECT_DIR$/src/BS/TeamBundle/Entity/Team.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-19.692308">
-          <caret line="213" column="32" selection-start-line="213" selection-start-column="32" selection-end-line="213" selection-end-column="32" />
+        <state vertical-scroll-proportion="-15.038462">
+          <caret line="145" column="7" selection-start-line="145" selection-start-column="7" selection-end-line="145" selection-end-column="7" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/BS/TeamBundle/Entity/Team.php">
+    <entry file="file://$PROJECT_DIR$/src/BS/TeamBundle/Controller/TeamController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="2.712069">
-          <caret line="158" column="6" selection-start-line="158" selection-start-column="6" selection-end-line="158" selection-end-column="6" />
+        <state vertical-scroll-proportion="0.045822103">
+          <caret line="85" column="42" selection-start-line="85" selection-start-column="42" selection-end-line="85" selection-end-column="42" />
           <folding />
         </state>
       </provider>
