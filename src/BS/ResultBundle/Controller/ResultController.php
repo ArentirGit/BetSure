@@ -2,6 +2,7 @@
 
 namespace BS\ResultBundle\Controller;
 
+use BS\ResultBundle\Entity\Sport;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use BS\ResultBundle\Entity\Result;
@@ -11,6 +12,67 @@ use BS\ResultBundle\Repository;
 
 class ResultController extends Controller
 {
+
+    public function resultSportAction($strategyLabel)
+    {
+        ini_set('max_execution_time', 18000);
+        ini_set('memory_limit', '-1');
+        $strategyRepository = $this->getDoctrine()->getManager()->getRepository('BSResultBundle:Strategy');
+        $strategy = $strategyRepository->getByLabel($strategyLabel)[0];
+        $betRepository = $this->getDoctrine()->getManager()->getRepository('BSBetBundle:Bet');
+        $betList = $betRepository->getAllByStrategy($strategy);
+        $sportArray = array("100" => array("moneyBet" => 0, "moneyEarned" => 0), "601600" => array("moneyBet" => 0, "moneyEarned" => 0), "600" => array("moneyBet" => 0, "moneyEarned" => 0), "964500" => array("moneyBet" => 0, "moneyEarned" => 0), "1200" => array("moneyBet" => 0, "moneyEarned" => 0), "1100" => array("moneyBet" => 0, "moneyEarned" => 0), "2100"=> array("moneyBet" => 0, "moneyEarned" => 0), "700" => array("moneyBet" => 0, "moneyEarned" => 0));
+        if(!empty($betList))
+        {
+            foreach ($betList as $bet)
+            {
+                if(!is_null($bet->getMarketResult()))
+                {
+                    $outcome = $bet->getOutcome();
+                    $marketResult = $bet->getMarketResult();
+                    $sportId = $bet->getMarketResult()->getResult()->getSportId();
+                    $sportArray[$sportId]['moneyBet'] = $sportArray[$sportId]['moneyBet'] + 1.0;
+                    if ($outcome->getLabelOutcome() == $marketResult->getResultat()) {
+                        $cote = "";
+                        $cote = $cote . $outcome->getCote()[0];
+                        $cote = $cote . ".";
+                        $cote = $cote . $outcome->getCote()[2];
+                        $cote = $cote . $outcome->getCote()[3];
+                        $cote = floatval($cote);
+                        $sportArray[$sportId]['moneyEarned'] = $sportArray[$sportId]['moneyEarned'] + $cote;
+                    }
+                }
+            }
+        }
+        $cpt = 0;
+        $arrayKey = array_keys($sportArray);
+        foreach($sportArray as $sportId)
+        {
+            $sportRepository = $this->getDoctrine()->getManager()->getRepository('BSResultBundle:Sport');
+            $sport = null;
+            $sport = $sportRepository->getBySportIdAndStrategy(strval($arrayKey[$cpt]), $strategy);
+            if($sport == null)
+            {
+                $sport = new Sport();
+            }
+            else
+            {
+                $sport = $sport[0];
+            }
+            $sport->setMoneyBet($sportId['moneyBet']);
+            $sport->setMoneyEarned($sportId['moneyEarned']);
+            $sport->setReturnOnInvestment($sport->getMoneyEarned() / $sport->getMoneyBet());
+            $sport->setStrategy($strategy);
+            $sport->setSportId(strval($arrayKey[$cpt]));
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($sport);
+            $em->flush();
+            $cpt++;
+        }
+
+        return new Response("Hello World");
+
+    }
 
     public function resultStrategyAction($strategyLabel)
     {
@@ -118,9 +180,9 @@ class ResultController extends Controller
     public function getAction()
     {
         ini_set('max_execution_time', 18000);
-        for($i=0; $i<10; $i++) {
+        for($i=19; $i<26; $i++) {
             //$apiContent = file_get_contents("https://www.parionssport.fr/api/1n2/resultats?date=".strftime("%Y%m%d", mktime(0, 0, 0, date('m'), date('d')-1, date('y'))));
-            $apiContent = file_get_contents("https://www.parionssport.fr/api/1n2/resultats?date=2016020".$i);
+            $apiContent = file_get_contents("https://www.parionssport.fr/api/1n2/resultats?date=201602".$i);
             $resultInformations = json_decode($apiContent);
             $repositoryResult = $this->getDoctrine()->getManager()->getRepository('BSResultBundle:Result');
             $repositoryMarketResult = $this->getDoctrine()->getManager()->getRepository('BSResultBundle:MarketResult');

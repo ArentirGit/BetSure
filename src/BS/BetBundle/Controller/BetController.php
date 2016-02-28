@@ -20,10 +20,15 @@ class BetController extends Controller
         }
         $strategyRepository = $this->getDoctrine()->getManager()->getRepository('BSResultBundle:Strategy');
         $strategy = $strategyRepository->getByLabel($labelStrategy)[0];
+        var_dump($strategy);
         $badSportId = $strategy->getBadSportId();
+        var_dump($badSportId);
         $strategy = $strategyRepository->getByLabel($labelStrategy."WBS")[0];
+        var_dump($strategy);
         $outcomeRepository = $this->getDoctrine()->getManager()->getRepository('BSOfferBundle:Outcome');
+        var_dump($outcomeLabel, $outcomeLowCote, $outcomeUpCote, $badSportId);
         $outcomeList = $outcomeRepository->getOutcomeByLabelAndBetweenCoteAndWBS($outcomeLabel, $outcomeLowCote, $outcomeUpCote, $badSportId);
+        var_dump($outcomeList);
         $repositoryBet = $this->getDoctrine()->getManager()->getRepository('BSBetBundle:Bet');
         if(!empty($outcomeList)) {
             foreach ($outcomeList as $outcome) {
