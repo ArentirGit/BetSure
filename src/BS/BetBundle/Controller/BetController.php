@@ -223,7 +223,7 @@ class BetController extends Controller
         return new Response("Hello World");
     }
 
-    public function getToPlayAction()
+    /*public function getToPlayAction()
     {
         $strategyRepository = $this->getDoctrine()->getManager()->getRepository('BSResultBundle:Strategy');
         $strategyList = $strategyRepository->getPositive();
@@ -236,7 +236,7 @@ class BetController extends Controller
             }
         }
             $message = \Swift_Message::newInstance()
-                ->setSubject('Paris à jouer ' . strftime("%Y/%m/%d", mktime(0, 0, 0, date('m'), date('d'), date('y'))))
+                ->setSubject('Paris ï¿½ jouer ' . strftime("%Y/%m/%d", mktime(0, 0, 0, date('m'), date('d'), date('y'))))
                 ->setFrom('arentir.contact@gmail.com')
                 ->setTo('arentir.contact@gmail.com')
                 //->setTo('bjorn.dagens@gmail.com')
@@ -244,11 +244,11 @@ class BetController extends Controller
                 ->setContentType('text/html');
 
             $this->get('mailer')->send($message);
-        /*$this->container->setParameter('database_name', 'betsure');
-        var_dump($this->container->getParameter('database_name'));*/
+        //$this->container->setParameter('database_name', 'betsure');
+        //var_dump($this->container->getParameter('database_name'));
 
 
 
         return new Response("Hello World");
-    }
+    }*/
 }
