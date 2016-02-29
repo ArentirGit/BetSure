@@ -17,43 +17,41 @@ class TeamController extends Controller
     {
         ini_set('max_execution_time', 18000);
         $repositoryResult = $this->getDoctrine()->getManager()->getRepository('BSResultBundle:Result');
-        $ResultList = $repositoryResult->getAllResult();
+        $resultList = $repositoryResult->getAllResult();
         //getting the title of a match
         $repositoryTeam = $this->getDoctrine()->getManager()->getRepository('BSTeamBundle:Team');
-        foreach ($ResultList as $Result) {
-            List($dom, $ext) = explode("-", $Result->getEventLabel());
+        foreach ($resultList as $result) {
+            List($dom, $ext) = explode("-", $result->getEventLabel());
             // parsing of team name with match title
-            $teamList = $repositoryTeam->verifyDuplicate($dom, $Result->getCompetitionID());
+            $teamList = $repositoryTeam->verifyDuplicate($dom, $result->getCompetitionID());
             //verify if a home playing team is already present in the Team table
             if(empty($teamList)){
                 $team = new Team();
                 $team->setName($dom);
-                $team->setCompetitionId($Result->getCompetitionID());
+                $team->setCompetitionId($result->getCompetitionID());
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($team);
                 $em->flush();
                 // add in the Team table the home team
-                var_dump($team);
             }
-            $teamList = $repositoryTeam->verifyDuplicate($ext, $Result->getCompetitionID());
+            $teamList = $repositoryTeam->verifyDuplicate($ext, $result->getCompetitionID());
             if(empty($teamList)){
                 $team = new Team();
                 $team->setName($ext);
-                $team->setCompetitionId($Result->getCompetitionID());
+                $team->setCompetitionId($result->getCompetitionID());
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($team);
                 $em->flush();
-                var_dump($team);
             }
-            $teamHome = $repositoryTeam->verifyDuplicate($dom, $Result->getCompetitionID());
-            $teamOutside = $repositoryTeam->verifyDuplicate($ext, $Result->getCompetitionID());
-            $Result->setHomeTeamId($teamHome[0]->getId());
-            $Result->setOutsideTeamId($teamOutside[0]->getId());
+            $teamHome = $repositoryTeam->verifyDuplicate($dom, $result->getCompetitionID());
+            $teamOutside = $repositoryTeam->verifyDuplicate($ext, $result->getCompetitionID());
+            $result->setHomeTeamId($teamHome[0]->getId());
+            $result->setOutsideTeamId($teamOutside[0]->getId());
             $em = $this->getDoctrine()->getManager();
-            $em->persist($Result);
+            $em->persist($result);
             $em->flush();
         }
-        return new Response('');
+        return new Response('Hello World');
     }
 
     public function initSeasonAction(){
@@ -85,6 +83,7 @@ class TeamController extends Controller
 
     public function getTeamResultAction(){
         ini_set('max_execution_time', 18000);
+        $this->initSeasonAction();
         $cpt = 0;
         $teamRepository = $this->getDoctrine()->getManager()->getRepository('BSTeamBundle:Team');
         $marketRepository = $this->getDoctrine()->getManager()->getRepository('BSResultBundle:MarketResult');
@@ -92,7 +91,6 @@ class TeamController extends Controller
             $countMarket = $marketRepository->countMarket();
             $nb = $countMarket[0]['nb'];
             foreach($resultAndMarketList as $result){
-                    var_dump($cpt. " sur " .$nb."</br>");
                     $teamH = $teamRepository->getTeamByCompetition($result->getResult()->getCompetitionID(), $result->getResult()->getHomeTeamId());
                     if ($result->getResultat() == 'Domicile') {
                         $teamH[0]->setHomePoints($teamH[0]->getHomePoints()+3);

@@ -43,7 +43,7 @@ class OutcomeRepository extends EntityRepository
 
     public function getOutcomeByLabelAndMinimumCoteAndWBS($labelOutcome, $coteOutcome, $sportId)
     {
-        $query = $this->_em->createQuery('SELECT ou, o FROM BSOfferBundle:Outcome ou JOIN ou.offer o WHERE ou.labelOutcome = :labelOutcome AND ou.cote >= :cote AND o.sportId <> :sportId');
+        $query = $this->_em->createQuery('SELECT ou, o FROM BSOfferBundle:Outcome ou JOIN ou.offer o WHERE ou.labelOutcome = :labelOutcome AND ou.cote >= :cote AND o.sportId IS NOT :sportId');
         $query->setParameters(array('labelOutcome' => $labelOutcome, 'cote' => $coteOutcome, 'sportId' => $sportId));
         return $query->getResult();
     }

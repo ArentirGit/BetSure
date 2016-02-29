@@ -20,10 +20,15 @@ class BetController extends Controller
         }
         $strategyRepository = $this->getDoctrine()->getManager()->getRepository('BSResultBundle:Strategy');
         $strategy = $strategyRepository->getByLabel($labelStrategy)[0];
+        var_dump($strategy);
         $badSportId = $strategy->getBadSportId();
+        var_dump($badSportId);
         $strategy = $strategyRepository->getByLabel($labelStrategy."WBS")[0];
+        var_dump($strategy);
         $outcomeRepository = $this->getDoctrine()->getManager()->getRepository('BSOfferBundle:Outcome');
+        var_dump($outcomeLabel, $outcomeLowCote, $outcomeUpCote, $badSportId);
         $outcomeList = $outcomeRepository->getOutcomeByLabelAndBetweenCoteAndWBS($outcomeLabel, $outcomeLowCote, $outcomeUpCote, $badSportId);
+        var_dump($outcomeList);
         $repositoryBet = $this->getDoctrine()->getManager()->getRepository('BSBetBundle:Bet');
         if(!empty($outcomeList)) {
             foreach ($outcomeList as $outcome) {
@@ -218,7 +223,7 @@ class BetController extends Controller
         return new Response("Hello World");
     }
 
-    public function getToPlayAction()
+    /*public function getToPlayAction()
     {
         $strategyRepository = $this->getDoctrine()->getManager()->getRepository('BSResultBundle:Strategy');
         $strategyList = $strategyRepository->getPositive();
@@ -231,7 +236,7 @@ class BetController extends Controller
             }
         }
             $message = \Swift_Message::newInstance()
-                ->setSubject('Paris à jouer ' . strftime("%Y/%m/%d", mktime(0, 0, 0, date('m'), date('d'), date('y'))))
+                ->setSubject('Paris ï¿½ jouer ' . strftime("%Y/%m/%d", mktime(0, 0, 0, date('m'), date('d'), date('y'))))
                 ->setFrom('arentir.contact@gmail.com')
                 ->setTo('arentir.contact@gmail.com')
                 //->setTo('bjorn.dagens@gmail.com')
@@ -239,11 +244,11 @@ class BetController extends Controller
                 ->setContentType('text/html');
 
             $this->get('mailer')->send($message);
-        /*$this->container->setParameter('database_name', 'betsure');
-        var_dump($this->container->getParameter('database_name'));*/
+        //$this->container->setParameter('database_name', 'betsure');
+        //var_dump($this->container->getParameter('database_name'));
 
 
 
         return new Response("Hello World");
-    }
+    }*/
 }
