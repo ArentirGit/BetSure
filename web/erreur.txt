@@ -1,0 +1,20 @@
+BourgEnBresse-Saint-Chamond  => 7542
+Fos-sur-Mer-Saint-Quentin  => 7542
+Roanne-Charleville-M.  => 7542
+France-Etats-Unis  => 11904France-Etats-Unis  => 11904Qatar (-23)-Irak (-23)  => 16218
+Etats-Unis-Angleterre  => 11904Etats-Unis-Angleterre  => 11904Etats-Unis-Islande  => 328Etats-Unis-Islande  => 328Souffelweyers.-Vichy-Clermont  => 7542
+France-Etats-Unis  => 11904
+Etats-Unis-Angleterre  => 11904
+Etats-Unis-Islande  => 328
+Lyon-Mt-de-Marsan  => 721Lyon-Mt-de-Marsan  => 721Lyon-Mt-de-Marsan  => 721Lyon-Mt-de-Marsan  => 721
+Fidji-Etats-Unis  => 11904Fidji-Etats-Unis  => 11904
+Fidji-Etats-Unis  => 11904Saint-Quentin-Sète  => 5001Saint-Quentin-Sète  => 5001
+Saint-Quentin-Sète  => 5001Ramos-Vinolas-D.Lajovic  => 12224Ramos-Vinolas-D.Lajovic  => 12224Ramos-Vinolas-D.Lajovic  => 12224Ramos-Vinolas-D.Lajovic  => 12224
+N.Mahut-J-L.Struff  => 16338
+N.Mahut-J-L.Struff  => 16338N.Mahut-J-L.Struff  => 16338N.Mahut-J-L.Struff  => 16338G.Garcia-Lopez-M.Basic  => 16319G.Garcia-Lopez-M.Basic  => 16319
+G.Garcia-Lopez-M.Basic  => 16319G.Garcia-Lopez-M.Basic  => 16319S. Legionovia-Bielsko-Biala  => 7322S. Legionovia-Bielsko-Biala  => 7322S. Legionovia-Bielsko-Biala  => 7322S. Legionovia-Bielsko-Biala  => 7322
+Etats-Unis-Samoa  => 11904BourgEnBresse-Saint-Chamond  => 7542Fos-sur-Mer-Saint-Quentin  => 7542Roanne-Charleville-M.  => 7542Qatar (-23)-Irak (-23)  => 16218Souffelweyers.-Vichy-Clermont  => 7542G.Monfils-Roger-Vasselin  => 16338G.Monfils-Roger-Vasselin  => 16338G.Monfils-Roger-Vasselin  => 16338
+G.Monfils-Roger-Vasselin  => 16338France-Etats-Unis  => 11904Etats-Unis-Angleterre  => 11904Etats-Unis-Islande  => 328Roger-Vasselin-J.Millman  => 16338Roger-Vasselin-J.Millman  => 16338
+Roger-Vasselin-J.Millman  => 16338Ramos-Vinolas-R.Ram  => 12224Ramos-Vinolas-R.Ram  => 12224Ramos-Vinolas-R.Ram  => 12224
+Ramos-Vinolas-R.Ram  => 12224Lyon-Mt-de-Marsan  => 721Fidji-Etats-Unis  => 11904J-L.Struff-R.Bemelmans  => 16338J-L.Struff-R.Bemelmans  => 16338J-L.Struff-R.Bemelmans  => 16338J-L.Struff-R.Bemelmans  => 16338
+Saint-Quentin-Sète  => 5001Ramos-Vinolas-D.Lajovic  => 12224N.Mahut-J-L.Struff  => 16338G.Garcia-Lopez-M.Basic  => 16319S. Legionovia-Bielsko-Biala  => 7322G.Monfils-Roger-Vasselin  => 16338Roger-Vasselin-J.Millman  => 16338Ramos-Vinolas-R.Ram  => 12224J-L.Struff-R.Bemelmans  => 16338
