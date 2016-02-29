@@ -119,6 +119,13 @@ class Team
      */
     private $points;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="series", type="string", length=255, nullable=true)
+     */
+    private $series;
+
 
     /**
      * Get id
@@ -464,5 +471,29 @@ class Team
     public function getOutsidePoints()
     {
         return $this->outsidePoints;
+    }
+
+    /**
+     * Set series
+     *
+     * @param string $series
+     *
+     * @return Team
+     */
+    public function setSeries($series)
+    {
+        $this->series = $series;
+
+        return $this;
+    }
+
+    /**
+     * Get series
+     *
+     * @return string
+     */
+    public function getSeries()
+    {
+        return $this->series;
     }
 }
