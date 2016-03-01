@@ -118,7 +118,8 @@ class ResultController extends Controller
     public function getAction()
     {
         ini_set('max_execution_time', 18000);
-        for($i=0; $i<10; $i++) {
+        for($i=5; $i<12; $i++) {
+            echo $i;
             //$apiContent = file_get_contents("https://www.parionssport.fr/api/1n2/resultats?date=".strftime("%Y%m%d", mktime(0, 0, 0, date('m'), date('d')-1, date('y'))));
             $apiContent = file_get_contents("https://www.parionssport.fr/api/1n2/resultats?date=2016020".$i);
             $resultInformations = json_decode($apiContent);

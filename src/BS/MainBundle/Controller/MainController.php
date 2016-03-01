@@ -12,7 +12,7 @@ class MainController extends Controller
         ini_set('max_execution_time', 18000);
         ini_set('memory_limit', '-1');
 
-        $this->forward('BSOfferBundle:Offer:get');
+        //$this->forward('BSOfferBundle:Offer:get');
         //$this->forward('BSResultBundle:Result:get');
 
         /*$this->forward('BSBetBundle:Bet:getBetweenPrice', array('labelStrategy' => 'HomeBetween110120', 'outcomeLowCote' => '1,10', 'outcomeUpCote' => '1,20'));
@@ -55,16 +55,16 @@ class MainController extends Controller
         $this->forward('BSBetBundle:Bet:getBetweenPrice', array('labelStrategy' => 'OutsideBetween300350', 'outcomeLowCote' => '3,00', 'outcomeUpCote' => '3,50'));
         $this->forward('BSBetBundle:Bet:getBetweenPrice', array('labelStrategy' => 'OutsideBetween350400', 'outcomeLowCote' => '3,50', 'outcomeUpCote' => '4,00'));
 
-        $this->forward('BSBetBundle:Bet:getMinimumPrice', array('labelStrategy' => 'OutsideUpper400', 'outcomeCote' => '4,00'));
+        $this->forward('BSBetBundle:Bet:getMinimumPrice', array('labelStrategy' => 'OutsideUpper400', 'outcomeCote' => '4,00'));*/
 
 
-        $this->forward('BSResultBundle:Result:offerToResult');
-        $this->forward('BSBetBundle:Bet:update');
+        //$this->forward('BSResultBundle:Result:offerToResult');
+        //$this->forward('BSBetBundle:Bet:update');
 
 
 
 
-        $this->forward('BSResultBundle:Result:resultStrategy', array('strategyLabel' => 'HomeBetween110120'));
+        /*$this->forward('BSResultBundle:Result:resultStrategy', array('strategyLabel' => 'HomeBetween110120'));
         $this->forward('BSResultBundle:Result:resultStrategy', array('strategyLabel' => 'HomeBetween120130'));
         $this->forward('BSResultBundle:Result:resultStrategy', array('strategyLabel' => 'HomeBetween130140'));
         $this->forward('BSResultBundle:Result:resultStrategy', array('strategyLabel' => 'HomeBetween140150'));
@@ -109,7 +109,7 @@ class MainController extends Controller
 
 
 
-        /*$this->forward('BSBetBundle:Bet:getBetweenPriceWBS', array('labelStrategy' => 'HomeBetween110120', 'outcomeLowCote' => '1,10', 'outcomeUpCote' => '1,20'));
+        $this->forward('BSBetBundle:Bet:getBetweenPriceWBS', array('labelStrategy' => 'HomeBetween110120', 'outcomeLowCote' => '1,10', 'outcomeUpCote' => '1,20'));
         $this->forward('BSBetBundle:Bet:getBetweenPriceWBS', array('labelStrategy' => 'HomeBetween120130', 'outcomeLowCote' => '1,20', 'outcomeUpCote' => '1,30'));
         $this->forward('BSBetBundle:Bet:getBetweenPriceWBS', array('labelStrategy' => 'HomeBetween130140', 'outcomeLowCote' => '1,30', 'outcomeUpCote' => '1,40'));
         $this->forward('BSBetBundle:Bet:getBetweenPriceWBS', array('labelStrategy' => 'HomeBetween140150', 'outcomeLowCote' => '1,40', 'outcomeUpCote' => '1,50'));
@@ -149,12 +149,12 @@ class MainController extends Controller
         $this->forward('BSBetBundle:Bet:getBetweenPriceWBS', array('labelStrategy' => 'OutsideBetween300350', 'outcomeLowCote' => '3,00', 'outcomeUpCote' => '3,50'));
         $this->forward('BSBetBundle:Bet:getBetweenPriceWBS', array('labelStrategy' => 'OutsideBetween350400', 'outcomeLowCote' => '3,50', 'outcomeUpCote' => '4,00'));
 
-        $this->forward('BSBetBundle:Bet:getMinimumPriceWBS', array('labelStrategy' => 'OutsideUpper400', 'outcomeCote' => '4,00'));*/
+        $this->forward('BSBetBundle:Bet:getMinimumPriceWBS', array('labelStrategy' => 'OutsideUpper400', 'outcomeCote' => '4,00'));
 
-        //$this->forward('BSBetBundle:Bet:update');
+        /*$this->forward('BSBetBundle:Bet:update');
 
 
-        /*$this->forward('BSResultBundle:Result:resultStrategy', array('strategyLabel' => 'HomeBetween110120WBS'));
+        $this->forward('BSResultBundle:Result:resultStrategy', array('strategyLabel' => 'HomeBetween110120WBS'));
         $this->forward('BSResultBundle:Result:resultStrategy', array('strategyLabel' => 'HomeBetween120130WBS'));
         $this->forward('BSResultBundle:Result:resultStrategy', array('strategyLabel' => 'HomeBetween130140WBS'));
         $this->forward('BSResultBundle:Result:resultStrategy', array('strategyLabel' => 'HomeBetween140150WBS'));
