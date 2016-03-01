@@ -5,12 +5,78 @@ namespace BS\BetBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use BS\BetBundle\Entity\Bet;
+use BS\TeamBundle\Entity\Team;
+use BS\OfferBundle\Entity\Offer;
+use BS\OfferBundle\Entity\Outcome;
+use BS\ResultBundle\Entity\Strategy;
 
 
 
 class BetController extends Controller
 {
-    PUBLIC FUNCTION getBetweenPriceWBSAction($labelStrategy, $outcomeLowCote, $outcomeUpCote)
+    public function secondHalfRankAction()
+    {
+        ini_set('max_execution_time', 18000);
+        ini_set('memory_limit', '-1');
+        $betRepository = $this->getDoctrine()->getManager()->getRepository('BSBetBundle:Bet');
+        $teamRepository = $this->getDoctrine()->getManager()->getRepository('BSTeamBundle:Team');
+        $offerRepository = $this->getDoctrine()->getManager()->getRepository('BSOfferBundle:Offer');
+        $outcomeRepository = $this->getDoctrine()->getManager()->getRepository('BSOfferBundle:Outcome');
+        $strategyRepository = $this->getDoctrine()->getManager()->getRepository('BSResultBundle:Strategy');
+
+        $competitionList = $teamRepository->getTeamGroupByCompetition();
+        $strategy = $strategyRepository->getByLabel("SecondHalfRank")[0];
+        foreach($competitionList as $competition) {
+            $offerList = $offerRepository->getOfferByCompetitionId($competition['competitionId']);
+            $ranking = $teamRepository->getRanking($competition['competitionId']);
+            $split = floatval(sizeof($ranking) / 2.00);
+            foreach ($offerList as $offer) {
+                if (($offer->getHomeTeamId() != null) && ($offer->getOutsideTeamId() != null)) {
+                    $homeTeam = $teamRepository->find($offer->getHomeTeamId());
+                    $outsideTeam = $teamRepository->find($offer->getOutsideTeamId());
+                    if ($homeTeam->getRank() > $split) {
+                        if ($outsideTeam->getRank() < $split) {
+                            $outcome = $outcomeRepository->getOutcomeByLabelAndOffer('Domicile', $offer);
+                            if (!empty($outcome)) {
+                                $outcome = $outcome[0];
+                                $bet = new Bet();
+                                $bet->setOutcome($outcome);
+                                $bet->setStrategy($strategy);
+                                $duplicateBet = $betRepository->verifyDuplicate($outcome, $strategy);
+                                if (empty($duplicateBet)) {
+                                    $em = $this->getDoctrine()->getManager();
+                                    $em->persist($bet);
+                                    $em->flush();
+                                    var_dump($offer, sizeof($ranking), $split, $homeTeam->getRank(), $outsideTeam->getRank());
+                                }
+                            }
+                        }
+                    } elseif ($homeTeam->getRank() < $split) {
+                        if ($outsideTeam->getRank() > $split) {
+                            $outcome = $outcomeRepository->getOutcomeByLabelAndOffer('Exterieur', $offer);
+                            if (!empty($outcome)) {
+                                $outcome = $outcome[0];
+                                $bet = new Bet();
+                                $bet->setOutcome($outcome);
+                                $bet->setStrategy($strategy);
+                                $duplicateBet = $betRepository->verifyDuplicate($outcome, $strategy);
+                                if (empty($duplicateBet)) {
+                                    $em = $this->getDoctrine()->getManager();
+                                    $em->persist($bet);
+                                    $em->flush();
+                                    var_dump($offer, sizeof($ranking), $split, $homeTeam->getRank(), $outsideTeam->getRank());
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        return new Response("Hello World");
+    }
+
+    public function getBetweenPriceWBSAction($labelStrategy, $outcomeLowCote, $outcomeUpCote)
     {
         ini_set('max_execution_time', 18000);
         if (preg_match('/Home/', $labelStrategy)) {
@@ -20,10 +86,15 @@ class BetController extends Controller
         }
         $strategyRepository = $this->getDoctrine()->getManager()->getRepository('BSResultBundle:Strategy');
         $strategy = $strategyRepository->getByLabel($labelStrategy)[0];
+        var_dump($strategy);
         $badSportId = $strategy->getBadSportId();
+        var_dump($badSportId);
         $strategy = $strategyRepository->getByLabel($labelStrategy."WBS")[0];
+        var_dump($strategy);
         $outcomeRepository = $this->getDoctrine()->getManager()->getRepository('BSOfferBundle:Outcome');
+        var_dump($outcomeLabel, $outcomeLowCote, $outcomeUpCote, $badSportId);
         $outcomeList = $outcomeRepository->getOutcomeByLabelAndBetweenCoteAndWBS($outcomeLabel, $outcomeLowCote, $outcomeUpCote, $badSportId);
+        var_dump($outcomeList);
         $repositoryBet = $this->getDoctrine()->getManager()->getRepository('BSBetBundle:Bet');
         if(!empty($outcomeList)) {
             foreach ($outcomeList as $outcome) {
@@ -218,7 +289,7 @@ class BetController extends Controller
         return new Response("Hello World");
     }
 
-    public function getToPlayAction()
+    /*public function getToPlayAction()
     {
         $strategyRepository = $this->getDoctrine()->getManager()->getRepository('BSResultBundle:Strategy');
         $strategyList = $strategyRepository->getPositive();
@@ -231,7 +302,7 @@ class BetController extends Controller
             }
         }
             $message = \Swift_Message::newInstance()
-                ->setSubject('Paris à jouer ' . strftime("%Y/%m/%d", mktime(0, 0, 0, date('m'), date('d'), date('y'))))
+                ->setSubject('Paris ï¿½ jouer ' . strftime("%Y/%m/%d", mktime(0, 0, 0, date('m'), date('d'), date('y'))))
                 ->setFrom('arentir.contact@gmail.com')
                 ->setTo('arentir.contact@gmail.com')
                 //->setTo('bjorn.dagens@gmail.com')
@@ -239,11 +310,11 @@ class BetController extends Controller
                 ->setContentType('text/html');
 
             $this->get('mailer')->send($message);
-        /*$this->container->setParameter('database_name', 'betsure');
-        var_dump($this->container->getParameter('database_name'));*/
+        //$this->container->setParameter('database_name', 'betsure');
+        //var_dump($this->container->getParameter('database_name'));
 
 
 
         return new Response("Hello World");
-    }
+    }*/
 }

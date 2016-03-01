@@ -1,7 +1,7 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: Björn
+ * User: Bjï¿½rn
  * Date: 21/01/2016
  * Time: 09:22
  */
@@ -28,6 +28,13 @@ class OutcomeRepository extends EntityRepository
         return $query->getResult();
     }*/
 
+    public function getOutcomeByLabelAndOffer($labelOutcome, $offer)
+    {
+        $query = $this->_em->createQuery('SELECT o FROM BSOfferBundle:Outcome o WHERE o.labelOutcome = :labelOutcome AND o.offer = :offer');
+        $query->setParameters(array('labelOutcome' => $labelOutcome, 'offer' => $offer));
+        return $query->getResult();
+    }
+
     public function getOutcomeByLabel($labelOutcome)
     {
         $query = $this->_em->createQuery('SELECT o FROM BSOfferBundle:Outcome o WHERE o.labelOutcome = :labelOutcome');
@@ -43,7 +50,7 @@ class OutcomeRepository extends EntityRepository
 
     public function getOutcomeByLabelAndMinimumCoteAndWBS($labelOutcome, $coteOutcome, $sportId)
     {
-        $query = $this->_em->createQuery('SELECT ou, o FROM BSOfferBundle:Outcome ou JOIN ou.offer o WHERE ou.labelOutcome = :labelOutcome AND ou.cote >= :cote AND o.sportId <> :sportId');
+        $query = $this->_em->createQuery('SELECT ou, o FROM BSOfferBundle:Outcome ou JOIN ou.offer o WHERE ou.labelOutcome = :labelOutcome AND ou.cote >= :cote AND o.sportId IS NOT :sportId');
         $query->setParameters(array('labelOutcome' => $labelOutcome, 'cote' => $coteOutcome, 'sportId' => $sportId));
         return $query->getResult();
     }

@@ -41,4 +41,11 @@ class MarketResultRepository extends \Doctrine\ORM\EntityRepository
         return $query->getResult();
     }
 
+    public function countMarket()
+    {
+        $query = $this->_em->createQuery('SELECT COUNT(mr.id) AS nb FROM BSResultBundle:MarketResult mr WHERE mr.marketType = :marketType');
+        $query->setParameter('marketType','1/N/2');
+        return $query->getScalarResult();
+    }
+
 }

@@ -11,6 +11,22 @@ use Doctrine\ORM\EntityRepository;
  */
 class TeamRepository extends \Doctrine\ORM\EntityRepository
 {
+
+    public function getRanking($competitonId)
+    {
+        $query = $this->_em->createQuery('SELECT t FROM BSTeamBundle:Team t WHERE t.competitionId = :competitionId ORDER BY t.rank');
+        $query->setParameter('competitionId', $competitonId);
+
+        return $query->getResult();
+    }
+
+    public function getCompetition()
+    {
+        $query = $this->_em->createQuery('SELECT t.competitionId FROM BSTeamBundle:Team t');
+
+        return $query->getResult();
+    }
+
     public function verifyDuplicate($teamName, $competitionId)
     {
         $query = $this->_em->createQuery('SELECT t FROM BSTeamBundle:Team t WHERE t.name = :teamName AND t.competitionId = :competitionId');
@@ -30,4 +46,26 @@ class TeamRepository extends \Doctrine\ORM\EntityRepository
         return $query->getResult();
     }
 
+    public function getTeamGroupByCompetition(){
+        $query = $this->_em->createQuery('SELECT DISTINCT t.competitionId FROM BSTeamBundle:Team t');
+        return $query->getResult();
+    }
+
+    public function getTeam($competitionID){
+        $query = $this->_em->createQuery('SELECT t FROM BSTeamBundle:Team t WHERE t.competitionId = :competitionID ORDER BY t.points DESC, t.name ASC');
+        $query->setParameter('competitionID', $competitionID);
+        return $query->getResult();
+    }
+
+    public function getHomeTeam($competitionID){
+        $query = $this->_em->createQuery('SELECT t FROM BSTeamBundle:Team t WHERE t.competitionId = :competitionID ORDER BY t.homePoints DESC, t.name ASC');
+        $query->setParameter('competitionID', $competitionID);
+        return $query->getResult();
+    }
+
+    public function getOutsideTeam($competitionID){
+        $query = $this->_em->createQuery('SELECT t FROM BSTeamBundle:Team t WHERE t.competitionId = :competitionID ORDER BY t.outsidePoints DESC, t.name ASC');
+        $query->setParameter('competitionID', $competitionID);
+        return $query->getResult();
+    }
 }
