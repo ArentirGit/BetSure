@@ -43,86 +43,86 @@ class Team
     private $homeVictory;
 
     /**
-     * @var string
+     * @var int
      *
-     * @ORM\Column(name="homeNull", type="string", length=255, nullable=true)
+     * @ORM\Column(name="homeNull", type="integer", nullable=true)
      */
     private $homeNull;
 
     /**
-     * @var string
+     * @var int
      *
-     * @ORM\Column(name="homeDefeat", type="string", length=255, nullable=true)
+     * @ORM\Column(name="homeDefeat", type="integer", nullable=true)
      */
     private $homeDefeat;
 
     /**
-     * @var string
+     * @var int
      *
-     * @ORM\Column(name="outsideVictory", type="string", length=255, nullable=true)
+     * @ORM\Column(name="outsideVictory", type="integer", nullable=true)
      */
     private $outsideVictory;
 
     /**
-     * @var string
+     * @var int
      *
-     * @ORM\Column(name="outsideNull", type="string", length=255, nullable=true)
+     * @ORM\Column(name="outsideNull", type="integer", nullable=true)
      */
     private $outsideNull;
 
     /**
-     * @var string
+     * @var int
      *
-     * @ORM\Column(name="outsideDefeat", type="string", length=255, nullable=true)
+     * @ORM\Column(name="outsideDefeat", type="integer", nullable=true)
      */
     private $outsideDefeat;
 
     /**
-     * @var string
+     * @var int
      *
-     * @ORM\Column(name="rank", type="string", length=255, nullable=true)
+     * @ORM\Column(name="rank", type="integer", nullable=true)
      */
     private $rank;
 
     /**
-     * @var string
+     * @var int
      *
-     * @ORM\Column(name="outsideRank", type="string", length=255, nullable=true)
+     * @ORM\Column(name="outsideRank", type="integer", nullable=true)
      */
     private $outsideRank;
 
     /**
-     * @var string
+     * @var int
      *
-     * @ORM\Column(name="homeRank", type="string", length=255, nullable=true)
+     * @ORM\Column(name="homeRank", type="integer", nullable=true)
      */
     private $homeRank;
 
     /**
-     * @var string
+     * @var int
      *
-     * @ORM\Column(name="homePoints", type="string", length=255, nullable=true)
+     * @ORM\Column(name="homePoints", type="integer", nullable=true)
      */
     private $homePoints;
 
     /**
-     * @var string
+     * @var int
      *
-     * @ORM\Column(name="outsidePoints", type="string", length=255, nullable=true)
+     * @ORM\Column(name="outsidePoints", type="integer", nullable=true)
      */
     private $outsidePoints;
 
     /**
-     * @var string
+     * @var int
      *
-     * @ORM\Column(name="points", type="string", length=255, nullable=true)
+     * @ORM\Column(name="points", type="integer", nullable=true)
      */
     private $points;
 
     /**
-     * @var string
+     * @var int
      *
-     * @ORM\Column(name="series", type="string", length=255, nullable=true)
+     * @ORM\Column(name="series", type="integer", nullable=true)
      */
     private $series;
 
@@ -188,7 +188,7 @@ class Team
     /**
      * Set homeVictory
      *
-     * @param string $homeVictory
+     * @param int $homeVictory
      *
      * @return Team
      */
@@ -202,7 +202,7 @@ class Team
     /**
      * Get homeVictory
      *
-     * @return string
+     * @return int
      */
     public function getHomeVictory()
     {
@@ -212,7 +212,7 @@ class Team
     /**
      * Set homeDefeat
      *
-     * @param string $homeDefeat
+     * @param int $homeDefeat
      *
      * @return Team
      */
@@ -226,7 +226,7 @@ class Team
     /**
      * Get homeDefeat
      *
-     * @return string
+     * @return int
      */
     public function getHomeDefeat()
     {
@@ -236,7 +236,7 @@ class Team
     /**
      * Set outsideVictory
      *
-     * @param string $outsideVictory
+     * @param int $outsideVictory
      *
      * @return Team
      */
@@ -250,7 +250,7 @@ class Team
     /**
      * Get outsideVictory
      *
-     * @return string
+     * @return int
      */
     public function getOutsideVictory()
     {
@@ -260,7 +260,7 @@ class Team
     /**
      * Set outsideDefeat
      *
-     * @param string $outsideDefeat
+     * @param int $outsideDefeat
      *
      * @return Team
      */
@@ -274,7 +274,7 @@ class Team
     /**
      * Get outsideDefeat
      *
-     * @return string
+     * @return int
      */
     public function getOutsideDefeat()
     {
@@ -284,7 +284,7 @@ class Team
     /**
      * Set rank
      *
-     * @param string $rank
+     * @param int $rank
      *
      * @return Team
      */
@@ -298,7 +298,7 @@ class Team
     /**
      * Get rank
      *
-     * @return string
+     * @return int
      */
     public function getRank()
     {
@@ -308,7 +308,7 @@ class Team
     /**
      * Set points
      *
-     * @param string $points
+     * @param int $points
      *
      * @return Team
      */
@@ -322,7 +322,7 @@ class Team
     /**
      * Get points
      *
-     * @return string
+     * @return int
      */
     public function getPoints()
     {
@@ -332,7 +332,7 @@ class Team
     /**
      * Set homeNull
      *
-     * @param string $homeNull
+     * @param int $homeNull
      *
      * @return Team
      */
@@ -346,7 +346,7 @@ class Team
     /**
      * Get homeNull
      *
-     * @return string
+     * @return int
      */
     public function getHomeNull()
     {
@@ -356,7 +356,7 @@ class Team
     /**
      * Set outsideNull
      *
-     * @param string $outsideNull
+     * @param int $outsideNull
      *
      * @return Team
      */
@@ -370,7 +370,7 @@ class Team
     /**
      * Get outsideNull
      *
-     * @return string
+     * @return int
      */
     public function getOutsideNull()
     {
@@ -380,7 +380,7 @@ class Team
     /**
      * Set outsideRank
      *
-     * @param string $outsideRank
+     * @param int $outsideRank
      *
      * @return Team
      */
@@ -394,7 +394,7 @@ class Team
     /**
      * Get outsideRank
      *
-     * @return string
+     * @return int
      */
     public function getOutsideRank()
     {
@@ -404,7 +404,7 @@ class Team
     /**
      * Set homeRank
      *
-     * @param string $homeRank
+     * @param int $homeRank
      *
      * @return Team
      */
@@ -418,7 +418,7 @@ class Team
     /**
      * Get homeRank
      *
-     * @return string
+     * @return int
      */
     public function getHomeRank()
     {
@@ -428,7 +428,7 @@ class Team
     /**
      * Set homePoints
      *
-     * @param string $homePoints
+     * @param int $homePoints
      *
      * @return Team
      */
@@ -442,7 +442,7 @@ class Team
     /**
      * Get homePoints
      *
-     * @return string
+     * @return int
      */
     public function getHomePoints()
     {
@@ -452,7 +452,7 @@ class Team
     /**
      * Set outsidePoints
      *
-     * @param string $outsidePoints
+     * @param int $outsidePoints
      *
      * @return Team
      */
@@ -466,7 +466,7 @@ class Team
     /**
      * Get outsidePoints
      *
-     * @return string
+     * @return int
      */
     public function getOutsidePoints()
     {

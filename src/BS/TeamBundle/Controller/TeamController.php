@@ -95,7 +95,6 @@ class TeamController extends Controller
     public function getTeamResultAction(){
         ini_set('max_execution_time', 18000);
         $this->initSeasonAction();
-        $cpt = 0;
         $teamRepository = $this->getDoctrine()->getManager()->getRepository('BSTeamBundle:Team');
         $marketRepository = $this->getDoctrine()->getManager()->getRepository('BSResultBundle:MarketResult');
             $resultAndMarketList = $marketRepository->getResultJoinMarket();
@@ -154,18 +153,20 @@ class TeamController extends Controller
             $teamList = $teamRepository->getTeam($competition['competitionId']);
 
             $cpt = 1;
+            //var_dump($teamList);
             foreach($teamList as $team){
 
                 $team->setRank($cpt);
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($team);
                 $em->flush();
-                var_dump($team);
+                //var_dump($team);
                 $cpt++;
             }
-            $this->updateHomeRankAction();
-            $this->updateOutsideRankAction();
+
         }
+        $this->updateHomeRankAction();
+        $this->updateOutsideRankAction();
 
         return new Response('');
     }
@@ -185,7 +186,7 @@ class TeamController extends Controller
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($team);
                 $em->flush();
-                var_dump($team);
+                //var_dump($team);
                 $cpt++;
             }
 
@@ -208,7 +209,7 @@ class TeamController extends Controller
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($team);
                 $em->flush();
-                var_dump($team);
+                //var_dump($team);
                 $cpt++;
             }
 

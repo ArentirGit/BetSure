@@ -11,6 +11,22 @@ use Doctrine\ORM\EntityRepository;
  */
 class TeamRepository extends \Doctrine\ORM\EntityRepository
 {
+
+    public function getRanking($competitonId)
+    {
+        $query = $this->_em->createQuery('SELECT t FROM BSTeamBundle:Team t WHERE t.competitionId = :competitionId ORDER BY t.rank');
+        $query->setParameter('competitionId', $competitonId);
+
+        return $query->getResult();
+    }
+
+    public function getCompetition()
+    {
+        $query = $this->_em->createQuery('SELECT t.competitionId FROM BSTeamBundle:Team t');
+
+        return $query->getResult();
+    }
+
     public function verifyDuplicate($teamName, $competitionId)
     {
         $query = $this->_em->createQuery('SELECT t FROM BSTeamBundle:Team t WHERE t.name = :teamName AND t.competitionId = :competitionId');

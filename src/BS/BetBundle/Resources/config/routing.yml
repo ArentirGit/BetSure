@@ -12,3 +12,8 @@ bs_bet_get_to_play:
     path:    /Bet/Get/ToPlay/Mail
     defaults:
         _controller:    BSBetBundle:Bet:getToPlay
+
+bs_bet_half:
+    path:    /Bet/Half
+    defaults:
+        _controller:    BSBetBundle:Bet:secondHalfRank

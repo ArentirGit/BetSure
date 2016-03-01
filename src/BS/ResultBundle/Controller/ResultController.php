@@ -13,6 +13,7 @@ use BS\ResultBundle\Repository;
 class ResultController extends Controller
 {
 
+
     public function resultSportAction($strategyLabel)
     {
         ini_set('max_execution_time', 18000);
