@@ -12,7 +12,7 @@ class MainController extends Controller
         ini_set('max_execution_time', 18000);
         ini_set('memory_limit', '-1');
 
-        $this->forward('BSOfferBundle:Offer:get');
+        //$this->forward('BSOfferBundle:Offer:get');
         //$this->forward('BSResultBundle:Result:get');
 
         /*$this->forward('BSBetBundle:Bet:getBetweenPrice', array('labelStrategy' => 'HomeBetween110120', 'outcomeLowCote' => '1,10', 'outcomeUpCote' => '1,20'));
@@ -60,8 +60,6 @@ class MainController extends Controller
 
         //$this->forward('BSResultBundle:Result:offerToResult');
         //$this->forward('BSBetBundle:Bet:update');
-
-
 
 
         /*$this->forward('BSResultBundle:Result:resultStrategy', array('strategyLabel' => 'HomeBetween110120'));
@@ -117,12 +115,12 @@ class MainController extends Controller
         $this->forward('BSResultBundle:Result:resultSport', array('strategyLabel' => 'HomeBetween170180'));
         $this->forward('BSResultBundle:Result:resultSport', array('strategyLabel' => 'HomeBetween180190'));
         $this->forward('BSResultBundle:Result:resultSport', array('strategyLabel' => 'HomeBetween190200'));
-
         $this->forward('BSResultBundle:Result:resultSport', array('strategyLabel' => 'HomeBetween200220'));
         $this->forward('BSResultBundle:Result:resultSport', array('strategyLabel' => 'HomeBetween220240'));
         $this->forward('BSResultBundle:Result:resultSport', array('strategyLabel' => 'HomeBetween240260'));
         $this->forward('BSResultBundle:Result:resultSport', array('strategyLabel' => 'HomeBetween260280'));
         $this->forward('BSResultBundle:Result:resultSport', array('strategyLabel' => 'HomeBetween280300'));
+
 
         $this->forward('BSResultBundle:Result:resultSport', array('strategyLabel' => 'HomeBetween300350'));
         $this->forward('BSResultBundle:Result:resultSport', array('strategyLabel' => 'HomeBetween350400'));
@@ -152,10 +150,14 @@ class MainController extends Controller
 
 
 
+
         //$this->forward('BSTeamBundle:Team:get');
         //$this->forward('BSTeamBundle:Team:getTeamResult');
+        //$this->forward('BSTeamBundle:Team:updateRank');
+        //$this->forward('BSOfferBundle:Offer:updateHomeOutside');
 
-
+        //$this->forward('BSBetBundle:Bet:secondHalfRank');
+        //$this->forward('BSResultBundle:Result:resultStrategy', array('strategyLabel' => 'SecondHalfRank'));
 
 
         //$this->forward('BSBetBundle:Bet:getToPlay');

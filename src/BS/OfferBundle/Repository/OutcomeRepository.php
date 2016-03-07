@@ -1,7 +1,7 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: Björn
+ * User: Bjï¿½rn
  * Date: 21/01/2016
  * Time: 09:22
  */
@@ -27,6 +27,13 @@ class OutcomeRepository extends EntityRepository
         $query->setParameter('offerId',$offerId);
         return $query->getResult();
     }*/
+
+    public function getOutcomeByLabelAndOffer($labelOutcome, $offer)
+    {
+        $query = $this->_em->createQuery('SELECT o FROM BSOfferBundle:Outcome o WHERE o.labelOutcome = :labelOutcome AND o.offer = :offer');
+        $query->setParameters(array('labelOutcome' => $labelOutcome, 'offer' => $offer));
+        return $query->getResult();
+    }
 
     public function getOutcomeByLabel($labelOutcome)
     {

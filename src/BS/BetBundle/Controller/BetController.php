@@ -5,12 +5,78 @@ namespace BS\BetBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use BS\BetBundle\Entity\Bet;
+use BS\TeamBundle\Entity\Team;
+use BS\OfferBundle\Entity\Offer;
+use BS\OfferBundle\Entity\Outcome;
+use BS\ResultBundle\Entity\Strategy;
 
 
 
 class BetController extends Controller
 {
-    PUBLIC FUNCTION getBetweenPriceWBSAction($labelStrategy, $outcomeLowCote, $outcomeUpCote)
+    public function secondHalfRankAction()
+    {
+        ini_set('max_execution_time', 18000);
+        ini_set('memory_limit', '-1');
+        $betRepository = $this->getDoctrine()->getManager()->getRepository('BSBetBundle:Bet');
+        $teamRepository = $this->getDoctrine()->getManager()->getRepository('BSTeamBundle:Team');
+        $offerRepository = $this->getDoctrine()->getManager()->getRepository('BSOfferBundle:Offer');
+        $outcomeRepository = $this->getDoctrine()->getManager()->getRepository('BSOfferBundle:Outcome');
+        $strategyRepository = $this->getDoctrine()->getManager()->getRepository('BSResultBundle:Strategy');
+
+        $competitionList = $teamRepository->getTeamGroupByCompetition();
+        $strategy = $strategyRepository->getByLabel("SecondHalfRank")[0];
+        foreach($competitionList as $competition) {
+            $offerList = $offerRepository->getOfferByCompetitionId($competition['competitionId']);
+            $ranking = $teamRepository->getRanking($competition['competitionId']);
+            $split = floatval(sizeof($ranking) / 2.00);
+            foreach ($offerList as $offer) {
+                if (($offer->getHomeTeamId() != null) && ($offer->getOutsideTeamId() != null)) {
+                    $homeTeam = $teamRepository->find($offer->getHomeTeamId());
+                    $outsideTeam = $teamRepository->find($offer->getOutsideTeamId());
+                    if ($homeTeam->getRank() > $split) {
+                        if ($outsideTeam->getRank() < $split) {
+                            $outcome = $outcomeRepository->getOutcomeByLabelAndOffer('Domicile', $offer);
+                            if (!empty($outcome)) {
+                                $outcome = $outcome[0];
+                                $bet = new Bet();
+                                $bet->setOutcome($outcome);
+                                $bet->setStrategy($strategy);
+                                $duplicateBet = $betRepository->verifyDuplicate($outcome, $strategy);
+                                if (empty($duplicateBet)) {
+                                    $em = $this->getDoctrine()->getManager();
+                                    $em->persist($bet);
+                                    $em->flush();
+                                    var_dump($offer, sizeof($ranking), $split, $homeTeam->getRank(), $outsideTeam->getRank());
+                                }
+                            }
+                        }
+                    } elseif ($homeTeam->getRank() < $split) {
+                        if ($outsideTeam->getRank() > $split) {
+                            $outcome = $outcomeRepository->getOutcomeByLabelAndOffer('Exterieur', $offer);
+                            if (!empty($outcome)) {
+                                $outcome = $outcome[0];
+                                $bet = new Bet();
+                                $bet->setOutcome($outcome);
+                                $bet->setStrategy($strategy);
+                                $duplicateBet = $betRepository->verifyDuplicate($outcome, $strategy);
+                                if (empty($duplicateBet)) {
+                                    $em = $this->getDoctrine()->getManager();
+                                    $em->persist($bet);
+                                    $em->flush();
+                                    var_dump($offer, sizeof($ranking), $split, $homeTeam->getRank(), $outsideTeam->getRank());
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        return new Response("Hello World");
+    }
+
+    public function getBetweenPriceWBSAction($labelStrategy, $outcomeLowCote, $outcomeUpCote)
     {
         ini_set('max_execution_time', 18000);
         if (preg_match('/Home/', $labelStrategy)) {
